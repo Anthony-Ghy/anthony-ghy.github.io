@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Anthony的博客</title>
+  <icon>https://anthony-ghy.github.io/icon.png</icon>
+  <subtitle>敬畏墨菲定律</subtitle>
+  <link href="https://anthony-ghy.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://anthony-ghy.github.io/"/>
+  <updated>2020-11-16T07:11:12.109Z</updated>
+  <id>https://anthony-ghy.github.io/</id>
+  
+  <author>
+    <name>Anthony高鸿宇</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://anthony-ghy.github.io/2020/151FCAP/"/>
+    <id>https://anthony-ghy.github.io/2020/151FCAP/</id>
+    <published>2020-11-16T07:11:12.108Z</published>
+    <updated>2020-11-16T07:11:12.109Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
