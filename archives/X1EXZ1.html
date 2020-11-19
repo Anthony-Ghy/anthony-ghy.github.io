@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"anthony-ghy.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#836FFF","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="有时候你希望能回到过去，告诉年轻的自己，数学确实很重要! 但我怀疑自己当时会不会听进去…  前言​     三角函数、两点间的距离，还有各种图形、角度计算公式，每每听到这些词语，就放佛回到了高中时代，想起了数学课本上那一道道让人头疼的数学题。在前端开发领域中，数学同样占据着举足轻重的地位，每次当视觉交互设计师提出，能不能按照这样那样的交互方式进行开发的时候，我时常会感觉力不从心。对于动画效果，实">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数学在前端动画中的应用">
+<meta property="og:url" content="https://anthony-ghy.github.io/archives/X1EXZ1.html">
+<meta property="og:site_name" content="Anthony的博客">
+<meta property="og:description" content="有时候你希望能回到过去，告诉年轻的自己，数学确实很重要! 但我怀疑自己当时会不会听进去…  前言​     三角函数、两点间的距离，还有各种图形、角度计算公式，每每听到这些词语，就放佛回到了高中时代，想起了数学课本上那一道道让人头疼的数学题。在前端开发领域中，数学同样占据着举足轻重的地位，每次当视觉交互设计师提出，能不能按照这样那样的交互方式进行开发的时候，我时常会感觉力不从心。对于动画效果，实">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img14.360buyimg.com/imagetools/jfs/t1/127151/14/17627/2703/5fa504a2E023692d4/17cb0937486ad1ec.png">
+<meta property="og:image" content="https://img10.360buyimg.com/imagetools/jfs/t1/134811/17/14853/343535/5fa504a2E84c11bce/262a1bba1c3eacff.jpg">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%E5%9C%86%E7%9A%84%E5%91%A8%E9%95%BF=2%5Cpi+r">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7B2%5Cpi+r%7D%7Br%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=2%5Cpi">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=360%E5%BA%A6=2%5Cpi+(%E5%BC%A7%E5%BA%A6)">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=1%E5%BA%A6=%5Cfrac%7B2%5Cpi%7D%7B360%7D=%5Cfrac%7B%CF%80%7D%7B180%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=1%E5%BC%A7%E5%BA%A6=%5Cfrac%7B360%E5%BA%A6%7D%7B2%CF%80%7D=%5Cfrac%7B180%E5%BA%A6%7D%7B%CF%80%7D">
+<meta property="og:image" content="https://img13.360buyimg.com/imagetools/jfs/t1/147946/15/13333/2090145/5fa3a60dE97d85365/3d7d3708021ef00d.gif">
+<meta property="og:image" content="https://img13.360buyimg.com/imagetools/jfs/t1/125823/12/17558/683612/5fa5118cE2645051c/cd1e8ee1f37f2789.gif">
+<meta property="og:image" content="https://img10.360buyimg.com/imagetools/jfs/t1/143442/35/13571/171853/5fa504a2Eb862fb03/89f552081019b67b.jpg">
+<meta property="og:image" content="https://img14.360buyimg.com/imagetools/jfs/t1/148878/32/13498/68762/5fa50553E10957a92/98b407663c2e6e10.jpg">
+<meta property="og:image" content="https://img10.360buyimg.com/imagetools/jfs/t1/155401/8/4794/177097/5fa504a2E9b23f85a/879f75baab1b3be7.jpg">
+<meta property="og:image" content="https://img12.360buyimg.com/imagetools/jfs/t1/127887/26/17611/608802/5fa5131eEfc037f1b/9508891d90a16272.gif">
+<meta property="og:image" content="https://img13.360buyimg.com/imagetools/jfs/t1/125823/12/17558/683612/5fa5118cE2645051c/cd1e8ee1f37f2789.gif">
+<meta property="article:published_time" content="2020-11-18T11:30:19.813Z">
+<meta property="article:modified_time" content="2020-11-19T01:33:07.410Z">
+<meta property="article:author" content="Anthony高鸿宇">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="动画">
+<meta property="article:tag" content="三角函数">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img14.360buyimg.com/imagetools/jfs/t1/127151/14/17627/2703/5fa504a2E023692d4/17cb0937486ad1ec.png">
+
+<link rel="canonical" href="https://anthony-ghy.github.io/archives/X1EXZ1.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数学在前端动画中的应用 | Anthony的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Anthony的博客" type="application/atom+xml">
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Anthony的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">要做编程里最会摄影的，摄影里最会编程的。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/Anthony-Ghy" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://anthony-ghy.github.io/archives/X1EXZ1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Anthony高鸿宇">
+      <meta itemprop="description" content="敬畏墨菲定律。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Anthony的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数学在前端动画中的应用
+        </h1>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-18 19:30:19" itemprop="dateCreated datePublished" datetime="2020-11-18T19:30:19+08:00">2020-11-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-19 09:33:07" itemprop="dateModified" datetime="2020-11-19T09:33:07+08:00">2020-11-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB/" itemprop="url" rel="index"><span itemprop="name">前端动画</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>有时候你希望能回到过去，告诉年轻的自己，数学确实很重要! 但我怀疑自己当时会不会听进去…</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​     三角函数、两点间的距离，还有各种图形、角度计算公式，每每听到这些词语，就放佛回到了高中时代，想起了数学课本上那一道道让人头疼的数学题。在前端开发领域中，数学同样占据着举足轻重的地位，每次当视觉交互设计师提出，能不能按照这样那样的交互方式进行开发的时候，我时常会感觉力不从心。对于动画效果，实现的方式主要有css和js两种，为了做出更高质量的动画效果，通常需要借助一些数学知识来解决，本文主要结合三角函数在前端动画中的应用进行介绍。</p>
+<a id="more"></a>
+
+<h3 id="三角函数介绍"><a href="#三角函数介绍" class="headerlink" title="三角函数介绍"></a>三角函数介绍</h3><p>​     <strong>三角函数</strong>，学生时代肯定学过，是以角度（数学上最常用弧度制）为自变量，角度对应任意角终边与单位圆交点坐标或其比值为因变量的函数，在研究三角形和圆等几何形状的性质时有重要作用，也是研究周期性现象的基础数学工具。通过三角函数，我们可以获取到有规律的周期数据，在一个周期内，物体的运动是按照一种有规律的方式进行的，物体元素都是可以按照这个方式进行周期性运动的，进而可以让整个动画效果看起来更符合人类的视觉审美。</p>
+<p>要想介绍三角函数，首先离不开当初学过的一个直角三角形：</p>
+<p><img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/127151/14/17627/2703/5fa504a2E023692d4/17cb0937486ad1ec.png" alt="t_sjx"></p>
+<p>​       勾股定理的基本思想就是：两条直角边的平方和等于斜边平方和；由勾股定理进行推导即可得知，三角函数主要是代表边与角之间的关系；我给大家介绍其中的三种，其实还有很多，我们主要平时用的时候用这三个就够了：</p>
+<p> <strong>正弦：</strong>sin(θ) = y / R</p>
+<p> <strong>余弦：</strong>cos(θ) = x / R</p>
+<p> <strong>正切：</strong>tan(θ) = y / x</p>
+<p> 这里我们以正弦函数为例进行演示，下图主要是一个正弦曲线图，对应的正弦曲线公式为：y = A sin(Bx + C) + D；</p>
+<img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/134811/17/14853/343535/5fa504a2E84c11bce/262a1bba1c3eacff.jpg" width="800" height="500"/>
+
+<h5 id="正弦参数概念"><a href="#正弦参数概念" class="headerlink" title="正弦参数概念"></a>正弦参数概念</h5><ol>
+<li>A 控制振幅，A 值越大，整体振幅越大，A 值越小，整体振幅越小；</li>
+<li>B 值会影响周期，B 值越大，周期会相应的变小 ，B 值越小，周期会相应的变大 。</li>
+<li>C 值会影响图像左右移动，C 值为正数，图像右移像素，C 值为负数，图像左移像素。</li>
+<li>D 值控制整个图像的上下移动。</li>
+</ol>
+<h5 id="三角函数在js中的对应"><a href="#三角函数在js中的对应" class="headerlink" title="三角函数在js中的对应"></a>三角函数在js中的对应</h5><ul>
+<li><p>   Math.sin(弧度)</p>
+</li>
+<li><p>   Math.cos(弧度)</p>
+</li>
+<li><p> Math.tan(弧度）</p>
+<p>&lt;注意&gt; 在js中用弧度代替角度，在浏览器中是不能识别角度的，只能用弧度来进行转换。</p>
+</li>
+</ul>
+<h3 id="弧度是什么？"><a href="#弧度是什么？" class="headerlink" title="弧度是什么？"></a>弧度是什么？</h3><p> <img data-src="https://www.zhihu.com/equation?tex=%E5%9C%86%E7%9A%84%E5%91%A8%E9%95%BF=2%5Cpi+r" alt="[公式]"></p>
+<p>如果一弧度等于半径;那么整个圆的弧度= <img data-src="https://www.zhihu.com/equation?tex=%5Cfrac%7B2%5Cpi+r%7D%7Br%7D" alt="[公式]">. = <img data-src="https://www.zhihu.com/equation?tex=2%5Cpi" alt="[公式]"></p>
+<p>整个圆的角度是360度，由于弧度和角度是一个相等的关系，只不过是两个不同的单位，最终我们可以推导出：<img data-src="https://www.zhihu.com/equation?tex=360%E5%BA%A6=2%5Cpi+(%E5%BC%A7%E5%BA%A6)" alt="[公式]"></p>
+<p>那么角度和弧度都可以换算出来：</p>
+<p><img data-src="https://www.zhihu.com/equation?tex=1%E5%BA%A6=%5Cfrac%7B2%5Cpi%7D%7B360%7D=%5Cfrac%7B%CF%80%7D%7B180%7D" alt="[公式]"> （用弧度来表示1度）</p>
+<p><img data-src="https://www.zhihu.com/equation?tex=1%E5%BC%A7%E5%BA%A6=%5Cfrac%7B360%E5%BA%A6%7D%7B2%CF%80%7D=%5Cfrac%7B180%E5%BA%A6%7D%7B%CF%80%7D" alt="[公式]"> （用度来表示1弧度）</p>
+<p>在js中一弧度的写法：Math.PI/180；（π在javascript中是一个常量,用Math.PI表示）；</p>
+<p>在实际开发中，我们更多的是想通过<strong>已知距离</strong>来推出角度，因为我们开发过程中经常需要获取距离，而且获取距离也是很容易获取的。这里我们需要介绍一个概念，<strong>反三角函数</strong>，推导过程如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sin(θ)&#x3D;x&#x2F;R &#x3D;&#x3D;&#x3D;&#x3D; Math.sin( θ * Math.PI&#x2F;180 )  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;》   θ &#x3D; arcsin(x&#x2F;R) &#x3D;&#x3D;&#x3D;&#x3D; Math.asin(x&#x2F;R)*(180&#x2F;Math.PI)</span><br><span class="line">cos(θ)&#x3D;y&#x2F;R &#x3D;&#x3D;&#x3D;&#x3D; Math.cos( θ * Math.PI&#x2F;180 )  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;》   θ &#x3D; arccos(y&#x2F;R) &#x3D;&#x3D;&#x3D;&#x3D; Math.acos(y&#x2F;R)*(180&#x2F;Math.PI)</span><br><span class="line">tan(θ)&#x3D;x&#x2F;y &#x3D;&#x3D;&#x3D;&#x3D; Math.tan( θ * Math.PI&#x2F;180 )  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;》   θ &#x3D; arctan(x&#x2F;y) &#x3D;&#x3D;&#x3D;&#x3D; Math.atan(x&#x2F;y)*(180&#x2F;Math.PI)</span><br></pre></td></tr></table></figure>
+
+<p>这里的推导过程采取的是弧度制与角度之间的转换，其实最终的推导结果记住即可。</p>
+<p>​     说了这么多数学知识，自己都烦了，现在我们看下如何在前端领域运用三角函数来解决问题，这里我们需要借助canvas来画图（下一篇文章我们重点介绍下canvas的使用案例）</p>
+<h4 id="星星移动案例"><a href="#星星移动案例" class="headerlink" title="星星移动案例"></a>星星移动案例</h4><p>这个案例可以想象到现在的直播平台的点赞活动，无限点击，图标按照规律性的运动向上运动。</p>
+<p>接下来看下简易效果:</p>
+<img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/147946/15/13333/2090145/5fa3a60dE97d85365/3d7d3708021ef00d.gif" width="500" height="700"/>
+
+<p>想要实现这样一个效果，我们首先需要创建一个星星，同时绑定星星点击事件，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> document.getElementById(&#39;star&#39;).onclick &#x3D; function (e) &#123;</span><br><span class="line">    startPop(e)</span><br><span class="line">&#125;</span><br><span class="line"> &#x2F;*</span><br><span class="line">    创建一个新的元素</span><br><span class="line"> *&#x2F;</span><br><span class="line">function createElement(e) &#123;</span><br><span class="line">    var star &#x3D; document.createElement(&quot;div&quot;);</span><br><span class="line">    var StarRandomSize &#x3D; parseInt(Math.random() * 10 + 30);</span><br><span class="line">    star.style.height &#x3D; star.style.width &#x3D; StarRandomSize + &quot;px&quot;;</span><br><span class="line">    var x &#x3D; e.clientX;</span><br><span class="line">    var y &#x3D; e.clientY;</span><br><span class="line">    star.style.color &#x3D; randomColor();</span><br><span class="line">    star.style.fontSize &#x3D; StarRandomSize + &quot;px&quot;;</span><br><span class="line">    star.style.position &#x3D; &quot;absolute&quot;;</span><br><span class="line">    star.style.left &#x3D; e.currentTarget.offsetLeft + &quot;px&quot;;</span><br><span class="line">    star.style.top &#x3D; y - StarRandomSize + &quot;px&quot;;</span><br><span class="line">    document.body.appendChild(star);</span><br><span class="line">    star.innerText &#x3D; &quot;☆&quot;;</span><br><span class="line">    return star</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       这里我们通过js创建一个元素为星星。完成了创建以后，最重要的是希望我们生成的这个星星向上飘动，同时希望他的飘动不是直线而是一种有规律性的飘动。这里我们就可以使用我们介绍的三角函数的特性来解决这个问题，不管是正弦，余弦，还是正切，他们的边界值都是[-1,1]之间，同时我们知道，三角函数的运动是呈规律性的，我们可以通过周期，振幅，图像的偏移量以及整个元素的位置来生成三角函数类型的规律性曲线。</p>
+<p>​       这里我们结合上文中介绍的三角函数几个重要的参数，同时以正弦函数为例，来介绍下我们的设置，由于在计算机中是不能识别角度的，这里我们使用Math.PI/180来进行弧度制的转换，上文中已经介绍了角度转弧度的转换过程，这里我们直接使用，振幅来代表整个运动的幅度，这里不要设置太大，-2代表图形运动的偏移量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function sinPath(deg) &#123;</span><br><span class="line">        return 10 * Math.sin(deg * Math.PI &#x2F; 180 - 2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       知道规律以后，我们的想法是将三种运动函数，通过随机数的方式，使用<code>tranform</code>中的<code>translate</code>进行位移，进而可以将函数的规律和星星的运动进行了绑定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var PathFun &#x3D; [sinPath, tanPath, cosPath];</span><br><span class="line">var RandomPathIndex &#x3D; Math.round(Math.random() * 2);</span><br><span class="line">moveY -&#x3D;8;</span><br><span class="line">star.style.transform &#x3D; &quot;translate(&quot; + (PathFun[RandomPathIndex](deg) + &quot;px&quot;) + &quot;,&quot; + (moveY + &quot;px&quot;) + &quot;)&quot;</span><br><span class="line">function sinPath(deg) &#123;</span><br><span class="line">        return 10 * Math.sin(deg * Math.PI &#x2F; 180 - 4)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function tanPath(deg) &#123;</span><br><span class="line">        return 2 * Math.atan(deg * Math.PI &#x2F; 180)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function cosPath(deg) &#123;</span><br><span class="line">        return 10 * Math.cos(deg * Math.PI &#x2F; 180)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       如果需要让我们的元素运动起来，这个时候我们添加动画效果。我们计划采取requestAnimationFrame来解决这个问题，requestAnimationFrame其作用就是让浏览器流畅的执行动画效果。可以将其理解为专门用来实现动画效果的api，通过这个api,可以告诉浏览器某个JS代码要执行动画，浏览器收到通知后，则会运行这些代码的时候进行优化，实现流畅的效果，而不再需要开发人员担心刷新频率的问题了。</p>
+<p>最终我们添加动画的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var star &#x3D; createElement(e);</span><br><span class="line">var opacity &#x3D; 100;</span><br><span class="line">var deg &#x3D; 0;</span><br><span class="line">var PathFun &#x3D; [sinPath, tanPath, cosPath];</span><br><span class="line">var RandomPathIndex &#x3D; Math.round(Math.random() * 2);</span><br><span class="line">var moveY &#x3D;0;</span><br><span class="line">var start &#x3D; null；</span><br><span class="line">&#x2F;*</span><br><span class="line">    元素移动处理</span><br><span class="line">*&#x2F;</span><br><span class="line">function step(timestamp) &#123;</span><br><span class="line">   if (!start) start &#x3D; timestamp;</span><br><span class="line">      opacity--;</span><br><span class="line">      deg +&#x3D; 5;</span><br><span class="line">      moveY -&#x3D;8;</span><br><span class="line">      star.style.transform &#x3D; &quot;translate(&quot; + (PathFun[RandomPathIndex](deg) + &quot;px&quot;) + &quot;,&quot; + (moveY + &quot;px&quot;) + &quot;)&quot;</span><br><span class="line">      star.style.opacity &#x3D; opacity &#x2F; 100;</span><br><span class="line">      if (star.style.opacity &gt; 0) &#123;</span><br><span class="line">                window.requestAnimationFrame(step)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">                star.remove();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"> window.requestAnimationFrame(step)</span><br></pre></td></tr></table></figure>
+
+<p>​      最终我们的动画就可以按照我们上面演示的那样进行显示了，这个案例不仅是介绍了整个星星的创建过程，同时我们在动画的位移中添加了三角函数的曲线规律，使得整个动画无论是从运动形式还是速率等一些特性上看起来更加符合我们视觉观察规律，从而运用数学的特性来解决了这个问题。</p>
+<h4 id="绘制水波图"><a href="#绘制水波图" class="headerlink" title="绘制水波图"></a>绘制水波图</h4><p>​     有的时候我们经常能看到一个球里面有水波，这个水波曲线的实现其实也是和三角函数分不开的。先看下实现的一个粗略的效果:</p>
+<p>​                                                                    <img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/125823/12/17558/683612/5fa5118cE2645051c/cd1e8ee1f37f2789.gif" width="400" height="400"/></p>
+<h5 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h5><p>首先绘制一个标签，先绘制一个圆形，以此充当边框。这里我们采取canvas进行图形绘制，圆形绘制代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; 创建一个圆形（只创建一次即可，不然影响动画性能）</span><br><span class="line">ctx.beginPath();</span><br><span class="line">const r &#x3D; width &#x2F; 2;</span><br><span class="line">const h &#x3D; height&#x2F;2;</span><br><span class="line">const lineWidth2 &#x3D; 3;</span><br><span class="line">const cR &#x3D; r ;</span><br><span class="line">ctx.arc(r, h, cR, 0, 2 * Math.PI);</span><br><span class="line">ctx.stroke();</span><br><span class="line">ctx.clip();</span><br><span class="line">ctx.closePath();</span><br></pre></td></tr></table></figure>
+
+<p>绘制圆形最终要的属性是arc属性，arc相应参数如下：</p>
+<p><img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/143442/35/13571/171853/5fa504a2Eb862fb03/89f552081019b67b.jpg" alt="image-20201106140151358"></p>
+<p>根据参数表，我们设置这个圆形的X,Y坐标，同时计算圆的半径，使用 stroke()在画布上绘制圆弧。圆形绘制以后效果如下：</p>
+<img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/148878/32/13498/68762/5fa50553E10957a92/98b407663c2e6e10.jpg" width="400" height="400"/>
+
+<p>然后我们需要在圆形里面绘制波形图：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;绘制填充颜色</span><br><span class="line">var lingrad &#x3D; ctx.createLinearGradient(0,0,width,0);</span><br><span class="line">lingrad.addColorStop(0, &#39;rgba(135,206,250)&#39;);</span><br><span class="line">lingrad.addColorStop(1, &#39;rgba(240,255,255)&#39;);</span><br><span class="line"></span><br><span class="line">ctx.clearRect(0, 0, width, height);</span><br><span class="line">&#x2F;&#x2F;&#x2F; 创建第一个波形</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.fillStyle &#x3D; lingrad;</span><br><span class="line">ctx.lineWidth &#x3D; 1;</span><br><span class="line">&#x2F;&#x2F; 设置起点位置</span><br><span class="line">ctx.moveTo(0, height &#x2F;2);</span><br><span class="line"></span><br><span class="line">Q+&#x3D;speed;</span><br><span class="line"></span><br><span class="line">for (let x &#x3D; 0; x &lt;&#x3D;  width; x++) &#123;</span><br><span class="line">    &#x2F;&#x2F; 绘制的时候y跟着x跑即可。</span><br><span class="line">    var y &#x3D; A*Math.sin(W*x+Q) +H;</span><br><span class="line">    ctx.lineTo(x, y);</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.lineTo(width, height);</span><br><span class="line">    ctx.lineTo(0, height);</span><br><span class="line">    ctx.fill();</span><br><span class="line">    ctx.closePath();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       上面代码中我们首先需要新建一个填充颜色，为了使得我们绘制的图形更加醒目我们需要设置一组渐变色来进行区分。我们根据y = 波浪高度 * sin(x * 波浪宽度 + 水平位移)来进行波浪的正弦函数的绘制。得到的效果图如下所示：</p>
+<img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/155401/8/4794/177097/5fa504a2E9b23f85a/879f75baab1b3be7.jpg" width="400" height="400"/>
+
+<p>​        上面得到的是一个静态的函数图像，而我们一般见到的的波形图或水波都是随时间连续变化的，这里就要用到正弦函数中的参数相位Q，我们将Q随时间不断增加或减小，即可得到不同时间的不同图像；使用window.requestAnimationFrame实现帧动画；同时为了使得波浪看起来更加的没有规律性，使波形更自然，波形叠加一个频率更高的波形，使波形无规律。</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var A&#x3D;30,</span><br><span class="line">    W&#x3D;1 &#x2F;180,</span><br><span class="line">    Q&#x3D;0,</span><br><span class="line">    H&#x3D; height &#x2F; 2;</span><br><span class="line">var speed&#x3D;-0.10;</span><br><span class="line">window.requestAnimationFrame(draw);</span><br><span class="line">ctx.clearRect(0, 0, width, height);</span><br><span class="line">&#x2F;&#x2F;&#x2F; 创建第一个波形</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.fillStyle &#x3D; lingrad;</span><br><span class="line">ctx.lineWidth &#x3D; 1;</span><br><span class="line">&#x2F;&#x2F; 设置起点位置</span><br><span class="line">ctx.moveTo(0, height &#x2F;2);</span><br><span class="line"></span><br><span class="line">Q+&#x3D;speed;</span><br><span class="line"></span><br><span class="line">for (let x &#x3D; 0; x &lt;&#x3D;  width; x++) &#123;</span><br><span class="line">    var s &#x3D; 0.1*Math.sin(x&#x2F;200)+1;</span><br><span class="line">      &#x2F;&#x2F; 绘制的时候y跟着x跑即可。</span><br><span class="line">      var y &#x3D; A*Math.sin(W*x+Q) +H;</span><br><span class="line">       y&#x3D;y*s;</span><br><span class="line">       ctx.lineTo(x, y);</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.lineTo(width, height);</span><br><span class="line">    ctx.lineTo(0, height);</span><br><span class="line">    ctx.fill();</span><br><span class="line">    ctx.closePath();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       效果如下：</p>
+<p>​                                                                    <img data-src="https://img12.360buyimg.com/imagetools/jfs/t1/127887/26/17611/608802/5fa5131eEfc037f1b/9508891d90a16272.gif" width="400" height="400"/></p>
+<p>​       这时候我们可以看到目前我们的波形已经按照一定的规律性运动起来了。单一的一条波形看着还是不太好看，我们为了优化可以再添加一条波形图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建第二个波形</span><br><span class="line">var lingrad2 &#x3D; ctx.createLinearGradient(0,0,width,0);</span><br><span class="line">lingrad2.addColorStop(0,&#39;rgba(240,255,255)&#39;);</span><br><span class="line">lingrad2.addColorStop(1, &#39;rgba(135,206,250)&#39;);</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.lineWidth &#x3D; 1;</span><br><span class="line">ctx.fillStyle &#x3D; lingrad2;</span><br><span class="line"></span><br><span class="line">Q2+&#x3D;speed2;</span><br><span class="line">for (let x &#x3D; 0; x &lt; width; x++) &#123;</span><br><span class="line">        var y &#x3D; A2*Math.sin(x*W2+Q2) +H2;</span><br><span class="line">        ctx.lineTo(x, y);</span><br><span class="line">&#125;</span><br><span class="line">ctx.lineTo(width,height);</span><br><span class="line">ctx.lineTo(0,height);</span><br></pre></td></tr></table></figure>
+
+<p>最终的效果如下所示：</p>
+<p>​                                                                 <img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/125823/12/17558/683612/5fa5118cE2645051c/cd1e8ee1f37f2789.gif" width="400" height="400"/> </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​     通过这篇文章，我介绍了数学在前端动画中的一些应用。动画是一个提升用户体验十分重要的一个环节，但是也是视觉设计师和研发人员经常要互相讨论的问题。在以后的工作开发中，碰到动画处理我们可以通过一些数学知识来解决问题的话会更加得心应手。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p><a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/design-and-ux/animations?hl=zh-cn">Web-Fundamentals-Animations</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0">三角函数（维基百科）</a></p>
+<p><a target="_blank" rel="noopener" href="https://uxdesign.cc/how-you-can-use-simple-trigonometry-to-create-better-loaders-32a573577eb4">How you can use simple Trigonometry to create better loaders</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Anthony高鸿宇 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Anthony高鸿宇 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Anthony高鸿宇
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://anthony-ghy.github.io/archives/X1EXZ1.html" title="数学在前端动画中的应用">https://anthony-ghy.github.io/archives/X1EXZ1.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/%E5%8A%A8%E7%94%BB/" rel="tag"><i class="fa fa-tag"></i> 动画</a>
+              <a href="/tags/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/" rel="tag"><i class="fa fa-tag"></i> 三角函数</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/archives/3D1S50T.html" rel="next" title="React基础学习笔记1">
+      React基础学习笔记1 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="nav-text">三角函数介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%AD%A3%E5%BC%A6%E5%8F%82%E6%95%B0%E6%A6%82%E5%BF%B5"><span class="nav-text">正弦参数概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E5%9C%A8js%E4%B8%AD%E7%9A%84%E5%AF%B9%E5%BA%94"><span class="nav-text">三角函数在js中的对应</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%A7%E5%BA%A6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">弧度是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%9F%E6%98%9F%E7%A7%BB%E5%8A%A8%E6%A1%88%E4%BE%8B"><span class="nav-text">星星移动案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E6%B0%B4%E6%B3%A2%E5%9B%BE"><span class="nav-text">绘制水波图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%87%E7%A8%8B"><span class="nav-text">实现过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anthony高鸿宇"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Anthony高鸿宇</p>
+  <div class="site-description" itemprop="description">敬畏墨菲定律。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Anthony-Ghy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Anthony-Ghy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      推荐阅读
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://beanlee.github.io/" title="https:&#x2F;&#x2F;beanlee.github.io&#x2F;" rel="noopener" target="_blank">我的导师</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.36zhen.com/t?id=3448" title="http:&#x2F;&#x2F;www.36zhen.com&#x2F;t?id&#x3D;3448" rel="noopener" target="_blank">前端书籍资料</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://ife.baidu.com/" title="http:&#x2F;&#x2F;ife.baidu.com&#x2F;" rel="noopener" target="_blank">百度前端技术学院</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://wf.uisdc.com/cn/" title="http:&#x2F;&#x2F;wf.uisdc.com&#x2F;cn&#x2F;" rel="noopener" target="_blank">google前端开发基础</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fas fa-blog"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anthony高鸿宇</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">24k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">22 分钟</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  
+         <script type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="https://cdn.bootcdn.net/ajax/libs/canvas-nest.js/2.0.4/canvas-nest.js"></script>
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hibiki.model.json"},"display":{"position":"left","width":150,"height":350,"hOffset":40,"vOffset":0},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
+

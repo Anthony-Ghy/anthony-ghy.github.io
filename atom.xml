@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Anthony的博客</title>
   <icon>https://anthony-ghy.github.io/icon.png</icon>
-  <subtitle>敬畏墨菲定律</subtitle>
+  <subtitle>要做编程里最会摄影的，摄影里最会编程的。</subtitle>
   <link href="https://anthony-ghy.github.io/atom.xml" rel="self"/>
   
   <link href="https://anthony-ghy.github.io/"/>
-  <updated>2020-11-17T12:29:18.824Z</updated>
+  <updated>2020-11-19T02:46:25.595Z</updated>
   <id>https://anthony-ghy.github.io/</id>
   
   <author>
@@ -20,20 +20,106 @@
     <title>Hello World</title>
     <link href="https://anthony-ghy.github.io/archives/151FCAP.html"/>
     <id>https://anthony-ghy.github.io/archives/151FCAP.html</id>
-    <published>2020-11-16T07:11:12.108Z</published>
-    <updated>2020-11-17T12:29:18.824Z</updated>
+    <published>2020-11-19T02:42:22.437Z</published>
+    <updated>2020-11-19T02:46:25.595Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+    <summary type="html">&lt;h3 id=&quot;大家好！&quot;&gt;&lt;a href=&quot;#大家好！&quot; class=&quot;headerlink&quot;</summary>
         
       
     
     
     
+    <category term="我来了！" scheme="https://anthony-ghy.github.io/categories/%E6%88%91%E6%9D%A5%E4%BA%86%EF%BC%81/"/>
+    
+    
+    <category term="Hello World" scheme="https://anthony-ghy.github.io/tags/Hello-World/"/>
+    
+    <category term="前端小白" scheme="https://anthony-ghy.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%99%BD/"/>
+    
+    <category term="日常" scheme="https://anthony-ghy.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React基础学习笔记2</title>
+    <link href="https://anthony-ghy.github.io/archives/11HBHD0.html"/>
+    <id>https://anthony-ghy.github.io/archives/11HBHD0.html</id>
+    <published>2020-11-19T02:26:58.901Z</published>
+    <updated>2020-11-19T02:33:32.088Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;组件生命周期这个概念无论在React，还是Vue中都是十分重要的，但是由于版本更新问题，新版与旧版的生命周期在很多方面发生了改变，所以个人还是觉得有必要拿出来区分一下，为后续方便开发做准备。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="React学习" scheme="https://anthony-ghy.github.io/categories/React%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="前端" scheme="https://anthony-ghy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://anthony-ghy.github.io/tags/React/"/>
+    
+    <category term="基础" scheme="https://anthony-ghy.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="Vue" scheme="https://anthony-ghy.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React基础学习笔记1</title>
+    <link href="https://anthony-ghy.github.io/archives/3D1S50T.html"/>
+    <id>https://anthony-ghy.github.io/archives/3D1S50T.html</id>
+    <published>2020-11-19T02:08:37.266Z</published>
+    <updated>2020-11-19T02:25:01.664Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt; 学习接触React已经有一段时间，从刚开始的懵懂到现在稍微明白整体的架构，这里想结合最近的学习React整理一些学习笔记，方便后期进行参考。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;参考资料主要有&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;React官方文档，Github优质React项目。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="React学习" scheme="https://anthony-ghy.github.io/categories/React%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="前端" scheme="https://anthony-ghy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://anthony-ghy.github.io/tags/React/"/>
+    
+    <category term="基础" scheme="https://anthony-ghy.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="Vue" scheme="https://anthony-ghy.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数学在前端动画中的应用</title>
+    <link href="https://anthony-ghy.github.io/archives/X1EXZ1.html"/>
+    <id>https://anthony-ghy.github.io/archives/X1EXZ1.html</id>
+    <published>2020-11-18T11:30:19.813Z</published>
+    <updated>2020-11-19T01:33:07.410Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;有时候你希望能回到过去，告诉年轻的自己，数学确实很重要! 但我怀疑自己当时会不会听进去…&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​     三角函数、两点间的距离，还有各种图形、角度计算公式，每每听到这些词语，就放佛回到了高中时代，想起了数学课本上那一道道让人头疼的数学题。在前端开发领域中，数学同样占据着举足轻重的地位，每次当视觉交互设计师提出，能不能按照这样那样的交互方式进行开发的时候，我时常会感觉力不从心。对于动画效果，实现的方式主要有css和js两种，为了做出更高质量的动画效果，通常需要借助一些数学知识来解决，本文主要结合三角函数在前端动画中的应用进行介绍。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="前端动画" scheme="https://anthony-ghy.github.io/categories/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB/"/>
+    
+    
+    <category term="前端" scheme="https://anthony-ghy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="动画" scheme="https://anthony-ghy.github.io/tags/%E5%8A%A8%E7%94%BB/"/>
+    
+    <category term="三角函数" scheme="https://anthony-ghy.github.io/tags/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   

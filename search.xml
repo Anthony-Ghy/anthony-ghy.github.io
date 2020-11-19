@@ -3,19 +3,299 @@
   <entry>
     <title>Hello World</title>
     <url>/archives/151FCAP.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <content><![CDATA[<h3 id="大家好！"><a href="#大家好！" class="headerlink" title="大家好！"></a>大家好！</h3><p>这是我的博客，我是一名前端小白，在这里后续会记录我的前端学习历程和我的生活。</p>
+<p><strong>我的人生目标：要做编程里最会摄影的，摄影里最会编程的。</strong></p>
+<p><strong>创博目的：</strong></p>
+<p>​        以后会在这里分享我学习到的专业前端知识，同时也会分享一些我喜欢的音乐和摄影作品。</p>
+<p><strong>最后：</strong></p>
+<p>​       对了忘了告诉大家，我酷爱说唱音乐，最喜欢的说唱歌手是马思唯。</p>
 ]]></content>
+      <categories>
+        <category>我来了！</category>
+      </categories>
+      <tags>
+        <tag>Hello World</tag>
+        <tag>前端小白</tag>
+        <tag>日常</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React基础学习笔记2</title>
+    <url>/archives/11HBHD0.html</url>
+    <content><![CDATA[<p>组件生命周期这个概念无论在React，还是Vue中都是十分重要的，但是由于版本更新问题，新版与旧版的生命周期在很多方面发生了改变，所以个人还是觉得有必要拿出来区分一下，为后续方便开发做准备。</p>
+<a id="more"></a>
+<p>​    <strong>先介绍一下老版本的生命周期函数：</strong></p>
+<p>​    先上图：</p>
+<p><img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/92485/10/17877/49856/5e8ee9f9E16f123fe/9e95709a5ce6bfd4.jpg"></p>
+<h3 id="挂载阶段（实例化）"><a href="#挂载阶段（实例化）" class="headerlink" title="挂载阶段（实例化）"></a><strong>挂载阶段</strong>（实例化）</h3><p>​        挂载阶段这些函数只会执行一次，也就是说这些组件在创建过程中需要执行的函数，但是，一但组件被真正渲染到页面以后就不会再进行。</p>
+<h4 id="1-constructor"><a href="#1-constructor" class="headerlink" title="1.constructor()"></a>1.constructor()</h4><p>​       类的构造函数，也是组件初始化函数，一般情况下，我们会在这个阶段做一些初始化的工作这个函数一般是在组件挂载之前进行调用，就是最开始的时候，这个构造函数里面有一个十分重要的super(props),应在其他语句调用之前就使用这个方法，否则有可能会出现一些bug。该阶段可以给事件绑定this(如果给事件使用箭头函数就不用再绑定)，创建初始化state，根据props获取到父组件传来的一些属性，通过React.createdRef()这种方式创建ref准备渲染以后与DOM节点进行绑定。 </p>
+<h4 id="2-componentWillMount"><a href="#2-componentWillMount" class="headerlink" title="2.componentWillMount()"></a>2.componentWillMount()</h4><p>​      这是你最后一次机会在挂载前对state进行修改</p>
+<h4 id="3-render"><a href="#3-render" class="headerlink" title="3.render()"></a>3.render()</h4><p>​      这个函数是必须存在的，不必多说</p>
+<h4 id="4-componentDidMount"><a href="#4-componentDidMount" class="headerlink" title="4.componentDidMount()"></a>4.componentDidMount()</h4><p>​     组件已经渲染完成，发出通知。</p>
+<hr>
+<h3 id="更新阶段-（存在期）"><a href="#更新阶段-（存在期）" class="headerlink" title="更新阶段 （存在期）"></a>更新阶段 （存在期）</h3><h4 id="this-props变更"><a href="#this-props变更" class="headerlink" title="this.props变更"></a><strong>this.props变更</strong></h4><h5 id="1-componentWillReceiveProps-nextProps"><a href="#1-componentWillReceiveProps-nextProps" class="headerlink" title="1.componentWillReceiveProps(nextProps)"></a>1.componentWillReceiveProps(nextProps)</h5><p>​       如果组件收到新的属性（props），才会触发。这句话刚开始看的时候有些懵，什么叫组件后来变化？？？自己仔细想了一下，你把props通过与state结合不就可以了吗！网上说这叫派生状态，通过setState进行修改属性以后才会修改这个props,这个方法才会进行调用。</p>
+<h5 id="2-shouldComponentUpdate-nextProps-nextState"><a href="#2-shouldComponentUpdate-nextProps-nextState" class="headerlink" title="2.shouldComponentUpdate(nextProps, nextState)"></a>2.shouldComponentUpdate(nextProps, nextState)</h5><p>​        当组件接收到新的属性和状态改变的话，都会触发调用 shouldComponentUpdate，输入参数 nextProps 和上面的 componentWillReceiveProps 函数一样， nextState 表示组件即将更新的状态值。这个函数的返回值决定是否需要更新组件，如果 true 表示需要更新，继续走后面的更新流程。否则，则不更新，直接进入等待状态。默认情况下，这个函数永远返回 true 用来保证数据变化的时候 UI 能够同步更新。在大型项目中，你可以自己重载这个函数，通过检查变化前后属性和状态，来决定 UI 是否需要更新，能有效提高应用性能。（这个函数我最近在学习过程中发现它是一个十分重要的函数，比如menu列表切换，nav头部切换——结合if语句判断相应的props是否进行了更改）</p>
+<h5 id="3-componentWillUpdate-nextProps-nextState"><a href="#3-componentWillUpdate-nextProps-nextState" class="headerlink" title="3.componentWillUpdate(nextProps, nextState)"></a>3.componentWillUpdate(nextProps, nextState)</h5><p>​      上面的 shouldComponentUpdate 返回为 true以后，就可以直接更新组件了，在这里你可以进行一系列更新界面之前要做的事情，需要特别注意的是，在这个函数里面，你就不能使用 this.setState 来修改状态。  </p>
+<h5 id="4-render"><a href="#4-render" class="headerlink" title="4.render()"></a>4.render()</h5><p>​      必须存在的，不必多说</p>
+<h5 id="5-componentDidUpdate-prevProps-prevState"><a href="#5-componentDidUpdate-prevProps-prevState" class="headerlink" title="5.componentDidUpdate(prevProps, prevState)"></a>5.componentDidUpdate(prevProps, prevState)</h5><p>​      组件更新完成，两个参数是更新之前的参数。</p>
+<p><strong>this.state变更  （函数具体功能参考上方）</strong></p>
+<p>shouldComponentUpdate(nextProps, nextState)       </p>
+<p>componentWillUpdate(nextProps, nextState）</p>
+<p>render(）</p>
+<p>componentDidUpdate(prevProps, prevState) </p>
+<hr>
+<h3 id="卸载阶段"><a href="#卸载阶段" class="headerlink" title="卸载阶段"></a>卸载阶段</h3><h4 id="1-componentWillUnmount"><a href="#1-componentWillUnmount" class="headerlink" title="1.componentWillUnmount()"></a>1.componentWillUnmount()</h4><p>​    当组件要被从界面上移除的时候，就会调用。在这个函数中，可以做一些组件相关的清理工作，例如取消计时器、网络请求等。</p>
+<p><strong>代码演示</strong></p>
+<p>为了方便 查看每一个生命周期，我决定将child分为挂载阶段和更新阶段两个部分，分别进行查看。</p>
+<p>父组件App.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React,&#123;Component&#125; from &#39;react&#39;;</span><br><span class="line">import Child from &#39;.&#x2F;child&#39;;</span><br><span class="line">class App extends Component &#123;</span><br><span class="line">    state&#x3D;&#123;</span><br><span class="line">        name: &quot;123&quot;,</span><br><span class="line">        isShow: true</span><br><span class="line">    &#125;</span><br><span class="line">    setName&#x3D;(name)&#x3D;&gt;&#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            name</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">      let &#123;isShow&#125; &#x3D; this.state;</span><br><span class="line">      return &lt;div&gt;</span><br><span class="line">          &#123;isShow?&lt;Child name&#x3D;&#123;this.state.name&#125; setName&#x3D;&#123;this.setName&#125; &#x2F;&gt;:&quot;组件被卸载了&quot;&#125;</span><br><span class="line">          &lt;button onClick&#x3D;&#123;()&#x3D;&gt;&#123;</span><br><span class="line">              this.setState(&#123;</span><br><span class="line">                isShow: !isShow</span><br><span class="line">              &#125;);</span><br><span class="line">          &#125;&#125;&gt;卸载&lt;&#x2F;button&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">export default App;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>首先先展示一下初始渲染页面</p>
+<p>​      <img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/88156/25/17940/8617/5e8ff631Ec208799b/789a98164c88cc7c.png"></p>
+<h5 id="挂载阶段"><a href="#挂载阶段" class="headerlink" title="挂载阶段"></a>挂载阶段</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React,&#123;Component&#125; from &#39;react&#39;;</span><br><span class="line">class Child extends Component &#123;</span><br><span class="line">    constructor(props)&#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state &#x3D; &#123;</span><br><span class="line">            age: 8</span><br><span class="line">        &#125;;</span><br><span class="line">        console.log(1,&quot;初始化&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    componentWillMount()&#123;</span><br><span class="line">        console.log(2,&quot;组件即将被渲染到DOM&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidMount()&#123;</span><br><span class="line">        console.log(4,&quot;组件被渲染到DOM了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">      console.log(3,&quot;向DOM中渲染&quot;);</span><br><span class="line">      let &#123;name,setName&#125; &#x3D; this.props;</span><br><span class="line">      let &#123;age&#125; &#x3D; this.state;</span><br><span class="line">      return &lt;div&gt;</span><br><span class="line">            &lt;p&gt;姓名: &lt;input </span><br><span class="line">                        type&#x3D;&quot;text&quot; </span><br><span class="line">                        placeholder&#x3D;&quot;请输入新名字&quot; </span><br><span class="line">                        value&#x3D;&#123;name&#125; </span><br><span class="line">                        onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                            setName(e.target.value);</span><br><span class="line">                        &#125;&#125;</span><br><span class="line">                    &#x2F;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">             &lt;p&gt;&#123;name&#125;&lt;&#x2F;p&gt;       </span><br><span class="line">            &lt;p&gt;年龄: &lt;input </span><br><span class="line">                 type&#x3D;&quot;text&quot; </span><br><span class="line">                 placeholder&#x3D;&quot;请输入年龄&quot;</span><br><span class="line">                 value &#x3D; &#123;age&#125;</span><br><span class="line">                 onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                    this.setState(&#123;</span><br><span class="line">                        age: e.target.value</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            &#x2F;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default Child;	</span><br></pre></td></tr></table></figure>
+
+<p>控制台打印结果：</p>
+<p>​        <img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/109449/3/11907/10583/5e8f100cEe901f994/85de8aa360a597a4.png"></p>
+<h4 id="更新阶段"><a href="#更新阶段" class="headerlink" title="更新阶段"></a>更新阶段</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React,&#123;Component&#125; from &#39;react&#39;;</span><br><span class="line">class Child extends Component &#123;</span><br><span class="line">    state &#x3D; &#123;</span><br><span class="line">        age: 8</span><br><span class="line">    &#125;;</span><br><span class="line">    componentWillReceiveProps(nextProps)&#123;</span><br><span class="line">        console.log(0,&quot;父组件更新引起子组件更新&quot;,nextProps,this.props);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; nextProps 新的props nextState 新的state</span><br><span class="line">    shouldComponentUpdate(nextProps, nextState)&#123;</span><br><span class="line">        console.log(1,&quot;组件更新&quot;,nextProps, nextState,this.props,this.state);</span><br><span class="line">        return true;&#x2F;&#x2F; true 接着向下执行生命周期,并更新视图，false 打断执行,不在更新视图</span><br><span class="line">    &#125;</span><br><span class="line">    componentWillUpdate(nextProps, nextState)&#123;</span><br><span class="line">        console.log(2,&quot;组件即将更新&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidUpdate(prevProps, prevState)&#123;</span><br><span class="line">        console.log(4,&quot;组件更新完成&quot;,prevProps, prevState,this.props,this.state);</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">      let &#123;name,setName&#125; &#x3D; this.props;</span><br><span class="line">      let &#123;age&#125; &#x3D; this.state;</span><br><span class="line">      console.log(3,&quot;正在更新&quot;);</span><br><span class="line">      return &lt;div&gt;</span><br><span class="line">            &lt;p&gt;姓名: &lt;input </span><br><span class="line">                        type&#x3D;&quot;text&quot; </span><br><span class="line">                        placeholder&#x3D;&quot;请输入新名字&quot; </span><br><span class="line">                        value&#x3D;&#123;name&#125; </span><br><span class="line">                        onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                            setName(e.target.value);</span><br><span class="line">                        &#125;&#125;</span><br><span class="line">                    &#x2F;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">             &lt;p&gt;&#123;name&#125;&lt;&#x2F;p&gt;       </span><br><span class="line">            &lt;p&gt;年龄: &lt;input </span><br><span class="line">                 type&#x3D;&quot;text&quot; </span><br><span class="line">                 placeholder&#x3D;&quot;请输入年龄&quot;</span><br><span class="line">                 value &#x3D; &#123;age&#125;</span><br><span class="line">                 onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                    this.setState(&#123;</span><br><span class="line">                        age: e.target.value</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            &#x2F;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default Child;</span><br></pre></td></tr></table></figure>
+
+<p>   两种情况：</p>
+<ol>
+<li><p>当姓名输入框中输入数据时</p>
+<p>打印结果为: <img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/109862/27/11814/26611/5e8f100aE0e3b87a3/2856191e064c44f1.png"></p>
+</li>
+<li><p>在年龄输入框输入数据时</p>
+</li>
+</ol>
+<p>​       打印结果为：</p>
+<p><img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/98787/39/17925/19233/5e8ff65eEf26d4659/7871527aa8859b74.png"></p>
+<p>​       同是更新，为什么两个打印结果不一致，这是因为componentWillReceiveProps这个函数值会监听props发生变化时才会执行，而根据上方代码，姓名是绑定在props上面动态进行更改的，而年龄是在child里面设置的state属性，所以才会出现上面的情况。</p>
+<h5 id="卸载阶段："><a href="#卸载阶段：" class="headerlink" title="卸载阶段："></a>卸载阶段：</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React,&#123;Component&#125; from &#39;react&#39;;</span><br><span class="line">class Child extends Component &#123;</span><br><span class="line">    state &#x3D; &#123;</span><br><span class="line">        age: 8</span><br><span class="line">    &#125;;</span><br><span class="line">    componentWillUnmount()&#123;</span><br><span class="line">        console.log(&quot;组件即将被卸载&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        let &#123;name,setName&#125; &#x3D; this.props;</span><br><span class="line">        let &#123;age&#125; &#x3D; this.state;</span><br><span class="line">        return &lt;div id&#x3D;&quot;box&quot;&gt;</span><br><span class="line">            &lt;p&gt;姓名: &lt;input</span><br><span class="line">                type&#x3D;&quot;text&quot;</span><br><span class="line">                placeholder&#x3D;&quot;请输入新名字&quot;</span><br><span class="line">                value&#x3D;&#123;name&#125;</span><br><span class="line">                onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                    setName(e.target.value);</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            &#x2F;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;&#123;name&#125;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;年龄: &lt;input</span><br><span class="line">                type&#x3D;&quot;text&quot;</span><br><span class="line">                placeholder&#x3D;&quot;请输入年龄&quot;</span><br><span class="line">                value &#x3D; &#123;age&#125;</span><br><span class="line">                onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                    this.setState(&#123;</span><br><span class="line">                        age: e.target.value</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            &#x2F;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default Child;</span><br></pre></td></tr></table></figure>
+
+<p>​    控制台打印结果：</p>
+<p>​       <img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/99661/36/17944/3946/5e8f119aEeadc3063/f821884e31e25667.png"></p>
+<hr>
+<p>现在我总结一下新版本（^16.4版本以上）：</p>
+<p>再上一张图：</p>
+<p><img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/116565/12/778/80490/5e90118fE41775c5a/08bb398f2b07d3e5.png"></p>
+<h5 id="新版本挂载阶段（实例化）"><a href="#新版本挂载阶段（实例化）" class="headerlink" title="新版本挂载阶段（实例化）"></a>新版本挂载阶段（实例化）</h5><p> 1.constructor()</p>
+<p> 2.static getDerivedStateFromProps(props, state) </p>
+<p>​       替代了componentWillMount()</p>
+<p> 3.render()</p>
+<p> 4.componentDidMount()</p>
+<h5 id="新版本更新阶段（存在期）"><a href="#新版本更新阶段（存在期）" class="headerlink" title="新版本更新阶段（存在期）"></a>新版本更新阶段（存在期）</h5><p>1.static getDerivedStateFromProps(props, state) </p>
+<p>​           替代了componentWillReceiveProps(nextProps)，componentWillUpdate(nextProps, nextState)</p>
+<p> 2.shouldComponentUpdate(nextProps, nextState)</p>
+<p>3.render()</p>
+<p>4.componentDidUpdate(prevProps, prevState) </p>
+<h5 id="新版本卸载阶段"><a href="#新版本卸载阶段" class="headerlink" title="新版本卸载阶段"></a>新版本卸载阶段</h5><p>1.componentWillUnmount(）</p>
+<hr>
+<p><strong>代码演示</strong></p>
+<p>为了方便 查看每一个生命周期，我决定将child分为挂载阶段和更新阶段两个部分，分别进行查看。</p>
+<p>父组件App.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React,&#123;Component&#125; from &#39;react&#39;;</span><br><span class="line">import Child from &#39;.&#x2F;child&#39;;</span><br><span class="line">class App extends Component &#123;</span><br><span class="line">    state &#x3D; &#123;</span><br><span class="line">        name: &quot;123&quot;,</span><br><span class="line">        isShow: true</span><br><span class="line">    &#125;;</span><br><span class="line">    setName &#x3D; (name) &#x3D;&gt; &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            name</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">    render() &#123;</span><br><span class="line">        let &#123;isShow&#125; &#x3D; this.state;</span><br><span class="line">        return &lt;div&gt;</span><br><span class="line">            &#123;isShow ? &lt;Child name&#x3D;&#123;this.state.name&#125; setName&#x3D;&#123;this.setName&#125;&#x2F;&gt; : &quot;组件被卸载了&quot;&#125;</span><br><span class="line">            &lt;button onClick&#x3D;&#123;() &#x3D;&gt; &#123;</span><br><span class="line">                this.setState(&#123;</span><br><span class="line">                    isShow: !isShow</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;&#125;&gt;卸载</span><br><span class="line">            &lt;&#x2F;button&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<p>挂载阶段</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React,&#123;Component&#125; from &#39;react&#39;;</span><br><span class="line">class Child extends Component &#123;</span><br><span class="line">    constructor(props)&#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state &#x3D; &#123;</span><br><span class="line">            age: 8</span><br><span class="line">        &#125;;</span><br><span class="line">        console.log(1,&quot;初始化&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 利用getDerivedStateFromProps替代了componentWillMount</span><br><span class="line">    static getDerivedStateFromProps(props,state)&#123;</span><br><span class="line">        console.log(props,state,&quot;组件即将挂载&quot;);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidMount()&#123;</span><br><span class="line">        console.log(4,&quot;组件被渲染到DOM了&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render()&#123;</span><br><span class="line">        console.log(3,&quot;向DOM中渲染&quot;);</span><br><span class="line">        let &#123;name,setName&#125; &#x3D; this.props;</span><br><span class="line">        let &#123;age&#125; &#x3D; this.state;</span><br><span class="line">        return &lt;div id&#x3D;&quot;box&quot;&gt;</span><br><span class="line">            &lt;p&gt;姓名: &lt;input</span><br><span class="line">                type&#x3D;&quot;text&quot;</span><br><span class="line">                placeholder&#x3D;&quot;请输入新名字&quot;</span><br><span class="line">                value&#x3D;&#123;name&#125;</span><br><span class="line">                onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                    setName(e.target.value);</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            &#x2F;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;&#123;name&#125;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;年龄: &lt;input</span><br><span class="line">                type&#x3D;&quot;text&quot;</span><br><span class="line">                placeholder&#x3D;&quot;请输入年龄&quot;</span><br><span class="line">                value &#x3D; &#123;age&#125;</span><br><span class="line">                onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                    this.setState(&#123;</span><br><span class="line">                        age: e.target.value</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            &#x2F;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default Child;</span><br></pre></td></tr></table></figure>
+
+<p>挂载结果：</p>
+<p>   <img data-src="https://img12.360buyimg.com/imagetools/jfs/t1/117378/29/687/15522/5e8ff739E045c2a55/86b5b8df23464301.png"></p>
+<hr>
+<p>更新阶段 ：   </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React,&#123;Component&#125; from &#39;react&#39;;</span><br><span class="line">class Child extends Component &#123;</span><br><span class="line">    constructor(props)&#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state &#x3D; &#123;</span><br><span class="line">            age: 8</span><br><span class="line">        &#125;;</span><br><span class="line">        console.log(1,&quot;初始化&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; 利用getDerivedStateFromProps 替代了 componentWillReceiveProps</span><br><span class="line">    static getDerivedStateFromProps(props,state)&#123;</span><br><span class="line">        console.log(2,props,state,&quot;组件即将更新&quot;);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    shouldComponentUpdate(nextProps, nextState)&#123;</span><br><span class="line">        console.log(3,&quot;组件更新&quot;,nextProps, nextState,this.props,this.state);</span><br><span class="line">        return true;&#x2F;&#x2F; true 接着向下执行生命周期,并更新视图，false 打断执行,不在更新视图</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidUpdate(prevPorps,prevState,prevInfo)&#123;</span><br><span class="line">        let box &#x3D; document.querySelector(&quot;#box&quot;);</span><br><span class="line">        console.log(5,&#39;组件更新完毕&#39;);</span><br><span class="line">        console.log(box.innerHTML);</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        console.log(4,&quot;向DOM中渲染&quot;);</span><br><span class="line">        let &#123;name,setName&#125; &#x3D; this.props;</span><br><span class="line">        let &#123;age&#125; &#x3D; this.state;</span><br><span class="line">        return &lt;div id&#x3D;&quot;box&quot;&gt;</span><br><span class="line">            &lt;p&gt;姓名: &lt;input</span><br><span class="line">                type&#x3D;&quot;text&quot;</span><br><span class="line">                placeholder&#x3D;&quot;请输入新名字&quot;</span><br><span class="line">                value&#x3D;&#123;name&#125;</span><br><span class="line">                onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                    setName(e.target.value);</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            &#x2F;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;&#123;name&#125;&lt;&#x2F;p&gt;</span><br><span class="line">            &lt;p&gt;年龄: &lt;input</span><br><span class="line">                type&#x3D;&quot;text&quot;</span><br><span class="line">                placeholder&#x3D;&quot;请输入年龄&quot;</span><br><span class="line">                value &#x3D; &#123;age&#125;</span><br><span class="line">                onChange&#x3D;&#123;(e)&#x3D;&gt;&#123;</span><br><span class="line">                    this.setState(&#123;</span><br><span class="line">                        age: e.target.value</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;&#125;</span><br><span class="line">            &#x2F;&gt;&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default Child;</span><br></pre></td></tr></table></figure>
+
+<p>更新结果：</p>
+<p>​     姓名，年龄发生更改时：<img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/113826/10/715/32256/5e8ff816Ec1fd3c3b/5dbcd9c99328ec92.png"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1.React16.4以上版本新的生命周期弃用了componentWillMount、componentWillReceivePorps，componentWillUpdate，这三个后期会被删除掉。</p>
+<p>2.getDerivedStateFromProps来代替弃用的三个钩子函数（componentWillMount、componentWillReceivePorps，componentWillUpdate</p>
+<p>3.React16.4以上版本并没有删除这三个componentWillMount、componentWillReceivePorps，componentWillUpdate钩子函数，但是不能和新增的钩子函数getDerivedStateFromProps混用。</p>
+]]></content>
+      <categories>
+        <category>React学习</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>React</tag>
+        <tag>基础</tag>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React基础学习笔记1</title>
+    <url>/archives/3D1S50T.html</url>
+    <content><![CDATA[<p> 学习接触React已经有一段时间，从刚开始的懵懂到现在稍微明白整体的架构，这里想结合最近的学习React整理一些学习笔记，方便后期进行参考。</p>
+<p><strong>参考资料主要有</strong>：</p>
+<p>React官方文档，Github优质React项目。</p>
+<a id="more"></a>
+<p>​    首先先总结一些个人在学习过程中觉得十分重要的一些基础知识（不会结合项目，后续结合项目再进行相应的展开）。</p>
+<h4 id="1-jsx简介："><a href="#1-jsx简介：" class="headerlink" title="1.jsx简介："></a>1.jsx简介：</h4><p>​    文档中对于它有了相应的介绍，他是Js的一个语法扩展，刚接触时我觉得它有点像Jsp,就是在Js里面写Html标签，只不过他的使用方式与Html还是有很大的不同的，具体使用还是想结合一些自己写的例子举例子比较好，不然就会觉得在照搬文档。</p>
+<p><code>const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;</code></p>
+<p>有一点需要注意的就是他的每一个Dom元素都会使用（小驼峰）的命名法来自定义Dom属性，</p>
+<p>例如：JSX 里的 <code>class</code> 变成了className,而tabindex则变成了tabIndex。（这在后期使用中是十分必要的）</p>
+<h4 id="2-组件简介："><a href="#2-组件简介：" class="headerlink" title="2.组件简介："></a>2.组件简介：</h4><p>​      由于都是在js中编写相应的组件，所以可以通过定义函数来进行组件定义，但最近由于一直接触class使用方式，所以接下来还是先以es6中的class语法来进行展示举例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Welcome extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;&#x2F;h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码中就是运用的class的方式定义的一个组件</p>
+<p><strong>3.State简介：</strong>个人理解就是初始化定义的一些变量，类似于Vue中的data()函数定义的一些变量</p>
+<p>首先它是一个对象，定义的变量都会以key,value的方式进行保存</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Clock extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;date: new Date()&#125;;  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Hello, world!&lt;&#x2F;h1&gt;</span><br><span class="line">        &lt;h2&gt;It is &#123;this.state.date.toLocaleTimeString()&#125;.&lt;&#x2F;h2&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​      上述代码中在Constructor（生命周期函数）定义的state中有一个data变量，这时我们给他赋值当前的时间，在render函数中通过this.state.data进行获取，注意外面要加{}，这就是上面说的jsx写法，这个括号里面就可以调用相应的state里面定义的变量了。后续使用基本都是这样用。</p>
+<p><strong>4.事件处理简介：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;button onClick&#x3D;&#123;activateLasers&#125;&gt;  Activate Lasers&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码中就是在React中定义事件的一个例子，首先要知道事件定义命名采用上文中提到的小驼峰命名法，即onClick，onChange等都是这种方法，这是规定，就这样使用就好。</p>
+<p>​        同时要记住在React使用事件函数时不能通过返回 <code>false</code> 的方式阻止默认行为。你必须显式的使用 <code>preventDefault</code>（这是个人觉得很重要的一点，所以提炼出来）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function ActionLink() &#123;</span><br><span class="line">  function handleClick(e)</span><br><span class="line">  &#123;   </span><br><span class="line">      e.preventDefault();</span><br><span class="line">      console.log(&#39;The link was clicked.&#39;);  </span><br><span class="line">  &#125;</span><br><span class="line">  return </span><br><span class="line">  (</span><br><span class="line">    &lt;a href&#x3D;&quot;#&quot; onClick&#x3D;&#123;handleClick&#125;&gt;Click me&lt;&#x2F;a&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​     例如上面这段代码中你在a标签中定义了一个onClick事件函数handleClick,然后在return上方进行方法定义，关键看 <code> e.preventDefault();</code>这行代码，这里的e是一个合成事件，它里面有一个  <code>preventDefault()</code>方法，通过这个方法来进行停止执行函数操作的功能。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Toggle extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;isToggleOn: true&#125;;</span><br><span class="line">    &#x2F;&#x2F; 为了在回调中使用 &#96;this&#96;，这个绑定是必不可少的    </span><br><span class="line">    this.handleClick &#x3D; 	 this.handleClick.bind(this);  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  handleClick() &#123; </span><br><span class="line">      this.setState(state &#x3D;&gt; (</span><br><span class="line">             &#123; isToggleOn: !state.isToggleOn    &#125;));  </span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;&#123;this.state.isToggleOn ? &#39;ON&#39; : &#39;OFF&#39;&#125;&lt;&#x2F;button&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       上面这段代码中涉及到了上文中提到的state,事件函数等一系列知识点，但这些不是重点，重点是要看这里的this绑定，代表是将在Toggle这个类中定义的handleClick与这个Toggle类进行绑定，这是必不可少的，他是为了防止在handleClick这个方法中通过使用this时发生this指向不明确的问题，如果没有绑定this，运行时会报错，提示state不存在，因为这时候的this指向指向了window,但如果写了绑定this的那句话，就可以直接使用this.setState进行变量赋值了。虽然将整体原理已经按照自己的思路讲解了一下，但是现在我要说明自己在使用中是怎么使用的。见下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Toggle extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;isToggleOn: true&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  handleClick&#x3D;()&#x3D;&gt;&#123;this.setState(state &#x3D;&gt; (&#123; isToggleOn: !state.isToggleOn&#125;));  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;&#123;this.state.isToggleOn ? &#39;ON&#39; : &#39;OFF&#39;&#125;&lt;&#x2F;button&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​     上面我在函数定义时采用了es6中箭头函数的方式来进行调用，熟悉es6语法的人都知道，使用箭头函数以后可以将内外this指向当前定义的类，并不会出现this指向不明确的情况，运用箭头函数以后，也不用在在constroctor中绑定this了。总结就是一句话，定义方法就用箭头函数绝对没错！</p>
+<p><strong>5.列表,Key简介：</strong></p>
+<p>​     一般在react中，经常会出现数组这个数据结构，循环遍历这个数组并将这个数组渲染出来是经常在开发过程中进行的操作，但是这里循环遍历采用map的方式，他会生成一个新的数组在进行遍历渲染</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Class NumberList() &#123;</span><br><span class="line">  const numbers &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">  const listItems &#x3D; numbers.map((number) &#x3D;&gt;</span><br><span class="line">    &lt;li&#125;&gt;&#123;number&#125;&lt;&#x2F;li&gt;</span><br><span class="line">  );</span><br><span class="line">  return (</span><br><span class="line">    &lt;ul&gt;&#123;listItems&#125;&lt;&#x2F;ul&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    上面代码就是将numbers进行遍历并最终渲染到ul这个标签里面，基本使用方法就是这个，但是当你开心的运行去看结果的时候他会提醒你这里产生报错问题,a key should be provided for list items 这里是什么意思呢？为什么会产生这个情况，我会介绍一下：由于react在渲染之前都是通过diff算法进行的虚拟Dom树，这个时候需要一个标识来确定每一个节点，当遍历数组时会产生多个节点，设置每一个节点一个唯一标识符是很重要的，他会让react具体识别到相应的节点并进行一系列的操作。好的，理论知识结束，我们的目标是要在每一个遍历节点中进行标识。只需这样即可：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;li key&#x3D;&#123;number.toString()&#125;&gt;&#123;number&#125; &lt;&#x2F;li&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​       一个元素的 key 最好是这个元素在列表中拥有的一个独一无二的字符串,通常情况下我们可以使用id来进行唯一标识判断，在没有id的情况下我们可以使用每一个数组的索引值进行key的设置，但是这样会出现当节点位置发生改变时会产生指向不明确的问题，综上所述，最好还是用id来进行标记。</p>
+<p><strong>6.受控组件简介：</strong></p>
+<p>​    文档中介绍的话个人觉得有些绕，用我的理解来说就是你经常会使用一些比如input,textarea,select等标签，当你在表单中输入值的时候这时候其实他是有更改数据的情况，这时候你需要一个函数来进行监听这些标签中数据的更改，并对这些监听到的数据来进行整体的渲染操作等等（这是后话）</p>
+<p>在受控组件中，个人觉得最重要的一个监听函数就是onChange事件，只要表单数据有了相应的修改了，这个组件就会相应的触发并进行后续的操作，但是总结起来还有最重要的一点，表单数据是与你先前在state中的变量是一致的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class NameForm extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;value: &#39;&#39;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  handleChange&#x3D;(event)&#x3D;&gt;&#123; this.setState(&#123;value: event.target.value&#125;);  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">          名字:</span><br><span class="line">          &lt;input type&#x3D;&quot;text&quot; value&#x3D;&#123;this.state.value&#125; onChange&#x3D;&#123;this.handleChange&#125; &#x2F;&gt; </span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​     例如上面示例代码你定义了一个input标签，并把它的value与你定义的state绑定到了一起，这个时候你需要设置一个onChange函数来进行相应的动态监听，每当表单输入数据进行更改时你就需要在onChange这个函数里面进行相应的监听并把它实时的在state中进行更改，整体受控组件监听流程就是这样，后续操作可以直接这样进行相应的操作。</p>
+<p><strong>7.props简介：</strong></p>
+<p>​     在 React.js 中，数据是从上自下流动（传递）的，也就是一个父组件可以把它的 state / props 通过 props 传递给它的子组件，但是子组件不能修改 props - React.js 是单向数据流，如果子组件需要修改父组件状态（数据），是通过回调函数方式来完成的。</p>
+<p>​    讲解这个问题个人觉得可以理解为父子组件传参进行相应的讨论，这个问题如果深入展开来说就是比较复杂,因为子父组件传参这个事情贯穿到开发项目的始终，当开发人员自定义组件的时候一直在使用props这个属性，自定义组件这里我决定后续结合一些项目例子来进行讲解讨论比较好，先介绍props的基础知识。</p>
+<p><code>const element = &lt;Welcome name=&quot;Sara&quot; /&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class NEW(props) &#123;  return &lt;Welcome&gt;Hello,&#123;this.props.name&#125;&lt;&#x2F;Welcome&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的例子就是当你设置了一个新的组件Welcome时，你需要在你定义的新的组件中使用Welcome组件时，你可以获取到相应的你在Welcome设置的相应的参数这个时候用this.props.name即可获取到你定义的相应的属性，这些属性都存放在props这个对象里面，用的时候直接使用this.props.属性即可获得，这个操作事非常重要的，后续会继续结合项目例子进行总结提炼。</p>
+<p><strong>8.refS简介：</strong></p>
+<p>对于这个知识点我的理解是就是通过它来定位到一些组件来进行相应的操作，上一个实例代码来进行演示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class CustomTextInput extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    &#x2F;&#x2F; 创建一个 ref 来存储 textInput 的 DOM 元素</span><br><span class="line">    this.textInput &#x3D; React.createRef();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  focusTextInput() &#123;</span><br><span class="line">        &#x2F;&#x2F; 直接使用原生 API 使 text 输入框获得焦点</span><br><span class="line">        &#x2F;&#x2F; 注意：我们通过 &quot;current&quot; 来访问 DOM 节点</span><br><span class="line">        this.textInput.current.focus();  </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    &#x2F;&#x2F; 告诉 React 我们想把 &lt;input&gt; ref 关联到</span><br><span class="line">    &#x2F;&#x2F; 构造器里创建的 &#96;textInput&#96; 上</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type&#x3D;&quot;text&quot;</span><br><span class="line">          ref&#x3D;&#123;this.textInput&#125; &#x2F;&gt;</span><br><span class="line">          &lt;input</span><br><span class="line">              type&#x3D;&quot;button&quot;</span><br><span class="line">              value&#x3D;&quot;Focus the text input&quot;</span><br><span class="line">              onClick&#x3D;&#123;this.focusTextInput&#125;</span><br><span class="line">          &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       通过React.createRef()来定义一个this.textInput这个属性，然后为了建立关联，我们可以在input标签中设置ref这个属性来与textInput进行关联，在调用这个this.focusTextInput方法时可以直接将关联的input框进行相应的聚焦操作。整体理解就是这些，自己前期在初学阶段运用这些知识点去写一个todolist的时候，曾经使用过ref来获取input框这个dom节点进而进行聚焦操作。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结：</strong></h3><p>​       虽然react有很多的东西需要学习，但是个人目前觉得最常使用的一些基础就是这些，下一篇我会重点介绍react组件生命周期这个知识点，因为我觉得它值得我详细的对它进行总结。</p>
+]]></content>
+      <categories>
+        <category>React学习</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>React</tag>
+        <tag>基础</tag>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数学在前端动画中的应用</title>
+    <url>/archives/X1EXZ1.html</url>
+    <content><![CDATA[<blockquote>
+<p>有时候你希望能回到过去，告诉年轻的自己，数学确实很重要! 但我怀疑自己当时会不会听进去…</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​     三角函数、两点间的距离，还有各种图形、角度计算公式，每每听到这些词语，就放佛回到了高中时代，想起了数学课本上那一道道让人头疼的数学题。在前端开发领域中，数学同样占据着举足轻重的地位，每次当视觉交互设计师提出，能不能按照这样那样的交互方式进行开发的时候，我时常会感觉力不从心。对于动画效果，实现的方式主要有css和js两种，为了做出更高质量的动画效果，通常需要借助一些数学知识来解决，本文主要结合三角函数在前端动画中的应用进行介绍。</p>
+<a id="more"></a>
+
+<h3 id="三角函数介绍"><a href="#三角函数介绍" class="headerlink" title="三角函数介绍"></a>三角函数介绍</h3><p>​     <strong>三角函数</strong>，学生时代肯定学过，是以角度（数学上最常用弧度制）为自变量，角度对应任意角终边与单位圆交点坐标或其比值为因变量的函数，在研究三角形和圆等几何形状的性质时有重要作用，也是研究周期性现象的基础数学工具。通过三角函数，我们可以获取到有规律的周期数据，在一个周期内，物体的运动是按照一种有规律的方式进行的，物体元素都是可以按照这个方式进行周期性运动的，进而可以让整个动画效果看起来更符合人类的视觉审美。</p>
+<p>要想介绍三角函数，首先离不开当初学过的一个直角三角形：</p>
+<p><img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/127151/14/17627/2703/5fa504a2E023692d4/17cb0937486ad1ec.png" alt="t_sjx"></p>
+<p>​       勾股定理的基本思想就是：两条直角边的平方和等于斜边平方和；由勾股定理进行推导即可得知，三角函数主要是代表边与角之间的关系；我给大家介绍其中的三种，其实还有很多，我们主要平时用的时候用这三个就够了：</p>
+<p> <strong>正弦：</strong>sin(θ) = y / R</p>
+<p> <strong>余弦：</strong>cos(θ) = x / R</p>
+<p> <strong>正切：</strong>tan(θ) = y / x</p>
+<p> 这里我们以正弦函数为例进行演示，下图主要是一个正弦曲线图，对应的正弦曲线公式为：y = A sin(Bx + C) + D；</p>
+<img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/134811/17/14853/343535/5fa504a2E84c11bce/262a1bba1c3eacff.jpg" width="800" height="500"/>
+
+<h5 id="正弦参数概念"><a href="#正弦参数概念" class="headerlink" title="正弦参数概念"></a>正弦参数概念</h5><ol>
+<li>A 控制振幅，A 值越大，整体振幅越大，A 值越小，整体振幅越小；</li>
+<li>B 值会影响周期，B 值越大，周期会相应的变小 ，B 值越小，周期会相应的变大 。</li>
+<li>C 值会影响图像左右移动，C 值为正数，图像右移像素，C 值为负数，图像左移像素。</li>
+<li>D 值控制整个图像的上下移动。</li>
+</ol>
+<h5 id="三角函数在js中的对应"><a href="#三角函数在js中的对应" class="headerlink" title="三角函数在js中的对应"></a>三角函数在js中的对应</h5><ul>
+<li><p>   Math.sin(弧度)</p>
+</li>
+<li><p>   Math.cos(弧度)</p>
+</li>
+<li><p> Math.tan(弧度）</p>
+<p>&lt;注意&gt; 在js中用弧度代替角度，在浏览器中是不能识别角度的，只能用弧度来进行转换。</p>
+</li>
+</ul>
+<h3 id="弧度是什么？"><a href="#弧度是什么？" class="headerlink" title="弧度是什么？"></a>弧度是什么？</h3><p> <img data-src="https://www.zhihu.com/equation?tex=%E5%9C%86%E7%9A%84%E5%91%A8%E9%95%BF=2%5Cpi+r" alt="[公式]"></p>
+<p>如果一弧度等于半径;那么整个圆的弧度= <img data-src="https://www.zhihu.com/equation?tex=%5Cfrac%7B2%5Cpi+r%7D%7Br%7D" alt="[公式]">. = <img data-src="https://www.zhihu.com/equation?tex=2%5Cpi" alt="[公式]"></p>
+<p>整个圆的角度是360度，由于弧度和角度是一个相等的关系，只不过是两个不同的单位，最终我们可以推导出：<img data-src="https://www.zhihu.com/equation?tex=360%E5%BA%A6=2%5Cpi+(%E5%BC%A7%E5%BA%A6)" alt="[公式]"></p>
+<p>那么角度和弧度都可以换算出来：</p>
+<p><img data-src="https://www.zhihu.com/equation?tex=1%E5%BA%A6=%5Cfrac%7B2%5Cpi%7D%7B360%7D=%5Cfrac%7B%CF%80%7D%7B180%7D" alt="[公式]"> （用弧度来表示1度）</p>
+<p><img data-src="https://www.zhihu.com/equation?tex=1%E5%BC%A7%E5%BA%A6=%5Cfrac%7B360%E5%BA%A6%7D%7B2%CF%80%7D=%5Cfrac%7B180%E5%BA%A6%7D%7B%CF%80%7D" alt="[公式]"> （用度来表示1弧度）</p>
+<p>在js中一弧度的写法：Math.PI/180；（π在javascript中是一个常量,用Math.PI表示）；</p>
+<p>在实际开发中，我们更多的是想通过<strong>已知距离</strong>来推出角度，因为我们开发过程中经常需要获取距离，而且获取距离也是很容易获取的。这里我们需要介绍一个概念，<strong>反三角函数</strong>，推导过程如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sin(θ)&#x3D;x&#x2F;R &#x3D;&#x3D;&#x3D;&#x3D; Math.sin( θ * Math.PI&#x2F;180 )  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;》   θ &#x3D; arcsin(x&#x2F;R) &#x3D;&#x3D;&#x3D;&#x3D; Math.asin(x&#x2F;R)*(180&#x2F;Math.PI)</span><br><span class="line">cos(θ)&#x3D;y&#x2F;R &#x3D;&#x3D;&#x3D;&#x3D; Math.cos( θ * Math.PI&#x2F;180 )  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;》   θ &#x3D; arccos(y&#x2F;R) &#x3D;&#x3D;&#x3D;&#x3D; Math.acos(y&#x2F;R)*(180&#x2F;Math.PI)</span><br><span class="line">tan(θ)&#x3D;x&#x2F;y &#x3D;&#x3D;&#x3D;&#x3D; Math.tan( θ * Math.PI&#x2F;180 )  &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;》   θ &#x3D; arctan(x&#x2F;y) &#x3D;&#x3D;&#x3D;&#x3D; Math.atan(x&#x2F;y)*(180&#x2F;Math.PI)</span><br></pre></td></tr></table></figure>
+
+<p>这里的推导过程采取的是弧度制与角度之间的转换，其实最终的推导结果记住即可。</p>
+<p>​     说了这么多数学知识，自己都烦了，现在我们看下如何在前端领域运用三角函数来解决问题，这里我们需要借助canvas来画图（下一篇文章我们重点介绍下canvas的使用案例）</p>
+<h4 id="星星移动案例"><a href="#星星移动案例" class="headerlink" title="星星移动案例"></a>星星移动案例</h4><p>这个案例可以想象到现在的直播平台的点赞活动，无限点击，图标按照规律性的运动向上运动。</p>
+<p>接下来看下简易效果:</p>
+<img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/147946/15/13333/2090145/5fa3a60dE97d85365/3d7d3708021ef00d.gif" width="500" height="700"/>
+
+<p>想要实现这样一个效果，我们首先需要创建一个星星，同时绑定星星点击事件，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> document.getElementById(&#39;star&#39;).onclick &#x3D; function (e) &#123;</span><br><span class="line">    startPop(e)</span><br><span class="line">&#125;</span><br><span class="line"> &#x2F;*</span><br><span class="line">    创建一个新的元素</span><br><span class="line"> *&#x2F;</span><br><span class="line">function createElement(e) &#123;</span><br><span class="line">    var star &#x3D; document.createElement(&quot;div&quot;);</span><br><span class="line">    var StarRandomSize &#x3D; parseInt(Math.random() * 10 + 30);</span><br><span class="line">    star.style.height &#x3D; star.style.width &#x3D; StarRandomSize + &quot;px&quot;;</span><br><span class="line">    var x &#x3D; e.clientX;</span><br><span class="line">    var y &#x3D; e.clientY;</span><br><span class="line">    star.style.color &#x3D; randomColor();</span><br><span class="line">    star.style.fontSize &#x3D; StarRandomSize + &quot;px&quot;;</span><br><span class="line">    star.style.position &#x3D; &quot;absolute&quot;;</span><br><span class="line">    star.style.left &#x3D; e.currentTarget.offsetLeft + &quot;px&quot;;</span><br><span class="line">    star.style.top &#x3D; y - StarRandomSize + &quot;px&quot;;</span><br><span class="line">    document.body.appendChild(star);</span><br><span class="line">    star.innerText &#x3D; &quot;☆&quot;;</span><br><span class="line">    return star</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       这里我们通过js创建一个元素为星星。完成了创建以后，最重要的是希望我们生成的这个星星向上飘动，同时希望他的飘动不是直线而是一种有规律性的飘动。这里我们就可以使用我们介绍的三角函数的特性来解决这个问题，不管是正弦，余弦，还是正切，他们的边界值都是[-1,1]之间，同时我们知道，三角函数的运动是呈规律性的，我们可以通过周期，振幅，图像的偏移量以及整个元素的位置来生成三角函数类型的规律性曲线。</p>
+<p>​       这里我们结合上文中介绍的三角函数几个重要的参数，同时以正弦函数为例，来介绍下我们的设置，由于在计算机中是不能识别角度的，这里我们使用Math.PI/180来进行弧度制的转换，上文中已经介绍了角度转弧度的转换过程，这里我们直接使用，振幅来代表整个运动的幅度，这里不要设置太大，-2代表图形运动的偏移量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function sinPath(deg) &#123;</span><br><span class="line">        return 10 * Math.sin(deg * Math.PI &#x2F; 180 - 2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       知道规律以后，我们的想法是将三种运动函数，通过随机数的方式，使用<code>tranform</code>中的<code>translate</code>进行位移，进而可以将函数的规律和星星的运动进行了绑定。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var PathFun &#x3D; [sinPath, tanPath, cosPath];</span><br><span class="line">var RandomPathIndex &#x3D; Math.round(Math.random() * 2);</span><br><span class="line">moveY -&#x3D;8;</span><br><span class="line">star.style.transform &#x3D; &quot;translate(&quot; + (PathFun[RandomPathIndex](deg) + &quot;px&quot;) + &quot;,&quot; + (moveY + &quot;px&quot;) + &quot;)&quot;</span><br><span class="line">function sinPath(deg) &#123;</span><br><span class="line">        return 10 * Math.sin(deg * Math.PI &#x2F; 180 - 4)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function tanPath(deg) &#123;</span><br><span class="line">        return 2 * Math.atan(deg * Math.PI &#x2F; 180)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function cosPath(deg) &#123;</span><br><span class="line">        return 10 * Math.cos(deg * Math.PI &#x2F; 180)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       如果需要让我们的元素运动起来，这个时候我们添加动画效果。我们计划采取requestAnimationFrame来解决这个问题，requestAnimationFrame其作用就是让浏览器流畅的执行动画效果。可以将其理解为专门用来实现动画效果的api，通过这个api,可以告诉浏览器某个JS代码要执行动画，浏览器收到通知后，则会运行这些代码的时候进行优化，实现流畅的效果，而不再需要开发人员担心刷新频率的问题了。</p>
+<p>最终我们添加动画的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var star &#x3D; createElement(e);</span><br><span class="line">var opacity &#x3D; 100;</span><br><span class="line">var deg &#x3D; 0;</span><br><span class="line">var PathFun &#x3D; [sinPath, tanPath, cosPath];</span><br><span class="line">var RandomPathIndex &#x3D; Math.round(Math.random() * 2);</span><br><span class="line">var moveY &#x3D;0;</span><br><span class="line">var start &#x3D; null；</span><br><span class="line">&#x2F;*</span><br><span class="line">    元素移动处理</span><br><span class="line">*&#x2F;</span><br><span class="line">function step(timestamp) &#123;</span><br><span class="line">   if (!start) start &#x3D; timestamp;</span><br><span class="line">      opacity--;</span><br><span class="line">      deg +&#x3D; 5;</span><br><span class="line">      moveY -&#x3D;8;</span><br><span class="line">      star.style.transform &#x3D; &quot;translate(&quot; + (PathFun[RandomPathIndex](deg) + &quot;px&quot;) + &quot;,&quot; + (moveY + &quot;px&quot;) + &quot;)&quot;</span><br><span class="line">      star.style.opacity &#x3D; opacity &#x2F; 100;</span><br><span class="line">      if (star.style.opacity &gt; 0) &#123;</span><br><span class="line">                window.requestAnimationFrame(step)</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">                star.remove();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"> window.requestAnimationFrame(step)</span><br></pre></td></tr></table></figure>
+
+<p>​      最终我们的动画就可以按照我们上面演示的那样进行显示了，这个案例不仅是介绍了整个星星的创建过程，同时我们在动画的位移中添加了三角函数的曲线规律，使得整个动画无论是从运动形式还是速率等一些特性上看起来更加符合我们视觉观察规律，从而运用数学的特性来解决了这个问题。</p>
+<h4 id="绘制水波图"><a href="#绘制水波图" class="headerlink" title="绘制水波图"></a>绘制水波图</h4><p>​     有的时候我们经常能看到一个球里面有水波，这个水波曲线的实现其实也是和三角函数分不开的。先看下实现的一个粗略的效果:</p>
+<p>​                                                                    <img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/125823/12/17558/683612/5fa5118cE2645051c/cd1e8ee1f37f2789.gif" width="400" height="400"/></p>
+<h5 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h5><p>首先绘制一个标签，先绘制一个圆形，以此充当边框。这里我们采取canvas进行图形绘制，圆形绘制代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; 创建一个圆形（只创建一次即可，不然影响动画性能）</span><br><span class="line">ctx.beginPath();</span><br><span class="line">const r &#x3D; width &#x2F; 2;</span><br><span class="line">const h &#x3D; height&#x2F;2;</span><br><span class="line">const lineWidth2 &#x3D; 3;</span><br><span class="line">const cR &#x3D; r ;</span><br><span class="line">ctx.arc(r, h, cR, 0, 2 * Math.PI);</span><br><span class="line">ctx.stroke();</span><br><span class="line">ctx.clip();</span><br><span class="line">ctx.closePath();</span><br></pre></td></tr></table></figure>
+
+<p>绘制圆形最终要的属性是arc属性，arc相应参数如下：</p>
+<p><img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/143442/35/13571/171853/5fa504a2Eb862fb03/89f552081019b67b.jpg" alt="image-20201106140151358"></p>
+<p>根据参数表，我们设置这个圆形的X,Y坐标，同时计算圆的半径，使用 stroke()在画布上绘制圆弧。圆形绘制以后效果如下：</p>
+<img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/148878/32/13498/68762/5fa50553E10957a92/98b407663c2e6e10.jpg" width="400" height="400"/>
+
+<p>然后我们需要在圆形里面绘制波形图：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;绘制填充颜色</span><br><span class="line">var lingrad &#x3D; ctx.createLinearGradient(0,0,width,0);</span><br><span class="line">lingrad.addColorStop(0, &#39;rgba(135,206,250)&#39;);</span><br><span class="line">lingrad.addColorStop(1, &#39;rgba(240,255,255)&#39;);</span><br><span class="line"></span><br><span class="line">ctx.clearRect(0, 0, width, height);</span><br><span class="line">&#x2F;&#x2F;&#x2F; 创建第一个波形</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.fillStyle &#x3D; lingrad;</span><br><span class="line">ctx.lineWidth &#x3D; 1;</span><br><span class="line">&#x2F;&#x2F; 设置起点位置</span><br><span class="line">ctx.moveTo(0, height &#x2F;2);</span><br><span class="line"></span><br><span class="line">Q+&#x3D;speed;</span><br><span class="line"></span><br><span class="line">for (let x &#x3D; 0; x &lt;&#x3D;  width; x++) &#123;</span><br><span class="line">    &#x2F;&#x2F; 绘制的时候y跟着x跑即可。</span><br><span class="line">    var y &#x3D; A*Math.sin(W*x+Q) +H;</span><br><span class="line">    ctx.lineTo(x, y);</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.lineTo(width, height);</span><br><span class="line">    ctx.lineTo(0, height);</span><br><span class="line">    ctx.fill();</span><br><span class="line">    ctx.closePath();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       上面代码中我们首先需要新建一个填充颜色，为了使得我们绘制的图形更加醒目我们需要设置一组渐变色来进行区分。我们根据y = 波浪高度 * sin(x * 波浪宽度 + 水平位移)来进行波浪的正弦函数的绘制。得到的效果图如下所示：</p>
+<img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/155401/8/4794/177097/5fa504a2E9b23f85a/879f75baab1b3be7.jpg" width="400" height="400"/>
+
+<p>​        上面得到的是一个静态的函数图像，而我们一般见到的的波形图或水波都是随时间连续变化的，这里就要用到正弦函数中的参数相位Q，我们将Q随时间不断增加或减小，即可得到不同时间的不同图像；使用window.requestAnimationFrame实现帧动画；同时为了使得波浪看起来更加的没有规律性，使波形更自然，波形叠加一个频率更高的波形，使波形无规律。</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var A&#x3D;30,</span><br><span class="line">    W&#x3D;1 &#x2F;180,</span><br><span class="line">    Q&#x3D;0,</span><br><span class="line">    H&#x3D; height &#x2F; 2;</span><br><span class="line">var speed&#x3D;-0.10;</span><br><span class="line">window.requestAnimationFrame(draw);</span><br><span class="line">ctx.clearRect(0, 0, width, height);</span><br><span class="line">&#x2F;&#x2F;&#x2F; 创建第一个波形</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.fillStyle &#x3D; lingrad;</span><br><span class="line">ctx.lineWidth &#x3D; 1;</span><br><span class="line">&#x2F;&#x2F; 设置起点位置</span><br><span class="line">ctx.moveTo(0, height &#x2F;2);</span><br><span class="line"></span><br><span class="line">Q+&#x3D;speed;</span><br><span class="line"></span><br><span class="line">for (let x &#x3D; 0; x &lt;&#x3D;  width; x++) &#123;</span><br><span class="line">    var s &#x3D; 0.1*Math.sin(x&#x2F;200)+1;</span><br><span class="line">      &#x2F;&#x2F; 绘制的时候y跟着x跑即可。</span><br><span class="line">      var y &#x3D; A*Math.sin(W*x+Q) +H;</span><br><span class="line">       y&#x3D;y*s;</span><br><span class="line">       ctx.lineTo(x, y);</span><br><span class="line">    &#125;</span><br><span class="line">    ctx.lineTo(width, height);</span><br><span class="line">    ctx.lineTo(0, height);</span><br><span class="line">    ctx.fill();</span><br><span class="line">    ctx.closePath();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       效果如下：</p>
+<p>​                                                                    <img data-src="https://img12.360buyimg.com/imagetools/jfs/t1/127887/26/17611/608802/5fa5131eEfc037f1b/9508891d90a16272.gif" width="400" height="400"/></p>
+<p>​       这时候我们可以看到目前我们的波形已经按照一定的规律性运动起来了。单一的一条波形看着还是不太好看，我们为了优化可以再添加一条波形图。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 创建第二个波形</span><br><span class="line">var lingrad2 &#x3D; ctx.createLinearGradient(0,0,width,0);</span><br><span class="line">lingrad2.addColorStop(0,&#39;rgba(240,255,255)&#39;);</span><br><span class="line">lingrad2.addColorStop(1, &#39;rgba(135,206,250)&#39;);</span><br><span class="line">ctx.beginPath();</span><br><span class="line">ctx.lineWidth &#x3D; 1;</span><br><span class="line">ctx.fillStyle &#x3D; lingrad2;</span><br><span class="line"></span><br><span class="line">Q2+&#x3D;speed2;</span><br><span class="line">for (let x &#x3D; 0; x &lt; width; x++) &#123;</span><br><span class="line">        var y &#x3D; A2*Math.sin(x*W2+Q2) +H2;</span><br><span class="line">        ctx.lineTo(x, y);</span><br><span class="line">&#125;</span><br><span class="line">ctx.lineTo(width,height);</span><br><span class="line">ctx.lineTo(0,height);</span><br></pre></td></tr></table></figure>
+
+<p>最终的效果如下所示：</p>
+<p>​                                                                 <img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/125823/12/17558/683612/5fa5118cE2645051c/cd1e8ee1f37f2789.gif" width="400" height="400"/> </p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​     通过这篇文章，我介绍了数学在前端动画中的一些应用。动画是一个提升用户体验十分重要的一个环节，但是也是视觉设计师和研发人员经常要互相讨论的问题。在以后的工作开发中，碰到动画处理我们可以通过一些数学知识来解决问题的话会更加得心应手。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p><a href="https://developers.google.com/web/fundamentals/design-and-ux/animations?hl=zh-cn">Web-Fundamentals-Animations</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0">三角函数（维基百科）</a></p>
+<p><a href="https://uxdesign.cc/how-you-can-use-simple-trigonometry-to-create-better-loaders-32a573577eb4">How you can use simple Trigonometry to create better loaders</a></p>
+]]></content>
+      <categories>
+        <category>前端动画</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>动画</tag>
+        <tag>三角函数</tag>
+      </tags>
   </entry>
 </search>
