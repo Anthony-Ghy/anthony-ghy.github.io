@@ -6,7 +6,7 @@
   <link href="https://anthony-ghy.github.io/atom.xml" rel="self"/>
   
   <link href="https://anthony-ghy.github.io/"/>
-  <updated>2020-12-08T02:38:58.149Z</updated>
+  <updated>2020-12-08T02:57:56.166Z</updated>
   <id>https://anthony-ghy.github.io/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="https://anthony-ghy.github.io/archives/ZN6DJ6.html"/>
     <id>https://anthony-ghy.github.io/archives/ZN6DJ6.html</id>
     <published>2020-12-08T02:30:03.040Z</published>
-    <updated>2020-12-08T02:38:58.149Z</updated>
+    <updated>2020-12-08T02:57:56.166Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;总结一下近期学习到的一些基础知识补充。&lt;/p&gt;
-&lt;h3 id=&quot;一、a-标签小技巧&quot;&gt;&lt;a href=&quot;#一、a-标签小技巧&quot; class=&quot;headerlink&quot; title=&quot;一、a 标签小技巧&quot;&gt;&lt;/a&gt;一、a</summary>
-        
-      
+&lt;h3 id=&quot;一、a-标签小技巧&quot;&gt;&lt;a href=&quot;#一、a-标签小技巧&quot; class=&quot;headerlink&quot; title=&quot;一、a 标签小技巧&quot;&gt;&lt;/a&gt;一、a 标签小技巧&lt;/h3&gt;&lt;p&gt;网页a标签默认在当前窗口打开，如果想另开一个窗口需要在a标签里面设置target=”_blank”属性。&lt;/p&gt;</summary>
     
     
     
@@ -55,17 +49,13 @@
     <link href="https://anthony-ghy.github.io/archives/120FH88.html"/>
     <id>https://anthony-ghy.github.io/archives/120FH88.html</id>
     <published>2020-11-22T16:00:00.000Z</published>
-    <updated>2020-12-08T02:56:04.954Z</updated>
+    <updated>2020-12-08T02:57:56.170Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;本文主要介绍下Hexo和GitHub</summary>
-        
-      
+&lt;p&gt;本文主要介绍下Hexo和GitHub Pages之间是如何联系及运作的，同时记录我在搭建过程中踩过的坑以及解决方案。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;​       本文首先讲述个人博客各个模块。然后会解释Hexo到底做了什么，即Hexo在个人博客中起到的作用，GitHub Pages又在博客中扮演一个什么角色。在理解了以上内容后，搭建博客就变成了一件非常容易的事情，最后以操作手册式的描述引导你一步步搭建出一个博客。&lt;/p&gt;</summary>
     
     
     

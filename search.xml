@@ -24,6 +24,7 @@
     <url>/archives/ZN6DJ6.html</url>
     <content><![CDATA[<p>总结一下近期学习到的一些基础知识补充。</p>
 <h3 id="一、a-标签小技巧"><a href="#一、a-标签小技巧" class="headerlink" title="一、a 标签小技巧"></a>一、a 标签小技巧</h3><p>网页a标签默认在当前窗口打开，如果想另开一个窗口需要在a标签里面设置target=”_blank”属性。</p>
+<a id="more"></a>
 <p>设置这个属性的同时最好再设置一个属性，如下图所示：</p>
 <img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/144822/5/17388/601306/5fced840E24f1aca8/075f0a62172a5fee.jpg" style="zoom:30%;" />
 
@@ -118,6 +119,8 @@
 <p>本文主要介绍下Hexo和GitHub Pages之间是如何联系及运作的，同时记录我在搭建过程中踩过的坑以及解决方案。</p>
 </blockquote>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​       本文首先讲述个人博客各个模块。然后会解释Hexo到底做了什么，即Hexo在个人博客中起到的作用，GitHub Pages又在博客中扮演一个什么角色。在理解了以上内容后，搭建博客就变成了一件非常容易的事情，最后以操作手册式的描述引导你一步步搭建出一个博客。</p>
+<a id="more"></a>
+
 <p>​       作为一名程序员，拥有一个自己的博客是十分重要的一件事，程序员需要将自己的知识进行沉淀并进行记录是一个十分好的习惯。日常读别人的博客时，看到一些很优秀的博客经常会很羡慕。内心也有着自己想做一个自己博客的冲动。关于创建博客的好处这里就不用多说了，首先秀一下<a href="https://anthony-ghy.github.io/">我的博客</a>。</p>
 <p><img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/135155/34/16611/966821/5fb663f5Eb28a8bdd/23e36f484947905d.jpg"></p>
 <p>接下来我们先了解一下博客是如何运作的。</p>
