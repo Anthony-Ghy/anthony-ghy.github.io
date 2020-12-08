@@ -75,7 +75,8 @@
 <p><strong>「示例」</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 通过setItem()增加一个数据项</span><br><span class="line">sessionStorage.setItem(&#39;myName&#39;, &#39;Semlinker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过getItem()获取某个数据项</span><br><span class="line">let me &#x3D; sessionStorage.getItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过removeItem()移除某个数据项</span><br><span class="line">sessionStorage.removeItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 移除所有数据项</span><br><span class="line">sessionStorage.clear();</span><br></pre></td></tr></table></figure>
 
-<h3 id="四、跨域浏览器脚本命令"><a href="#四、跨域浏览器脚本命令" class="headerlink" title="四、跨域浏览器脚本命令"></a>四、跨域浏览器脚本命令</h3><p>open -na Google\ Chrome –args –user-data-dir=/tmp/temporary-chrome-profile-dir –disable-web-security –disable-site-isolation-trials</p>
+<h3 id="四、跨域浏览器脚本命令"><a href="#四、跨域浏览器脚本命令" class="headerlink" title="四、跨域浏览器脚本命令"></a>四、跨域浏览器脚本命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">open -na Google\ Chrome --args --user-data-dir&#x3D;&#x2F;tmp&#x2F;temporary-chrome-profile-dir --disable-web-security --disable-site-isolation-trials</span><br></pre></td></tr></table></figure>
+
 <p>会自动打开一个跨域的Chrome浏览器,用来解决相关的跨域问题。</p>
 <h3 id="五、一些ts-react类型定义"><a href="#五、一些ts-react类型定义" class="headerlink" title="五、一些ts+react类型定义"></a>五、一些ts+react类型定义</h3><p><strong>5.1 平常在react项目中定义一个类型时，会出现定义一个组件或者一个定义一段dom节点的情况</strong></p>
 <p>目前记住：</p>
