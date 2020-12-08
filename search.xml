@@ -20,6 +20,98 @@
       </tags>
   </entry>
   <entry>
+    <title>一些知识点总结1</title>
+    <url>/archives/ZN6DJ6.html</url>
+    <content><![CDATA[<p>总结一下近期学习到的一些基础知识补充。</p>
+<h3 id="一、a-标签小技巧"><a href="#一、a-标签小技巧" class="headerlink" title="一、a 标签小技巧"></a>一、a 标签小技巧</h3><p>网页a标签默认在当前窗口打开，如果想另开一个窗口需要在a标签里面设置target=”_blank”属性。</p>
+<p>设置这个属性的同时最好再设置一个属性，如下图所示：</p>
+<img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/144822/5/17388/601306/5fced840E24f1aca8/075f0a62172a5fee.jpg" style="zoom:30%;" />
+
+<h3 id="二、边界处理"><a href="#二、边界处理" class="headerlink" title="二、边界处理"></a>二、边界处理</h3><p>在写代码的过程中，为了防止一些突发问题出现，要设置一些边界处理，因为我们不清楚后端有的时候返回的数据是否是空还是 不存在等一些其他情况。</p>
+<img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/154106/29/9075/134745/5fced841E87b2d10d/f13de6a5aeff43a7.jpg" style="zoom:50%;" />
+
+<h3 id="三、各种-Web-存储方案简介"><a href="#三、各种-Web-存储方案简介" class="headerlink" title="三、各种 Web 存储方案简介"></a>三、各种 Web 存储方案简介</h3><h4 id="3-1-Cookie"><a href="#3-1-Cookie" class="headerlink" title="3.1 Cookie"></a>3.1 Cookie</h4><p>HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。</p>
+<p>Cookie 主要用于以下三个方面：</p>
+<ul>
+<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）；</li>
+<li>个性化设置（如用户自定义设置、主题等）；</li>
+<li>浏览器行为跟踪（如跟踪分析用户行为等）。</li>
+</ul>
+<p>Cookie 的特点：</p>
+<ul>
+<li>Cookie 的大小受限，一般为 4 KB；</li>
+<li>同一个域名下存放 Cookie 的个数是有限制的，不同浏览器的个数不一样，一般为 20 个；</li>
+<li>Cookie 支持设置过期时间，当过期时自动销毁；</li>
+<li>每次发起同域下的 HTTP 请求时，都会携带当前域名下的 Cookie；</li>
+<li>支持设置为 <code>HttpOnly</code>，防止 Cookie 被客户端的 JavaScript 访问。</li>
+</ul>
+<p><strong>「示例1：简单用法」</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.cookie &#x3D; &quot;name&#x3D;semlinker&quot;;</span><br><span class="line">document.cookie &#x3D; &quot;favorite_food&#x3D;tripe&quot;;</span><br><span class="line"></span><br><span class="line">alert(document.cookie);</span><br><span class="line">&#x2F;&#x2F; 显示: name&#x3D;semlinker;favorite_food&#x3D;tripe</span><br></pre></td></tr></table></figure>
+
+<p><strong>「示例2：得到名为 test2 的 cookie」</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.cookie &#x3D; &quot;test1&#x3D;Hello&quot;;</span><br><span class="line">document.cookie &#x3D; &quot;test2&#x3D;World&quot;;</span><br><span class="line"></span><br><span class="line">var myCookie &#x3D; document.cookie</span><br><span class="line">    .replace(&#x2F;(?:(?:^|.*;\s*)test2\s*\&#x3D;\s*([^;]*).*$)|^.*$&#x2F;, &quot;$1&quot;);</span><br><span class="line">alert(myCookie);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-localStorage"><a href="#3-2-localStorage" class="headerlink" title="3.2 localStorage"></a>3.2 localStorage</h4><p>一种持久化的存储方式，也就是说如果不手动清除，数据就永远不会过期。它是采用键值对的方式存储数据，按域名将数据分别保存到对应数据库文件里。相比 Cookie 来说，它能保存更大的数据。</p>
+<p>localStorage 的特点：</p>
+<ul>
+<li>大小限制为 5MB ~10MB；</li>
+<li>在同源的所有标签页和窗口之间共享数据；</li>
+<li>数据仅保存在客户端，不与服务器进行通信；</li>
+<li>数据持久存在且不会过期，重启浏览器后仍然存在；</li>
+<li>对数据的操作是同步的。</li>
+</ul>
+<p><strong>「示例」</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 通过setItem()增加一个数据项</span><br><span class="line">localStorage.setItem(&#39;myName&#39;, &#39;Semlinker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过getItem()获取某个数据项</span><br><span class="line">let me &#x3D; localStorage.getItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过removeItem()移除某个数据项</span><br><span class="line">localStorage.removeItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 移除所有数据项</span><br><span class="line">localStorage.clear();</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-sessionStorage"><a href="#3-3-sessionStorage" class="headerlink" title="3.3 sessionStorage"></a>3.3 sessionStorage</h4><p>与服务端的 session 类似，sessionStorage 是一种会话级别的缓存，关闭浏览器时数据会被清除。需要注意的是 sessionStorage 的作用域是窗口级别的，也就是说不同窗口之间保存的 sessionStorage 数据是不能共享的。</p>
+<p>sessionStorage 的特点：</p>
+<ul>
+<li>sessionStorage 的数据只存在于当前浏览器的标签页；</li>
+<li>数据在页面刷新后依然存在，但在关闭浏览器标签页之后数据就会被清除；</li>
+<li>与 localStorage 拥有统一的 API 接口；</li>
+<li>对数据的操作是同步的。</li>
+</ul>
+<p><strong>「示例」</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 通过setItem()增加一个数据项</span><br><span class="line">sessionStorage.setItem(&#39;myName&#39;, &#39;Semlinker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过getItem()获取某个数据项</span><br><span class="line">let me &#x3D; sessionStorage.getItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过removeItem()移除某个数据项</span><br><span class="line">sessionStorage.removeItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 移除所有数据项</span><br><span class="line">sessionStorage.clear();</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、跨域浏览器脚本命令"><a href="#四、跨域浏览器脚本命令" class="headerlink" title="四、跨域浏览器脚本命令"></a>四、跨域浏览器脚本命令</h3><p>open -na Google\ Chrome –args –user-data-dir=/tmp/temporary-chrome-profile-dir –disable-web-security –disable-site-isolation-trials</p>
+<p>会自动打开一个跨域的Chrome浏览器,用来解决相关的跨域问题。</p>
+<h3 id="五、一些ts-react类型定义"><a href="#五、一些ts-react类型定义" class="headerlink" title="五、一些ts+react类型定义"></a>五、一些ts+react类型定义</h3><p><strong>5.1 平常在react项目中定义一个类型时，会出现定义一个组件或者一个定义一段dom节点的情况</strong></p>
+<p>目前记住：</p>
+<p>1.ReactElement主要是定义一个组件类型</p>
+<p>2.ReactNode可以定义一个组件，一段html代码，他是包括reactElement,等一系列类型的 ！！！！！</p>
+<p>3.JSX.Element 与ReactElement类似，可以代替reactElement</p>
+<p><strong>这里添加两个介绍</strong></p>
+<p>1.<a href="https://www.jianshu.com/p/95ce2266450a">介绍1</a></p>
+<p>2.<a href="https://wiki.jikexueyuan.com/project/react/react-dom.html">介绍2</a></p>
+<p><strong>综上所述：不是基础类型如果是一个组件或者代码块的话还是直接用ReactNode吧。</strong></p>
+<p><strong>5.2   ts中 变量后使用 ！：表示类型推断排除null、undefined</strong></p>
+<h3 id="六、在小火箭中使用yep-react遇到的问题"><a href="#六、在小火箭中使用yep-react遇到的问题" class="headerlink" title="六、在小火箭中使用yep-react遇到的问题"></a>六、在小火箭中使用yep-react遇到的问题</h3><p>问题：整体尺寸变大，不符合整体的宽和高</p>
+<p>解决方案：</p>
+<p>Posts.config.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const pxtorem &#x3D; require(&#39;postcss-pxtorem&#39;);</span><br><span class="line">pxtorem(&#123;</span><br><span class="line">      rootValue: 200,</span><br><span class="line">      propWhiteList: [],</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+
+<p>.babelrc</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&quot;import&quot;, &#123; &quot;libraryName&quot;: &quot;@jdcfe&#x2F;yep-react&quot;, &quot;style&quot;: true &#125;] ]</span><br></pre></td></tr></table></figure>
+
+<p>格式参考官方文档，这里参考的不是rocket使用方式。</p>
+<img data-src="https://img11.360buyimg.com/imagetools/jfs/t1/148750/17/17678/527049/5fcee37cE94660977/0f0535d0efdd26b7.jpg" style="zoom:30%;" />
+
+<p>整体页面尺寸参考项目中根结点使用的屏幕适配方案。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这篇先总结这么多，最近经常在通勤时间看一些关注的公众号发的技术文章，后续会结合一些我觉得对我有帮助的点进行一个总结。</p>
+]]></content>
+      <categories>
+        <category>React学习</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>React</tag>
+        <tag>基础</tag>
+        <tag>js</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>React基础学习笔记2</title>
     <url>/archives/11HBHD0.html</url>
     <content><![CDATA[<p>组件生命周期这个概念无论在React，还是Vue中都是十分重要的，但是由于版本更新问题，新版与旧版的生命周期在很多方面发生了改变，所以个人还是觉得有必要拿出来区分一下，为后续方便开发做准备。</p>
