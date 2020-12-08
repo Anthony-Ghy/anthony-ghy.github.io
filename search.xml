@@ -82,8 +82,8 @@
 <p>2.ReactNode可以定义一个组件，一段html代码，他是包括reactElement,等一系列类型的 ！！！！！</p>
 <p>3.JSX.Element 与ReactElement类似，可以代替reactElement</p>
 <p><strong>这里添加两个介绍</strong></p>
-<p>1.<a href="https://www.jianshu.com/p/95ce2266450a">介绍1</a></p>
-<p>2.<a href="https://wiki.jikexueyuan.com/project/react/react-dom.html">介绍2</a></p>
+<p>1.<a href="https://www.jianshu.com/p/95ce2266450a">https://www.jianshu.com/p/95ce2266450a</a></p>
+<p>2.<a href="https://wiki.jikexueyuan.com/project/react/react-dom.html">https://wiki.jikexueyuan.com/project/react/react-dom.html</a></p>
 <p><strong>综上所述：不是基础类型如果是一个组件或者代码块的话还是直接用ReactNode吧。</strong></p>
 <p><strong>5.2   ts中 变量后使用 ！：表示类型推断排除null、undefined</strong></p>
 <h3 id="六、在小火箭中使用yep-react遇到的问题"><a href="#六、在小火箭中使用yep-react遇到的问题" class="headerlink" title="六、在小火箭中使用yep-react遇到的问题"></a>六、在小火箭中使用yep-react遇到的问题</h3><p>问题：整体尺寸变大，不符合整体的宽和高</p>
