@@ -35,30 +35,53 @@
     var CONFIG = {"hostname":"anthony-ghy.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#836FFF","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="敬畏墨菲定律。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Anthony的博客">
-<meta property="og:url" content="https://anthony-ghy.github.io/index.html">
+  <meta name="description" content="本文主要介绍下Hexo和GitHub Pages之间是如何联系及运作的，同时记录我在搭建过程中踩过的坑以及解决方案。  前言​       本文首先讲述个人博客各个模块。然后会解释Hexo到底做了什么，即Hexo在个人博客中起到的作用，GitHub Pages又在博客中扮演一个什么角色。在理解了以上内容后，搭建博客就变成了一件非常容易的事情，最后以操作手册式的描述引导你一步步搭建出一个博客。 ​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo+GitHubPages搭博踩坑记录">
+<meta property="og:url" content="https://anthony-ghy.github.io/archives/120FH88.html">
 <meta property="og:site_name" content="Anthony的博客">
-<meta property="og:description" content="敬畏墨菲定律。">
+<meta property="og:description" content="本文主要介绍下Hexo和GitHub Pages之间是如何联系及运作的，同时记录我在搭建过程中踩过的坑以及解决方案。  前言​       本文首先讲述个人博客各个模块。然后会解释Hexo到底做了什么，即Hexo在个人博客中起到的作用，GitHub Pages又在博客中扮演一个什么角色。在理解了以上内容后，搭建博客就变成了一件非常容易的事情，最后以操作手册式的描述引导你一步步搭建出一个博客。 ​">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img14.360buyimg.com/imagetools/jfs/t1/135155/34/16611/966821/5fb663f5Eb28a8bdd/23e36f484947905d.jpg">
+<meta property="og:image" content="https://img11.360buyimg.com/imagetools/jfs/t1/136311/35/16659/90809/5fb62584Efd8e3bbc/83f059e6329097da.png">
+<meta property="og:image" content="https://img10.360buyimg.com/imagetools/jfs/t1/144837/37/14858/219068/5fb64118E445d54d9/6cb883bb2ee101af.jpg">
+<meta property="og:image" content="https://img12.360buyimg.com/imagetools/jfs/t1/153973/16/6549/273576/5fb6415bEb4df2f72/3ec1d7752009914c.jpg">
+<meta property="og:image" content="https://img13.360buyimg.com/imagetools/jfs/t1/144427/21/15050/652205/5fb642f6E57c54e14/ff4c81afcd93051f.jpg">
+<meta property="og:image" content="https://img14.360buyimg.com/imagetools/jfs/t1/146657/9/14872/1459131/5fb663eaEdc76e591/e74ddfe6c4592441.jpg">
+<meta property="og:image" content="https://img13.360buyimg.com/imagetools/jfs/t1/145706/5/15810/121071/5fbb67d1E57fa9477/601b6a70735011e6.jpg">
+<meta property="og:image" content="https://img10.360buyimg.com/imagetools/jfs/t1/122111/17/19605/500162/5fbb688dE78d572c1/86e9c8dd2b963941.jpg">
+<meta property="og:image" content="https://img14.360buyimg.com/imagetools/jfs/t1/136239/18/17053/23217/5fbb19f0E89b65860/bd9e07c7e39fac9b.jpg">
+<meta property="og:image" content="https://img11.360buyimg.com/imagetools/jfs/t1/154905/11/6852/245628/5fbb1aa8E1ebf3500/72cbdf839e6e9a42.jpg">
+<meta property="og:image" content="https://img12.360buyimg.com/imagetools/jfs/t1/120743/8/19488/87526/5fbb1b39E14f4f9dd/ef6681b920600f22.jpg">
+<meta property="og:image" content="https://img14.360buyimg.com/imagetools/jfs/t1/149120/2/15376/241859/5fbb5355E17051768/82181e3c6deda438.jpg">
+<meta property="og:image" content="https://img11.360buyimg.com/imagetools/jfs/t1/154615/36/6887/129332/5fbb5415E020cc7ac/fe74d18ad3f847a6.jpg">
+<meta property="og:image" content="https://img10.360buyimg.com/imagetools/jfs/t1/134889/27/16969/568122/5fbb559fEa524a8ca/33e60faccae0523c.jpg">
+<meta property="og:image" content="https://img14.360buyimg.com/imagetools/jfs/t1/139405/15/15453/256222/5fbb5742E9c0eb1b8/2e1f4addee23a349.jpg">
+<meta property="og:image" content="https://img10.360buyimg.com/imagetools/jfs/t1/125510/18/20044/70057/5fbb5988E35562d75/7e469713027b60f6.jpg">
+<meta property="og:image" content="https://img13.360buyimg.com/imagetools/jfs/t1/147178/23/15562/454545/5fbb5aceE9ae48a68/954be16cbebe607d.jpg">
+<meta property="og:image" content="https://img10.360buyimg.com/imagetools/jfs/t1/153300/16/6986/2594942/5fbb5e5fEa20b9b55/eec4db749d7cb426.gif">
+<meta property="article:published_time" content="2020-11-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-08T02:56:04.954Z">
 <meta property="article:author" content="Anthony高鸿宇">
+<meta property="article:tag" content="博客搭建">
+<meta property="article:tag" content="前端小白">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img14.360buyimg.com/imagetools/jfs/t1/135155/34/16611/966821/5fb663f5Eb28a8bdd/23e36f484947905d.jpg">
 
-<link rel="canonical" href="https://anthony-ghy.github.io/">
+<link rel="canonical" href="https://anthony-ghy.github.io/archives/120FH88.html">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Anthony的博客</title>
+  <title>Hexo+GitHubPages搭博踩坑记录 | Anthony的博客</title>
   
 
 
@@ -204,268 +227,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://anthony-ghy.github.io/archives/151FCAP.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Anthony高鸿宇">
-      <meta itemprop="description" content="敬畏墨菲定律。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anthony的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/151FCAP.html" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-          
-              <i class="fa fa-thumb-tack"></i>
-              <font color=7D26CD>置顶</font>
-              <span class="post-meta-divider">|</span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-19 10:42:22 / 修改时间：13:56:42" itemprop="dateCreated datePublished" datetime="2020-11-19T10:42:22+08:00">2020-11-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%88%91%E6%9D%A5%E4%BA%86%EF%BC%81/" itemprop="url" rel="index"><span itemprop="name">我来了！</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>149</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="大家好！"><a href="#大家好！" class="headerlink" title="大家好！"></a>大家好！</h3><p>这是我的博客，我是一名前端小白，在这里后续会记录我的前端学习历程和我的生活。</p>
-<p><strong>我的人生目标：要做编程里最会摄影的，摄影里最会编程的。</strong></p>
-<p><strong>创博目的：</strong></p>
-<p>​        以后会在这里分享我学习到的专业前端知识，同时也会分享一些我喜欢的音乐和摄影作品。</p>
-<p><strong>最后：</strong></p>
-<p>​       对了忘了告诉大家，我酷爱说唱音乐，最喜欢的说唱歌手是马思唯。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://anthony-ghy.github.io/archives/ZN6DJ6.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Anthony高鸿宇">
-      <meta itemprop="description" content="敬畏墨菲定律。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anthony的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/ZN6DJ6.html" class="post-title-link" itemprop="url">一些知识点总结1</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-12-08 10:30:03 / 修改时间：10:38:58" itemprop="dateCreated datePublished" datetime="2020-12-08T10:30:03+08:00">2020-12-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">React学习</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>总结一下近期学习到的一些基础知识补充。</p>
-<h3 id="一、a-标签小技巧"><a href="#一、a-标签小技巧" class="headerlink" title="一、a 标签小技巧"></a>一、a 标签小技巧</h3><p>网页a标签默认在当前窗口打开，如果想另开一个窗口需要在a标签里面设置target=”_blank”属性。</p>
-<p>设置这个属性的同时最好再设置一个属性，如下图所示：</p>
-<img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/144822/5/17388/601306/5fced840E24f1aca8/075f0a62172a5fee.jpg" style="zoom:30%;" />
-
-<h3 id="二、边界处理"><a href="#二、边界处理" class="headerlink" title="二、边界处理"></a>二、边界处理</h3><p>在写代码的过程中，为了防止一些突发问题出现，要设置一些边界处理，因为我们不清楚后端有的时候返回的数据是否是空还是 不存在等一些其他情况。</p>
-<img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/154106/29/9075/134745/5fced841E87b2d10d/f13de6a5aeff43a7.jpg" style="zoom:50%;" />
-
-<h3 id="三、各种-Web-存储方案简介"><a href="#三、各种-Web-存储方案简介" class="headerlink" title="三、各种 Web 存储方案简介"></a>三、各种 Web 存储方案简介</h3><h4 id="3-1-Cookie"><a href="#3-1-Cookie" class="headerlink" title="3.1 Cookie"></a>3.1 Cookie</h4><p>HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。</p>
-<p>Cookie 主要用于以下三个方面：</p>
-<ul>
-<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）；</li>
-<li>个性化设置（如用户自定义设置、主题等）；</li>
-<li>浏览器行为跟踪（如跟踪分析用户行为等）。</li>
-</ul>
-<p>Cookie 的特点：</p>
-<ul>
-<li>Cookie 的大小受限，一般为 4 KB；</li>
-<li>同一个域名下存放 Cookie 的个数是有限制的，不同浏览器的个数不一样，一般为 20 个；</li>
-<li>Cookie 支持设置过期时间，当过期时自动销毁；</li>
-<li>每次发起同域下的 HTTP 请求时，都会携带当前域名下的 Cookie；</li>
-<li>支持设置为 <code>HttpOnly</code>，防止 Cookie 被客户端的 JavaScript 访问。</li>
-</ul>
-<p><strong>「示例1：简单用法」</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">document.cookie &#x3D; &quot;name&#x3D;semlinker&quot;;</span><br><span class="line">document.cookie &#x3D; &quot;favorite_food&#x3D;tripe&quot;;</span><br><span class="line"></span><br><span class="line">alert(document.cookie);</span><br><span class="line">&#x2F;&#x2F; 显示: name&#x3D;semlinker;favorite_food&#x3D;tripe</span><br></pre></td></tr></table></figure>
-
-<p><strong>「示例2：得到名为 test2 的 cookie」</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">document.cookie &#x3D; &quot;test1&#x3D;Hello&quot;;</span><br><span class="line">document.cookie &#x3D; &quot;test2&#x3D;World&quot;;</span><br><span class="line"></span><br><span class="line">var myCookie &#x3D; document.cookie</span><br><span class="line">    .replace(&#x2F;(?:(?:^|.*;\s*)test2\s*\&#x3D;\s*([^;]*).*$)|^.*$&#x2F;, &quot;$1&quot;);</span><br><span class="line">alert(myCookie);</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-2-localStorage"><a href="#3-2-localStorage" class="headerlink" title="3.2 localStorage"></a>3.2 localStorage</h4><p>一种持久化的存储方式，也就是说如果不手动清除，数据就永远不会过期。它是采用键值对的方式存储数据，按域名将数据分别保存到对应数据库文件里。相比 Cookie 来说，它能保存更大的数据。</p>
-<p>localStorage 的特点：</p>
-<ul>
-<li>大小限制为 5MB ~10MB；</li>
-<li>在同源的所有标签页和窗口之间共享数据；</li>
-<li>数据仅保存在客户端，不与服务器进行通信；</li>
-<li>数据持久存在且不会过期，重启浏览器后仍然存在；</li>
-<li>对数据的操作是同步的。</li>
-</ul>
-<p><strong>「示例」</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 通过setItem()增加一个数据项</span><br><span class="line">localStorage.setItem(&#39;myName&#39;, &#39;Semlinker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过getItem()获取某个数据项</span><br><span class="line">let me &#x3D; localStorage.getItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过removeItem()移除某个数据项</span><br><span class="line">localStorage.removeItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 移除所有数据项</span><br><span class="line">localStorage.clear();</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-3-sessionStorage"><a href="#3-3-sessionStorage" class="headerlink" title="3.3 sessionStorage"></a>3.3 sessionStorage</h4><p>与服务端的 session 类似，sessionStorage 是一种会话级别的缓存，关闭浏览器时数据会被清除。需要注意的是 sessionStorage 的作用域是窗口级别的，也就是说不同窗口之间保存的 sessionStorage 数据是不能共享的。</p>
-<p>sessionStorage 的特点：</p>
-<ul>
-<li>sessionStorage 的数据只存在于当前浏览器的标签页；</li>
-<li>数据在页面刷新后依然存在，但在关闭浏览器标签页之后数据就会被清除；</li>
-<li>与 localStorage 拥有统一的 API 接口；</li>
-<li>对数据的操作是同步的。</li>
-</ul>
-<p><strong>「示例」</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 通过setItem()增加一个数据项</span><br><span class="line">sessionStorage.setItem(&#39;myName&#39;, &#39;Semlinker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过getItem()获取某个数据项</span><br><span class="line">let me &#x3D; sessionStorage.getItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过removeItem()移除某个数据项</span><br><span class="line">sessionStorage.removeItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 移除所有数据项</span><br><span class="line">sessionStorage.clear();</span><br></pre></td></tr></table></figure>
-
-<h3 id="四、跨域浏览器脚本命令"><a href="#四、跨域浏览器脚本命令" class="headerlink" title="四、跨域浏览器脚本命令"></a>四、跨域浏览器脚本命令</h3><p>open -na Google\ Chrome –args –user-data-dir=/tmp/temporary-chrome-profile-dir –disable-web-security –disable-site-isolation-trials</p>
-<p>会自动打开一个跨域的Chrome浏览器,用来解决相关的跨域问题。</p>
-<h3 id="五、一些ts-react类型定义"><a href="#五、一些ts-react类型定义" class="headerlink" title="五、一些ts+react类型定义"></a>五、一些ts+react类型定义</h3><p><strong>5.1 平常在react项目中定义一个类型时，会出现定义一个组件或者一个定义一段dom节点的情况</strong></p>
-<p>目前记住：</p>
-<p>1.ReactElement主要是定义一个组件类型</p>
-<p>2.ReactNode可以定义一个组件，一段html代码，他是包括reactElement,等一系列类型的 ！！！！！</p>
-<p>3.JSX.Element 与ReactElement类似，可以代替reactElement</p>
-<p><strong>这里添加两个介绍</strong></p>
-<p>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/95ce2266450a">https://www.jianshu.com/p/95ce2266450a</a></p>
-<p>2.<a target="_blank" rel="noopener" href="https://wiki.jikexueyuan.com/project/react/react-dom.html">https://wiki.jikexueyuan.com/project/react/react-dom.html</a></p>
-<p><strong>综上所述：不是基础类型如果是一个组件或者代码块的话还是直接用ReactNode吧。</strong></p>
-<p><strong>5.2   ts中 变量后使用 ！：表示类型推断排除null、undefined</strong></p>
-<h3 id="六、在小火箭中使用yep-react遇到的问题"><a href="#六、在小火箭中使用yep-react遇到的问题" class="headerlink" title="六、在小火箭中使用yep-react遇到的问题"></a>六、在小火箭中使用yep-react遇到的问题</h3><p>问题：整体尺寸变大，不符合整体的宽和高</p>
-<p>解决方案：</p>
-<p>Posts.config.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const pxtorem &#x3D; require(&#39;postcss-pxtorem&#39;);</span><br><span class="line">pxtorem(&#123;</span><br><span class="line">      rootValue: 200,</span><br><span class="line">      propWhiteList: [],</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
-
-<p>.babelrc</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&quot;import&quot;, &#123; &quot;libraryName&quot;: &quot;@jdcfe&#x2F;yep-react&quot;, &quot;style&quot;: true &#125;] ]</span><br></pre></td></tr></table></figure>
-
-<p>格式参考官方文档，这里参考的不是rocket使用方式。</p>
-<img data-src="https://img11.360buyimg.com/imagetools/jfs/t1/148750/17/17678/527049/5fcee37cE94660977/0f0535d0efdd26b7.jpg" style="zoom:30%;" />
-
-<p>整体页面尺寸参考项目中根结点使用的屏幕适配方案。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这篇先总结这么多，最近经常在通勤时间看一些关注的公众号发的技术文章，后续会结合一些我觉得对我有帮助的点进行一个总结。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -481,10 +246,9 @@
       <meta itemprop="name" content="Anthony的博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/120FH88.html" class="post-title-link" itemprop="url">Hexo+GitHubPages搭博踩坑记录</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Hexo+GitHubPages搭博踩坑记录
+        </h1>
 
         <div class="post-meta">
           
@@ -504,7 +268,14 @@
                 <time title="修改时间：2020-12-08 10:56:04" itemprop="dateModified" datetime="2020-12-08T10:56:04+08:00">2020-12-08</time>
               </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -529,7 +300,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id=""><a href="#" class="headerlink" title=""></a></h2><blockquote>
+        <h2 id=""><a href="#" class="headerlink" title=""></a></h2><blockquote>
 <p>本文主要介绍下Hexo和GitHub Pages之间是如何联系及运作的，同时记录我在搭建过程中踩过的坑以及解决方案。</p>
 </blockquote>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​       本文首先讲述个人博客各个模块。然后会解释Hexo到底做了什么，即Hexo在个人博客中起到的作用，GitHub Pages又在博客中扮演一个什么角色。在理解了以上内容后，搭建博客就变成了一件非常容易的事情，最后以操作手册式的描述引导你一步步搭建出一个博客。</p>
@@ -663,7 +434,6 @@
 <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo框架</a></p>
 <p><a target="_blank" rel="noopener" href="https://theme-next.iissnan.com/">Next使用文档</a></p>
 
-      
     </div>
 
     
@@ -672,309 +442,78 @@
 
     <div>
       
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
     </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://anthony-ghy.github.io/archives/11HBHD0.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Anthony高鸿宇">
-      <meta itemprop="description" content="敬畏墨菲定律。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anthony的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/11HBHD0.html" class="post-title-link" itemprop="url">React基础学习笔记2</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-19 10:26:58 / 修改时间：10:33:32" itemprop="dateCreated datePublished" datetime="2020-11-19T10:26:58+08:00">2020-11-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">React学习</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>10k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>9 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Anthony高鸿宇 微信支付">
+        <p>微信支付</p>
+      </div>
       
-          <p>组件生命周期这个概念无论在React，还是Vue中都是十分重要的，但是由于版本更新问题，新版与旧版的生命周期在很多方面发生了改变，所以个人还是觉得有必要拿出来区分一下，为后续方便开发做准备。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/11HBHD0.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="Anthony高鸿宇 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
         
-      
-    </div>
 
-    
-    
-    
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Anthony高鸿宇
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://anthony-ghy.github.io/archives/120FH88.html" title="Hexo+GitHubPages搭博踩坑记录">https://anthony-ghy.github.io/archives/120FH88.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-    <div>
-      
-    </div>
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://anthony-ghy.github.io/archives/3D1S50T.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Anthony高鸿宇">
-      <meta itemprop="description" content="敬畏墨菲定律。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anthony的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/archives/3D1S50T.html" class="post-title-link" itemprop="url">React基础学习笔记1</a>
-        </h2>
+          <div class="post-tags">
+              <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag"><i class="fa fa-tag"></i> 博客搭建</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%99%BD/" rel="tag"><i class="fa fa-tag"></i> 前端小白</a>
+          </div>
 
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-19 10:08:37 / 修改时间：10:25:01" itemprop="dateCreated datePublished" datetime="2020-11-19T10:08:37+08:00">2020-11-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">React学习</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> 学习接触React已经有一段时间，从刚开始的懵懂到现在稍微明白整体的架构，这里想结合最近的学习React整理一些学习笔记，方便后期进行参考。</p>
-<p><strong>参考资料主要有</strong>：</p>
-<p>React官方文档，Github优质React项目。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/3D1S50T.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
 
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://anthony-ghy.github.io/archives/X1EXZ1.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Anthony高鸿宇">
-      <meta itemprop="description" content="敬畏墨菲定律。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anthony的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/X1EXZ1.html" class="post-title-link" itemprop="url">数学在前端动画中的应用</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-18 19:30:19" itemprop="dateCreated datePublished" datetime="2020-11-18T19:30:19+08:00">2020-11-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-19 09:33:07" itemprop="dateModified" datetime="2020-11-19T09:33:07+08:00">2020-11-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB/" itemprop="url" rel="index"><span itemprop="name">前端动画</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>7.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>有时候你希望能回到过去，告诉年轻的自己，数学确实很重要! 但我怀疑自己当时会不会听进去…</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​     三角函数、两点间的距离，还有各种图形、角度计算公式，每每听到这些词语，就放佛回到了高中时代，想起了数学课本上那一道道让人头疼的数学题。在前端开发领域中，数学同样占据着举足轻重的地位，每次当视觉交互设计师提出，能不能按照这样那样的交互方式进行开发的时候，我时常会感觉力不从心。对于动画效果，实现的方式主要有css和js两种，为了做出更高质量的动画效果，通常需要借助一些数学知识来解决，本文主要结合三角函数在前端动画中的应用进行介绍。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/X1EXZ1.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/archives/151FCAP.html" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/archives/ZN6DJ6.html" rel="next" title="一些知识点总结1">
+      一些知识点总结1 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -1027,6 +566,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5%E8%BF%90%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-text">静态网页运作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-text">搭建流程介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GitHubPages%E8%AE%BE%E7%BD%AE"><span class="nav-text">GitHubPages设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAGithub-Pages%E4%BB%93%E5%BA%93"><span class="nav-text">创建Github Pages仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85hexo%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96%E5%8D%9A%E5%AE%A2"><span class="nav-text">安装hexo并初始化博客</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-text">创建博客</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config-yml"><span class="nav-text">config.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-text">主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%9B%BE%E6%A0%87"><span class="nav-text">1.增加一个图标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%BC%80%E5%90%AF%E8%8F%9C%E5%8D%95%E6%A0%8F%E8%B7%B3%E8%BD%AC"><span class="nav-text">2.开启菜单栏跳转</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%A4%B4%E5%83%8F%E8%AE%BE%E7%BD%AE"><span class="nav-text">3.头像设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E7%A4%BE%E4%BA%A4%E6%B7%BB%E5%8A%A0"><span class="nav-text">4.社交添加</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E6%B7%BB%E5%8A%A0"><span class="nav-text">5.站内搜索添加</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E9%98%85%E8%AF%BB%E5%85%A8%E6%96%87%E6%8C%89%E9%92%AE"><span class="nav-text">6.阅读全文按钮</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E5%AE%9E%E7%8E%B0%E6%96%87%E7%AB%A0%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD"><span class="nav-text">7.实现文章统计功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-%E5%A4%B4%E9%83%A8%E6%B7%BB%E5%8A%A0%E8%BF%9B%E5%BA%A6%E6%9D%A1"><span class="nav-text">8.头部添加进度条</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-%E6%B7%BB%E5%8A%A0Live-2D-%E6%A8%A1%E5%9E%8B"><span class="nav-text">9.添加Live 2D 模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

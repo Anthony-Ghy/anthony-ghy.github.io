@@ -51,6 +51,32 @@
   </entry>
   
   <entry>
+    <title>Hexo+GitHubPages搭博踩坑记录</title>
+    <link href="https://anthony-ghy.github.io/archives/120FH88.html"/>
+    <id>https://anthony-ghy.github.io/archives/120FH88.html</id>
+    <published>2020-11-22T16:00:00.000Z</published>
+    <updated>2020-12-08T02:56:04.954Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;本文主要介绍下Hexo和GitHub</summary>
+        
+      
+    
+    
+    
+    
+    <category term="博客搭建" scheme="https://anthony-ghy.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+    <category term="前端小白" scheme="https://anthony-ghy.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%99%BD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="https://anthony-ghy.github.io/archives/151FCAP.html"/>
     <id>https://anthony-ghy.github.io/archives/151FCAP.html</id>
@@ -71,9 +97,9 @@
     <category term="我来了！" scheme="https://anthony-ghy.github.io/categories/%E6%88%91%E6%9D%A5%E4%BA%86%EF%BC%81/"/>
     
     
-    <category term="Hello World" scheme="https://anthony-ghy.github.io/tags/Hello-World/"/>
-    
     <category term="前端小白" scheme="https://anthony-ghy.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%99%BD/"/>
+    
+    <category term="Hello World" scheme="https://anthony-ghy.github.io/tags/Hello-World/"/>
     
     <category term="日常" scheme="https://anthony-ghy.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
     
