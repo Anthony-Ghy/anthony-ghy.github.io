@@ -14,14 +14,14 @@
         <category>我来了！</category>
       </categories>
       <tags>
-        <tag>前端小白</tag>
         <tag>Hello World</tag>
+        <tag>前端小白</tag>
         <tag>日常</tag>
       </tags>
   </entry>
   <entry>
-    <title>一些知识点总结1</title>
-    <url>/archives/ZN6DJ6.html</url>
+    <title>Js数组方法汇总</title>
+    <url>/archives/253P6DE.html</url>
     <content><![CDATA[<p>1.join</p>
 <p>用于把数组转换为一个字符串，原数组不会发生改变。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3];</span><br><span class="line">console.log(arr.join());   &#x2F;&#x2F; 1,2,3</span><br><span class="line">console.log(arr.join(&quot;-&quot;));   &#x2F;&#x2F; 1-2-3</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [1, 2, 3]（原数组不变）</span><br></pre></td></tr></table></figure>
@@ -122,7 +122,7 @@
 <p>总结：整体就是这些，后续继续补充。</p>
 ]]></content>
       <categories>
-        <category>数组方法汇总</category>
+        <category>数组</category>
       </categories>
       <tags>
         <tag>前端</tag>
@@ -364,8 +364,8 @@
 <p><a href="https://theme-next.iissnan.com/">Next使用文档</a></p>
 ]]></content>
       <tags>
-        <tag>博客搭建</tag>
         <tag>前端小白</tag>
+        <tag>博客搭建</tag>
       </tags>
   </entry>
   <entry>
