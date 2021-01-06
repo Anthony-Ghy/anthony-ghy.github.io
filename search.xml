@@ -22,6 +22,117 @@
   <entry>
     <title>一些知识点总结1</title>
     <url>/archives/ZN6DJ6.html</url>
+    <content><![CDATA[<p>1.join</p>
+<p>用于把数组转换为一个字符串，原数组不会发生改变。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3];</span><br><span class="line">console.log(arr.join());   &#x2F;&#x2F; 1,2,3</span><br><span class="line">console.log(arr.join(&quot;-&quot;));   &#x2F;&#x2F; 1-2-3</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [1, 2, 3]（原数组不变）</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>2.concat</p>
+<p>数组后面新增数组，不会改变原数组，会生成一个副本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7];</span><br><span class="line">var arrCopy &#x3D; arr.concat(9,[11,13]);</span><br><span class="line">console.log(arrCopy);   &#x2F;&#x2F;[1, 3, 5, 7, 9, 11, 13]</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [1, 3, 5, 7](原数组未被修改)</span><br></pre></td></tr></table></figure>
+
+<p>3.slice</p>
+<p>不会改变原数组，分为一个参数和两个参数。参数都代表数组下标。</p>
+<p>1.一个参数时：从当前下标位置直接到数组末尾。</p>
+<p>2.两个参数时：从起始下标到结束下标，但不包括结束下标。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7,9,11];</span><br><span class="line">var arrCopy &#x3D; arr.slice(1);</span><br><span class="line">var arrCopy2 &#x3D; arr.slice(1,4);</span><br><span class="line">var arrCopy3 &#x3D; arr.slice(1,-2);&#x2F;&#x2F;相当于arr.slice(1,4)</span><br><span class="line">var arrCopy4 &#x3D; arr.slice(-4,-1);&#x2F;&#x2F;相当于arr.slice(2,5)</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[1, 3, 5, 7, 9, 11](原数组没变)</span><br><span class="line">console.log(arrCopy);   &#x2F;&#x2F;[3, 5, 7, 9, 11]</span><br><span class="line">console.log(arrCopy2);   &#x2F;&#x2F;[3, 5, 7]</span><br><span class="line">console.log(arrCopy3);   &#x2F;&#x2F;[3, 5, 7]</span><br><span class="line">console.log(arrCopy4);   &#x2F;&#x2F;[5, 7, 9]</span><br></pre></td></tr></table></figure>
+
+<p>4.push</p>
+<p>原数组末尾新增元素。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [&quot;Lily&quot;,&quot;lucy&quot;,&quot;Tom&quot;];</span><br><span class="line">var count &#x3D; arr.push(&quot;Jack&quot;,&quot;Sean&quot;);</span><br><span class="line">console.log(count);  &#x2F;&#x2F; 5</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [&quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;, &quot;Jack&quot;, &quot;Sean&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>5.pop </p>
+<p>删除原数组末尾最后一个元素。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var item &#x3D; arr.pop();</span><br><span class="line">console.log(item);   &#x2F;&#x2F; Sean</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [&quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;, &quot;Jack&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>6.shift</p>
+<p>原数组头部删除第一个元素,如果数组没有长度以后，原数组最终是一个空数组。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var item &#x3D; arr.shift();</span><br><span class="line">console.log(item);   &#x2F;&#x2F; Jack</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [&quot;Sean&quot;, &quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>7.unshift</p>
+<p>原数组头部新增元素。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [&quot;Lily&quot;,&quot;lucy&quot;,&quot;Tom&quot;];</span><br><span class="line">var count &#x3D; arr.unshift(&quot;Jack&quot;,&quot;Sean&quot;);</span><br><span class="line">console.log(count);   &#x2F;&#x2F; 5</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[&quot;Jack&quot;, &quot;Sean&quot;, &quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>8.reverse</p>
+<p>改变原数组，将原数组整体顺序颠倒。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [13, 24, 51, 3];</span><br><span class="line">console.log(arr.reverse());   &#x2F;&#x2F;[3, 51, 24, 13]</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[3, 51, 24, 13](原数组改变)</span><br></pre></td></tr></table></figure>
+
+<p>9.splice</p>
+<p>三种功能：插入、删除、替换 原数组进行更改。</p>
+<p>1.删除数组项数（两个参数）【索引值开始值，项数】：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7,9,11];</span><br><span class="line">var arrRemoved &#x3D; arr.splice(0,2);</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[5, 7, 9, 11]</span><br><span class="line">console.log(arrRemoved);   &#x2F;&#x2F;[1, 3]</span><br></pre></td></tr></table></figure>
+
+<p>2.插入项数  【索引值开始值，0，要插入的数】</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var array1 &#x3D; [22, 3, 31, 12];</span><br><span class="line">array1.splice(1, 0, 12, 35);  &#x2F;&#x2F;[]</span><br><span class="line">console.log(array1); &#x2F;&#x2F; [22, 12, 35, 3, 31, 12]</span><br></pre></td></tr></table></figure>
+
+<p>3.替换项数  【索引开始值，项数，要替换的数】</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const array1 &#x3D; [22, 3, 31, 12];</span><br><span class="line">array1.splice(1, 1, 8);   &#x2F;&#x2F;[3]</span><br><span class="line">console.log(array1);  &#x2F;&#x2F; [22, 8, 31, 12]</span><br></pre></td></tr></table></figure>
+
+<p>10.indexOf</p>
+<p>要查找的元素，返回在数组中的下标位置，没有返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7,7,5,3,1];</span><br><span class="line">console.log(arr.indexOf(5));   &#x2F;&#x2F;2</span><br><span class="line">console.log(arr.indexOf(&quot;5&quot;));   &#x2F;&#x2F;-1</span><br></pre></td></tr></table></figure>
+
+<p>11.forEach</p>
+<p>参数（value,index） 该方法没有返回值，遍历数组使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [11, 22, 33, 44, 55];</span><br><span class="line">arr.forEach(function(x, index, a)&#123;</span><br><span class="line">	console.log(x + &#39;|&#39; + index + &#39;|&#39; + (a &#x3D;&#x3D;&#x3D; arr));</span><br><span class="line">&#125;);</span><br><span class="line">输出为：</span><br><span class="line"> 11|0|true</span><br><span class="line"> 22|1|true</span><br><span class="line"> 33|2|true</span><br><span class="line"> 44|3|true</span><br><span class="line"> 55|4|true</span><br></pre></td></tr></table></figure>
+
+<p>12.map</p>
+<p>map的方法会返回一个新数组，新数组是return之后形成的数组。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">var arr2 &#x3D; arr.map((item)&#x3D;&gt;&#123;</span><br><span class="line">	return item*item;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr2);  &#x2F;&#x2F;[1, 4, 9, 16, 25]</span><br></pre></td></tr></table></figure>
+
+<p>13.filter</p>
+<p>返回满足过滤条件的数组。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];</span><br><span class="line">var arr2 &#x3D; arr.filter(function(x, index) &#123;</span><br><span class="line">	return index % 3 &#x3D;&#x3D;&#x3D; 0 || x &gt;&#x3D; 8;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr2);  &#x2F;&#x2F;[1, 4, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
+
+<p>14.reduce</p>
+<p>逐步处理相关参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var values &#x3D; [1,2,3,4,5];</span><br><span class="line">var sum &#x3D; values.reduce(function(prev, cur, index, array)&#123;</span><br><span class="line">return prev + cur;</span><br><span class="line">&#125;,10);   &#x2F;&#x2F;数组一开始加了一个初始值10,可以不设默认0</span><br><span class="line">console.log(sum);  &#x2F;&#x2F;25</span><br></pre></td></tr></table></figure>
+
+<p>15.some</p>
+<p>判断数组中是否包含满足条件的项，只有一项满足，就会返回true,没有满足返回false。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">var arr2 &#x3D; arr.some(function(x) &#123;</span><br><span class="line">	return x &lt; 3;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr2);  &#x2F;&#x2F;true</span><br><span class="line">var arr3 &#x3D; arr.some(function(x) &#123;</span><br><span class="line">	return x &lt; 1;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr3);  &#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
+
+<p>16.includes</p>
+<p>判断一个数组是否包括该值，返回true/false   另外：【NaN】被认为与原值相等。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const array1 &#x3D; [22, 3, 31, 12, &#39;arr&#39;];</span><br><span class="line">const includes &#x3D; array1.includes(31);</span><br><span class="line">console.log(includes); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let values &#x3D; [1, NaN, 2];</span><br><span class="line">console.log(values.indexOf(NaN));&#x2F;&#x2F;-1</span><br><span class="line">console.log(values.includes(NaN));&#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+
+<p>17.toString</p>
+<p>将数组转换为字符串</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const array1 &#x3D; [22, 3, 31, 12];</span><br><span class="line">const str &#x3D; array1.toLocaleString();</span><br><span class="line">const str1 &#x3D; array1.toString();</span><br><span class="line"></span><br><span class="line">console.log(str); &#x2F;&#x2F; 22,3,31,12</span><br><span class="line">console.log(str1); &#x2F;&#x2F; 22,3,31,12</span><br></pre></td></tr></table></figure>
+
+<p>18.find和findIndex</p>
+<p>find返回匹配的数值，findIndex返回匹配值的索引。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let arr &#x3D; [1, 2, 3, &#39;arr&#39;, 5, 1, 9];</span><br><span class="line"></span><br><span class="line">console.log(arr.find((value, keys, arr) &#x3D;&gt; &#123;</span><br><span class="line">    return value &gt; 2;</span><br><span class="line">&#125;)); &#x2F;&#x2F; 3 返回匹配的值</span><br><span class="line"></span><br><span class="line">console.log(arr.findIndex((value, keys, arr) &#x3D;&gt; &#123;</span><br><span class="line">    return value &gt; 2;</span><br><span class="line">&#125;)); &#x2F;&#x2F; 2 返回匹配位置的索引</span><br></pre></td></tr></table></figure>
+
+<p>19.flat</p>
+<p>会创建一个新数组，对原数组没有影响。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const arr1 &#x3D; [0, 1, 2, [3, 4]];</span><br><span class="line"></span><br><span class="line">console.log(arr1.flat());</span><br><span class="line">&#x2F;&#x2F; expected output: [0, 1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">const arr2 &#x3D; [0, 1, 2, [[[3, 4]]]];</span><br><span class="line"></span><br><span class="line">console.log(arr2.flat(2));</span><br><span class="line">&#x2F;&#x2F; expected output: [0, 1, 2, [3, 4]]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;使用 Infinity，可展开任意深度的嵌套数组</span><br><span class="line">var arr4 &#x3D; [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];</span><br><span class="line">arr4.flat(Infinity);</span><br><span class="line">&#x2F;&#x2F; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 扁平化数组空项,如果原数组有空位，flat()方法会跳过空位</span><br><span class="line">var arr4 &#x3D; [1, 2, , 4, 5];</span><br><span class="line">arr4.flat();</span><br><span class="line">&#x2F;&#x2F; [1, 2, 4, 5]</span><br></pre></td></tr></table></figure>
+
+<p>20.扩展运算符</p>
+<p>1.赋值数组</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const a1 &#x3D; [1, 2];</span><br><span class="line">const a2 &#x3D; [...a1];</span><br></pre></td></tr></table></figure>
+
+<p>2.合并数组</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const arr1 &#x3D; [&#39;a&#39;, &#39;b&#39;];</span><br><span class="line">const arr2 &#x3D; [&#39;c&#39;];</span><br><span class="line">const arr3 &#x3D; [&#39;d&#39;, &#39;e&#39;];</span><br><span class="line">const newArr &#x3D; [...arr1, ...arr2,...arr3];</span><br><span class="line">console.log(newArr) &#x2F;&#x2F;[&#39;a&#39;, &#39;b&#39;,&#39;c&#39;,&#39;d&#39;, &#39;e&#39;]</span><br></pre></td></tr></table></figure>
+
+<p>3.与解构赋值结合</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const [a, ...b] &#x3D; [&#39;a&#39;, &#39;b&#39;,&#39;c&#39;,&#39;d&#39;, &#39;e&#39;];</span><br><span class="line">console.log(a) &#x2F;&#x2F;a</span><br><span class="line">console.log(b) &#x2F;&#x2F;[&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>总结：整体就是这些，后续继续补充。</p>
+]]></content>
+      <categories>
+        <category>数组方法汇总</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>js</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些知识点总结1</title>
+    <url>/archives/ZN6DJ6.html</url>
     <content><![CDATA[<p>总结一下近期学习到的一些基础知识补充。</p>
 <h3 id="一、a-标签小技巧"><a href="#一、a-标签小技巧" class="headerlink" title="一、a 标签小技巧"></a>一、a 标签小技巧</h3><p>网页a标签默认在当前窗口打开，如果想另开一个窗口需要在a标签里面设置target=”_blank”属性。</p>
 <a id="more"></a>
