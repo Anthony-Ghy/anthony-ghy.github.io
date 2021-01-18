@@ -29,6 +29,7 @@
 <p>2.http的头信息不超出一下字段：</p>
 <p>Accept, Accept-Language, Content-Language, Content-Type（仅限于下列三个值: text/plain, multipart/form-data, application/x-www-form-urlencoded）</p>
 <p>浏览器直接发出CORS请求，在头信息中新增一个Origin 字段。</p>
+<a id="more"></a>
 <p><strong>2.非简单请求：</strong> </p>
 <p>请求方法主要是put/delete，或者content-type:application/json类型字段都不是简单请求。</p>
 <p>非简单请求会在正式请求前，增加一个“预检请求”。查看当前网页所在的域名是否在服务器的许可名单中，只有得到肯定的答复，浏览器才会发出正式的XMLHttpRequest请求，否则就会报错。</p>
