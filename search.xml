@@ -14,303 +14,9 @@
         <category>我来了！</category>
       </categories>
       <tags>
-        <tag>前端小白</tag>
         <tag>Hello World</tag>
+        <tag>前端小白</tag>
         <tag>日常</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>跨域相关问题总结</title>
-    <url>/archives/07HKRY.html</url>
-    <content><![CDATA[<h2 id="跨域相关问题总结"><a href="#跨域相关问题总结" class="headerlink" title="跨域相关问题总结"></a>跨域相关问题总结</h2><h4 id="前端经常会产生跨域相关问题"><a href="#前端经常会产生跨域相关问题" class="headerlink" title="前端经常会产生跨域相关问题"></a>前端经常会产生跨域相关问题</h4><p>目前主要使用cors相关知识进行解决，在介绍cors过程中主要结合相关知识。</p>
-<p>两种请求方式：</p>
-<p><strong>1.简单请求：</strong></p>
-<p>1.主要是下列三种方法之一： Get、Head、Post</p>
-<p>2.http的头信息不超出一下字段：</p>
-<p>Accept, Accept-Language, Content-Language, Content-Type（仅限于下列三个值: text/plain, multipart/form-data, application/x-www-form-urlencoded）</p>
-<p>浏览器直接发出CORS请求，在头信息中新增一个Origin 字段。</p>
-<a id="more"></a>
-<p><strong>2.非简单请求：</strong> </p>
-<p>请求方法主要是put/delete，或者content-type:application/json类型字段都不是简单请求。</p>
-<p>非简单请求会在正式请求前，增加一个“预检请求”。查看当前网页所在的域名是否在服务器的许可名单中，只有得到肯定的答复，浏览器才会发出正式的XMLHttpRequest请求，否则就会报错。</p>
-<p>Access-Control-Allow-Origin/Access-Control-Allow-Credentials 这两个是可选的，他的值是一个boolean值。表示是否在跨域情况下允许发送cookie。默认情况下，cookie不包括在CORS请求之中。设为true,表示服务器明确许可。要想浏览器发送cookie，一方面要服务器指定Access-Control-Allow-Credentials字段，同时在前端请求中一定要设置withCredentials 属性。方可传递cookie。</p>
-<p><strong>http headers之host,referer,orign</strong></p>
-<p>referer:</p>
-<p>就是网页的链接，即表示当前页面是通过此来源页面的链接进入的。</p>
-<p><strong>注意</strong></p>
-<p>只要浏览器能获取到请求源都会携带。如果浏览器如果不能获取请求源，那么请求头中不会携带referer。</p>
-<p> Origin:</p>
-<p>该首部用于CORS请求或者POST请求。</p>
-<p>当我们浏览器发出跨域请求的时候，服务器会检验当前服务器是不是被允许的站点，服务器就是通过origin这个字段来进行判断的。</p>
-<p><strong>注意</strong></p>
-<p>只有跨域请求（可以看到 response 有对应的 header：Access-Control-Allow-Origin），或者同域时发送post请求，才会携带origin请求头。 如果浏览器不能获取请求源，那么 origin 满足上面情况也会携带，不过其值为null。</p>
-<p>Host介绍：host的值为客户端请求的服务器的域名（或者ip）和端口。</p>
-<p>host用的最多的场景是：单台服务器设置多个虚拟主机时。</p>
-<p>举个简单的例子： 我在IP地址为127.0.0.1的服务器上，通过apache配置了两个虚拟主机：a.com,b.com，这两个域名通过DNS解析都会指向127.0.0.1，我在浏览器中访问a.com的网站时，DNS将域名转化为IP地址，此时可以通过客户端请求头的host信息判断访问的是服务器上对应的虚拟主机。</p>
-<p><img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/164380/15/2040/10502/5ffbebbdEa4f5743f/c085a375fb4773a3.png"></p>
-<p>如果没有host请求头，客户端的请求就不能标记出该访问哪个虚拟主机了。</p>
-<p>###中间插一个问题<br>在生产环境或者预发环境中<br>通过cors进行配置以后服务端返回的Response Header的报文头，常见的配置有以下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Headers: *</span><br><span class="line">Access-Control-Allow-Methods: GET, POST, OPTIONS</span><br><span class="line">Access-Control-Allow-Origin: *</span><br></pre></td></tr></table></figure>
-<p>这个在Chrome浏览器中是正常的，但是在模拟器里面由于是Safari内核，就会提示跨域！！！<br>如图所示：<br><img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/166338/30/3222/950904/6006a5a0E0b353afd/5ddfcf3fcca46b97.png"></p>
-<p><img data-src="https://img11.360buyimg.com/imagetools/jfs/t1/151408/14/15962/247421/6006a5a0E7c94798a/dfa4932207f1c692.png"><br>仔细对比以后 *<em>Access-Control-Allow-Headers：**</em> 这个星号的问题导致。<br>解决办法就是服务端 设置 ：Access-Control-Allow-Headers: Content-Type 单独写好不要用星号。</p>
-<p><strong>view parsed</strong></p>
-<p>转换为JSON字符串。</p>
-<p>View source</p>
-<p>转换为JSON对象。</p>
-<p>项目中直接如果使用对象进行传参，最终传递的是JSON对象。</p>
-]]></content>
-      <categories>
-        <category>浏览器跨域</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>浏览器</tag>
-        <tag>跨域</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数组对象解构赋值</title>
-    <url>/archives/SHB3RK.html</url>
-    <content><![CDATA[<h2 id="数组对象解构赋值"><a href="#数组对象解构赋值" class="headerlink" title="数组对象解构赋值"></a>数组对象解构赋值</h2><h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a><strong>对象</strong></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let node &#x3D; &#123;</span><br><span class="line">  type: &#39;Identifier&#39;,</span><br><span class="line">  name: &#39;foo&#39;</span><br><span class="line">&#125;;</span><br><span class="line">let &#123; type, name &#125; &#x3D; node;</span><br><span class="line">console.log(type, name); &#x2F;&#x2F; Identifier foo</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let node &#x3D; &#123;</span><br><span class="line">  type: &#39;Identifier&#39;</span><br><span class="line">&#125;;</span><br><span class="line">let &#123; type, name &#x3D; &#39;wozien&#39; &#125; &#x3D; node;</span><br><span class="line">console.log(type, name); &#x2F;&#x2F; Identifier wozien</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let node &#x3D; &#123;</span><br><span class="line">  type: &#39;Identifier&#39;,</span><br><span class="line">  name: &#39;foo&#39;</span><br><span class="line">&#125;;</span><br><span class="line">let &#123; type: myType, name: myName &#x3D; &#39;wozien&#39; &#125; &#x3D; node;</span><br><span class="line">console.log(myType, myName); &#x2F;&#x2F; Identifier foo</span><br></pre></td></tr></table></figure>
-
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a><strong>数组</strong></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let colors &#x3D; [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;];</span><br><span class="line">let [firstColor, secondColor] &#x3D; colors;</span><br><span class="line">console.log(firstColor, secondColor); &#x2F;&#x2F; red green</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let colors &#x3D; [&#39;red&#39;];</span><br><span class="line">let [firstColor, secondColor &#x3D; &#39;green&#39;] &#x3D; colors;</span><br><span class="line">console.log(firstColor, secondColor); &#x2F;&#x2F;red green</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let colors &#x3D; [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;];</span><br><span class="line">let [firstColor, ...secondColor] &#x3D; colors;</span><br><span class="line">console.log(firstColor); &#x2F;&#x2F;red </span><br><span class="line">console.log(secondColor); &#x2F;&#x2F; [ &#39;green&#39;, &#39;blue&#39; ]</span><br></pre></td></tr></table></figure>
-
-<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a><strong>应用场景</strong></h4><p><strong>函数解构</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function setCookie(name, value, &#123; path, domain, expire &#125;) &#123;</span><br><span class="line">  &#x2F;&#x2F; 设置cookie</span><br><span class="line">  console.log(path, domain);   &#x2F;&#x2F; &#x2F;，localhost</span><br><span class="line">&#125;</span><br><span class="line">setCookie(&#39;a&#39;, &#39;b&#39;, &#123; path: &#39;&#x2F;&#39;, domain: &#39;localhost&#39; &#125;);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function setCookie(name, value, &#123; path, domain, expire &#125; &#x3D; &#123;&#125;) &#123;</span><br><span class="line">  &#x2F;&#x2F; 设置cookie</span><br><span class="line">  console.log(path, domain);   &#x2F;&#x2F; undefinded,undefinded</span><br><span class="line">&#125;</span><br><span class="line">setCookie(&#39;a&#39;, &#39;b&#39;);</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>数组</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>js</tag>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Js数组方法汇总</title>
-    <url>/archives/253P6DE.html</url>
-    <content><![CDATA[<p>1.join</p>
-<p>用于把数组转换为一个字符串，原数组不会发生改变。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3];</span><br><span class="line">console.log(arr.join());   &#x2F;&#x2F; 1,2,3</span><br><span class="line">console.log(arr.join(&quot;-&quot;));   &#x2F;&#x2F; 1-2-3</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [1, 2, 3]（原数组不变）</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>2.concat</p>
-<p>数组后面新增数组，不会改变原数组，会生成一个副本。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7];</span><br><span class="line">var arrCopy &#x3D; arr.concat(9,[11,13]);</span><br><span class="line">console.log(arrCopy);   &#x2F;&#x2F;[1, 3, 5, 7, 9, 11, 13]</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [1, 3, 5, 7](原数组未被修改)</span><br></pre></td></tr></table></figure>
-
-<p>3.slice</p>
-<p>不会改变原数组，分为一个参数和两个参数。参数都代表数组下标。</p>
-<p>1.一个参数时：从当前下标位置直接到数组末尾。</p>
-<p>2.两个参数时：从起始下标到结束下标，但不包括结束下标。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7,9,11];</span><br><span class="line">var arrCopy &#x3D; arr.slice(1);</span><br><span class="line">var arrCopy2 &#x3D; arr.slice(1,4);</span><br><span class="line">var arrCopy3 &#x3D; arr.slice(1,-2);&#x2F;&#x2F;相当于arr.slice(1,4)</span><br><span class="line">var arrCopy4 &#x3D; arr.slice(-4,-1);&#x2F;&#x2F;相当于arr.slice(2,5)</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[1, 3, 5, 7, 9, 11](原数组没变)</span><br><span class="line">console.log(arrCopy);   &#x2F;&#x2F;[3, 5, 7, 9, 11]</span><br><span class="line">console.log(arrCopy2);   &#x2F;&#x2F;[3, 5, 7]</span><br><span class="line">console.log(arrCopy3);   &#x2F;&#x2F;[3, 5, 7]</span><br><span class="line">console.log(arrCopy4);   &#x2F;&#x2F;[5, 7, 9]</span><br></pre></td></tr></table></figure>
-
-<p><strong>这里记住一个点：</strong><br>使用Array.slice方法可以直接进行浅拷贝一个新的数组。原数组不会进行改变，只会创建一个新数组。但是如果数组元素是对象等使用这个方式进行数组拷贝是不正确的。因为对象元素更改，原数组相对应的对象也会进行更改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const number &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">const newNumber &#x3D; number.slice();</span><br><span class="line">newNumber.push(6);&#x2F;&#x2F;添加新项证明不会改变原数组</span><br><span class="line">console.log(number);&#x2F;&#x2F;[1,2,3,4,5]</span><br><span class="line">console.log(newNumber);&#x2F;&#x2F;[1,2,3,4,5,6]</span><br></pre></td></tr></table></figure>
-
-<p>4.push</p>
-<p>原数组末尾新增元素。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [&quot;Lily&quot;,&quot;lucy&quot;,&quot;Tom&quot;];</span><br><span class="line">var count &#x3D; arr.push(&quot;Jack&quot;,&quot;Sean&quot;);</span><br><span class="line">console.log(count);  &#x2F;&#x2F; 5</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [&quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;, &quot;Jack&quot;, &quot;Sean&quot;]</span><br></pre></td></tr></table></figure>
-
-<p>5.pop </p>
-<p>删除原数组末尾最后一个元素。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var item &#x3D; arr.pop();</span><br><span class="line">console.log(item);   &#x2F;&#x2F; Sean</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [&quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;, &quot;Jack&quot;]</span><br></pre></td></tr></table></figure>
-
-<p>6.shift</p>
-<p>原数组头部删除第一个元素,如果数组没有长度以后，原数组最终是一个空数组。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var item &#x3D; arr.shift();</span><br><span class="line">console.log(item);   &#x2F;&#x2F; Jack</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [&quot;Sean&quot;, &quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;]</span><br></pre></td></tr></table></figure>
-
-<p>7.unshift</p>
-<p>原数组头部新增元素。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [&quot;Lily&quot;,&quot;lucy&quot;,&quot;Tom&quot;];</span><br><span class="line">var count &#x3D; arr.unshift(&quot;Jack&quot;,&quot;Sean&quot;);</span><br><span class="line">console.log(count);   &#x2F;&#x2F; 5</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[&quot;Jack&quot;, &quot;Sean&quot;, &quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;]</span><br></pre></td></tr></table></figure>
-
-<p>8.reverse</p>
-<p>改变原数组，将原数组整体顺序颠倒。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [13, 24, 51, 3];</span><br><span class="line">console.log(arr.reverse());   &#x2F;&#x2F;[3, 51, 24, 13]</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[3, 51, 24, 13](原数组改变)</span><br></pre></td></tr></table></figure>
-
-<p>9.splice</p>
-<p>三种功能：插入、删除、替换 原数组进行更改。</p>
-<p>1.删除数组项数（两个参数）【索引值开始值，项数】：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7,9,11];</span><br><span class="line">var arrRemoved &#x3D; arr.splice(0,2);</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[5, 7, 9, 11]</span><br><span class="line">console.log(arrRemoved);   &#x2F;&#x2F;[1, 3]</span><br></pre></td></tr></table></figure>
-
-<p>2.插入项数  【索引值开始值，0，要插入的数】</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var array1 &#x3D; [22, 3, 31, 12];</span><br><span class="line">array1.splice(1, 0, 12, 35);  &#x2F;&#x2F;[]</span><br><span class="line">console.log(array1); &#x2F;&#x2F; [22, 12, 35, 3, 31, 12]</span><br></pre></td></tr></table></figure>
-
-<p>3.替换项数  【索引开始值，项数，要替换的数】</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const array1 &#x3D; [22, 3, 31, 12];</span><br><span class="line">array1.splice(1, 1, 8);   &#x2F;&#x2F;[3]</span><br><span class="line">console.log(array1);  &#x2F;&#x2F; [22, 8, 31, 12]</span><br></pre></td></tr></table></figure>
-
-<p>10.indexOf</p>
-<p>要查找的元素，返回在数组中的下标位置，没有返回-1。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7,7,5,3,1];</span><br><span class="line">console.log(arr.indexOf(5));   &#x2F;&#x2F;2</span><br><span class="line">console.log(arr.indexOf(&quot;5&quot;));   &#x2F;&#x2F;-1</span><br></pre></td></tr></table></figure>
-
-<p>11.forEach</p>
-<p>参数（value,index） 该方法没有返回值，遍历数组使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [11, 22, 33, 44, 55];</span><br><span class="line">arr.forEach(function(x, index, a)&#123;</span><br><span class="line">	console.log(x + &#39;|&#39; + index + &#39;|&#39; + (a &#x3D;&#x3D;&#x3D; arr));</span><br><span class="line">&#125;);</span><br><span class="line">输出为：</span><br><span class="line"> 11|0|true</span><br><span class="line"> 22|1|true</span><br><span class="line"> 33|2|true</span><br><span class="line"> 44|3|true</span><br><span class="line"> 55|4|true</span><br></pre></td></tr></table></figure>
-
-<p>12.map</p>
-<p>map的方法会返回一个新数组，新数组是return之后形成的数组。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">var arr2 &#x3D; arr.map((item)&#x3D;&gt;&#123;</span><br><span class="line">	return item*item;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr2);  &#x2F;&#x2F;[1, 4, 9, 16, 25]</span><br></pre></td></tr></table></figure>
-
-<p>13.filter</p>
-<p>返回满足过滤条件的数组。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];</span><br><span class="line">var arr2 &#x3D; arr.filter(function(x, index) &#123;</span><br><span class="line">	return index % 3 &#x3D;&#x3D;&#x3D; 0 || x &gt;&#x3D; 8;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr2);  &#x2F;&#x2F;[1, 4, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
-
-<p>14.reduce</p>
-<p>逐步处理相关参数</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var values &#x3D; [1,2,3,4,5];</span><br><span class="line">var sum &#x3D; values.reduce(function(prev, cur, index, array)&#123;</span><br><span class="line">return prev + cur;</span><br><span class="line">&#125;,10);   &#x2F;&#x2F;数组一开始加了一个初始值10,可以不设默认0</span><br><span class="line">console.log(sum);  &#x2F;&#x2F;25</span><br></pre></td></tr></table></figure>
-
-<p>15.some/every</p>
-<p>some</p>
-<p>判断数组中是否包含满足条件的项，只有一项满足，就会返回true,没有满足返回false。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">var arr2 &#x3D; arr.some(function(x) &#123;</span><br><span class="line">	return x &lt; 3;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr2);  &#x2F;&#x2F;true</span><br><span class="line">var arr3 &#x3D; arr.some(function(x) &#123;</span><br><span class="line">	return x &lt; 1;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr3);  &#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
-<p>every</p>
-<p>运行给定函数，如果所有项都符合则会返回true，有一项不是true就会返回false。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let arr &#x3D; [3, 4, 5, 6]</span><br><span class="line">let result &#x3D; arr.every((item) &#x3D;&gt; item &gt; 2)</span><br><span class="line">console.log(result) &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
-
-
-<p>16.includes</p>
-<p>判断一个数组是否包括该值，返回true/false   另外：【NaN】被认为与原值相等。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const array1 &#x3D; [22, 3, 31, 12, &#39;arr&#39;];</span><br><span class="line">const includes &#x3D; array1.includes(31);</span><br><span class="line">console.log(includes); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let values &#x3D; [1, NaN, 2];</span><br><span class="line">console.log(values.indexOf(NaN));&#x2F;&#x2F;-1</span><br><span class="line">console.log(values.includes(NaN));&#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
-
-<p>17.toString</p>
-<p>将数组转换为字符串</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const array1 &#x3D; [22, 3, 31, 12];</span><br><span class="line">const str &#x3D; array1.toLocaleString();</span><br><span class="line">const str1 &#x3D; array1.toString();</span><br><span class="line"></span><br><span class="line">console.log(str); &#x2F;&#x2F; 22,3,31,12</span><br><span class="line">console.log(str1); &#x2F;&#x2F; 22,3,31,12</span><br></pre></td></tr></table></figure>
-
-<p>18.find和findIndex</p>
-<p>find返回匹配的数值，findIndex返回匹配值的索引。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let arr &#x3D; [1, 2, 3, &#39;arr&#39;, 5, 1, 9];</span><br><span class="line"></span><br><span class="line">console.log(arr.find((value, keys, arr) &#x3D;&gt; &#123;</span><br><span class="line">    return value &gt; 2;</span><br><span class="line">&#125;)); &#x2F;&#x2F; 3 返回匹配的值</span><br><span class="line"></span><br><span class="line">console.log(arr.findIndex((value, keys, arr) &#x3D;&gt; &#123;</span><br><span class="line">    return value &gt; 2;</span><br><span class="line">&#125;)); &#x2F;&#x2F; 2 返回匹配位置的索引</span><br></pre></td></tr></table></figure>
-
-<p>19.flat</p>
-<p>会创建一个新数组，对原数组没有影响。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const arr1 &#x3D; [0, 1, 2, [3, 4]];</span><br><span class="line"></span><br><span class="line">console.log(arr1.flat());</span><br><span class="line">&#x2F;&#x2F; expected output: [0, 1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">const arr2 &#x3D; [0, 1, 2, [[[3, 4]]]];</span><br><span class="line"></span><br><span class="line">console.log(arr2.flat(2));</span><br><span class="line">&#x2F;&#x2F; expected output: [0, 1, 2, [3, 4]]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;使用 Infinity，可展开任意深度的嵌套数组</span><br><span class="line">var arr4 &#x3D; [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];</span><br><span class="line">arr4.flat(Infinity);</span><br><span class="line">&#x2F;&#x2F; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 扁平化数组空项,如果原数组有空位，flat()方法会跳过空位</span><br><span class="line">var arr4 &#x3D; [1, 2, , 4, 5];</span><br><span class="line">arr4.flat();</span><br><span class="line">&#x2F;&#x2F; [1, 2, 4, 5]</span><br></pre></td></tr></table></figure>
-
-<p>20.扩展运算符</p>
-<p>1.赋值数组</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const a1 &#x3D; [1, 2];</span><br><span class="line">const a2 &#x3D; [...a1];</span><br></pre></td></tr></table></figure>
-
-<p>2.合并数组</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const arr1 &#x3D; [&#39;a&#39;, &#39;b&#39;];</span><br><span class="line">const arr2 &#x3D; [&#39;c&#39;];</span><br><span class="line">const arr3 &#x3D; [&#39;d&#39;, &#39;e&#39;];</span><br><span class="line">const newArr &#x3D; [...arr1, ...arr2,...arr3];</span><br><span class="line">console.log(newArr) &#x2F;&#x2F;[&#39;a&#39;, &#39;b&#39;,&#39;c&#39;,&#39;d&#39;, &#39;e&#39;]</span><br></pre></td></tr></table></figure>
-
-<p>3.与解构赋值结合</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const [a, ...b] &#x3D; [&#39;a&#39;, &#39;b&#39;,&#39;c&#39;,&#39;d&#39;, &#39;e&#39;];</span><br><span class="line">console.log(a) &#x2F;&#x2F;a</span><br><span class="line">console.log(b) &#x2F;&#x2F;[&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]</span><br></pre></td></tr></table></figure>
-
-<p><strong>这里记住一个点：</strong><br>使用扩展运算符方法可以直接进行浅拷贝一个新的数组。原数组不会进行改变，只会创建一个新数组。但是如果数组元素是对象等使用这个方式进行数组拷贝是不正确的。因为对象元素更改，原数组相对应的对象也会进行更改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const arr &#x3D; [1, 2, 3, 4, 5];     </span><br><span class="line">const [...newArr] &#x3D; arr      </span><br><span class="line">newArr.push(6);     </span><br><span class="line">console.log(arr);&#x2F;&#x2F;[1,2,3,4,5]     </span><br><span class="line">console.log(newArr);&#x2F;&#x2F;[1,2,3,4,5,6]</span><br></pre></td></tr></table></figure>
-<p>总结：整体就是这些，后续继续补充。</p>
-]]></content>
-      <categories>
-        <category>数组</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>js</tag>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一些知识点总结1</title>
-    <url>/archives/ZN6DJ6.html</url>
-    <content><![CDATA[<p>总结一下近期学习到的一些基础知识补充。</p>
-<h3 id="一、a-标签小技巧"><a href="#一、a-标签小技巧" class="headerlink" title="一、a 标签小技巧"></a>一、a 标签小技巧</h3><p>网页a标签默认在当前窗口打开，如果想另开一个窗口需要在a标签里面设置target=”_blank”属性。</p>
-<a id="more"></a>
-<p>设置这个属性的同时最好再设置一个属性，如下图所示：</p>
-<img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/144822/5/17388/601306/5fced840E24f1aca8/075f0a62172a5fee.jpg" style="zoom:30%;" />
-
-<h3 id="二、边界处理"><a href="#二、边界处理" class="headerlink" title="二、边界处理"></a>二、边界处理</h3><p>在写代码的过程中，为了防止一些突发问题出现，要设置一些边界处理，因为我们不清楚后端有的时候返回的数据是否是空还是 不存在等一些其他情况。</p>
-<img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/154106/29/9075/134745/5fced841E87b2d10d/f13de6a5aeff43a7.jpg" style="zoom:50%;" />
-
-<h3 id="三、各种-Web-存储方案简介"><a href="#三、各种-Web-存储方案简介" class="headerlink" title="三、各种 Web 存储方案简介"></a>三、各种 Web 存储方案简介</h3><h4 id="3-1-Cookie"><a href="#3-1-Cookie" class="headerlink" title="3.1 Cookie"></a>3.1 Cookie</h4><p>HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。</p>
-<p>Cookie 主要用于以下三个方面：</p>
-<ul>
-<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）；</li>
-<li>个性化设置（如用户自定义设置、主题等）；</li>
-<li>浏览器行为跟踪（如跟踪分析用户行为等）。</li>
-</ul>
-<p>Cookie 的特点：</p>
-<ul>
-<li>Cookie 的大小受限，一般为 4 KB；</li>
-<li>同一个域名下存放 Cookie 的个数是有限制的，不同浏览器的个数不一样，一般为 20 个；</li>
-<li>Cookie 支持设置过期时间，当过期时自动销毁；</li>
-<li>每次发起同域下的 HTTP 请求时，都会携带当前域名下的 Cookie；</li>
-<li>支持设置为 <code>HttpOnly</code>，防止 Cookie 被客户端的 JavaScript 访问。</li>
-</ul>
-<p><strong>「示例1：简单用法」</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.cookie &#x3D; &quot;name&#x3D;semlinker&quot;;</span><br><span class="line">document.cookie &#x3D; &quot;favorite_food&#x3D;tripe&quot;;</span><br><span class="line"></span><br><span class="line">alert(document.cookie);</span><br><span class="line">&#x2F;&#x2F; 显示: name&#x3D;semlinker;favorite_food&#x3D;tripe</span><br></pre></td></tr></table></figure>
-
-<p><strong>「示例2：得到名为 test2 的 cookie」</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.cookie &#x3D; &quot;test1&#x3D;Hello&quot;;</span><br><span class="line">document.cookie &#x3D; &quot;test2&#x3D;World&quot;;</span><br><span class="line"></span><br><span class="line">var myCookie &#x3D; document.cookie</span><br><span class="line">    .replace(&#x2F;(?:(?:^|.*;\s*)test2\s*\&#x3D;\s*([^;]*).*$)|^.*$&#x2F;, &quot;$1&quot;);</span><br><span class="line">alert(myCookie);</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-2-localStorage"><a href="#3-2-localStorage" class="headerlink" title="3.2 localStorage"></a>3.2 localStorage</h4><p>一种持久化的存储方式，也就是说如果不手动清除，数据就永远不会过期。它是采用键值对的方式存储数据，按域名将数据分别保存到对应数据库文件里。相比 Cookie 来说，它能保存更大的数据。</p>
-<p>localStorage 的特点：</p>
-<ul>
-<li>大小限制为 5MB ~10MB；</li>
-<li>在同源的所有标签页和窗口之间共享数据；</li>
-<li>数据仅保存在客户端，不与服务器进行通信；</li>
-<li>数据持久存在且不会过期，重启浏览器后仍然存在；</li>
-<li>对数据的操作是同步的。</li>
-</ul>
-<p><strong>「示例」</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 通过setItem()增加一个数据项</span><br><span class="line">localStorage.setItem(&#39;myName&#39;, &#39;Semlinker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过getItem()获取某个数据项</span><br><span class="line">let me &#x3D; localStorage.getItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过removeItem()移除某个数据项</span><br><span class="line">localStorage.removeItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 移除所有数据项</span><br><span class="line">localStorage.clear();</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-3-sessionStorage"><a href="#3-3-sessionStorage" class="headerlink" title="3.3 sessionStorage"></a>3.3 sessionStorage</h4><p>与服务端的 session 类似，sessionStorage 是一种会话级别的缓存，关闭浏览器时数据会被清除。需要注意的是 sessionStorage 的作用域是窗口级别的，也就是说不同窗口之间保存的 sessionStorage 数据是不能共享的。</p>
-<p>sessionStorage 的特点：</p>
-<ul>
-<li>sessionStorage 的数据只存在于当前浏览器的标签页；</li>
-<li>数据在页面刷新后依然存在，但在关闭浏览器标签页之后数据就会被清除；</li>
-<li>与 localStorage 拥有统一的 API 接口；</li>
-<li>对数据的操作是同步的。</li>
-</ul>
-<p><strong>「示例」</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 通过setItem()增加一个数据项</span><br><span class="line">sessionStorage.setItem(&#39;myName&#39;, &#39;Semlinker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过getItem()获取某个数据项</span><br><span class="line">let me &#x3D; sessionStorage.getItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过removeItem()移除某个数据项</span><br><span class="line">sessionStorage.removeItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 移除所有数据项</span><br><span class="line">sessionStorage.clear();</span><br></pre></td></tr></table></figure>
-
-<h3 id="四、跨域浏览器脚本命令"><a href="#四、跨域浏览器脚本命令" class="headerlink" title="四、跨域浏览器脚本命令"></a>四、跨域浏览器脚本命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">open -na Google\ Chrome --args --user-data-dir&#x3D;&#x2F;tmp&#x2F;temporary-chrome-profile-dir --disable-web-security --disable-site-isolation-trials</span><br></pre></td></tr></table></figure>
-
-<p>会自动打开一个跨域的Chrome浏览器,用来解决相关的跨域问题。</p>
-<h3 id="五、一些ts-react类型定义"><a href="#五、一些ts-react类型定义" class="headerlink" title="五、一些ts+react类型定义"></a>五、一些ts+react类型定义</h3><p><strong>5.1 平常在react项目中定义一个类型时，会出现定义一个组件或者一个定义一段dom节点的情况</strong></p>
-<p>目前记住：</p>
-<p>1.ReactElement主要是定义一个组件类型</p>
-<p>2.ReactNode可以定义一个组件，一段html代码，他是包括reactElement,等一系列类型的 ！！！！！</p>
-<p>3.JSX.Element 与ReactElement类似，可以代替reactElement</p>
-<p><strong>这里添加两个介绍</strong></p>
-<p>1.<a href="https://www.jianshu.com/p/95ce2266450a">https://www.jianshu.com/p/95ce2266450a</a></p>
-<p>2.<a href="https://wiki.jikexueyuan.com/project/react/react-dom.html">https://wiki.jikexueyuan.com/project/react/react-dom.html</a></p>
-<p><strong>综上所述：不是基础类型如果是一个组件或者代码块的话还是直接用ReactNode吧。</strong></p>
-<p><strong>5.2   ts中 变量后使用 ！：表示类型推断排除null、undefined</strong></p>
-<h3 id="六、在小火箭中使用yep-react遇到的问题"><a href="#六、在小火箭中使用yep-react遇到的问题" class="headerlink" title="六、在小火箭中使用yep-react遇到的问题"></a>六、在小火箭中使用yep-react遇到的问题</h3><p>问题：整体尺寸变大，不符合整体的宽和高</p>
-<p>解决方案：</p>
-<p>Posts.config.js</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const pxtorem &#x3D; require(&#39;postcss-pxtorem&#39;);</span><br><span class="line">pxtorem(&#123;</span><br><span class="line">      rootValue: 200,</span><br><span class="line">      propWhiteList: [],</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
-
-<p>.babelrc</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&quot;import&quot;, &#123; &quot;libraryName&quot;: &quot;@jdcfe&#x2F;yep-react&quot;, &quot;style&quot;: true &#125;] ]</span><br></pre></td></tr></table></figure>
-
-<p>格式参考官方文档，这里参考的不是rocket使用方式。</p>
-<img data-src="https://img11.360buyimg.com/imagetools/jfs/t1/148750/17/17678/527049/5fcee37cE94660977/0f0535d0efdd26b7.jpg" style="zoom:30%;" />
-
-<p>整体页面尺寸参考项目中根结点使用的屏幕适配方案。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这篇先总结这么多，最近经常在通勤时间看一些关注的公众号发的技术文章，后续会结合一些我觉得对我有帮助的点进行一个总结。</p>
-]]></content>
-      <categories>
-        <category>React学习</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>React</tag>
-        <tag>基础</tag>
-        <tag>js</tag>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -453,8 +159,80 @@
 <p><a href="https://theme-next.iissnan.com/">Next使用文档</a></p>
 ]]></content>
       <tags>
-        <tag>博客搭建</tag>
         <tag>前端小白</tag>
+        <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React基础学习笔记1</title>
+    <url>/archives/3D1S50T.html</url>
+    <content><![CDATA[<p> 学习接触React已经有一段时间，从刚开始的懵懂到现在稍微明白整体的架构，这里想结合最近的学习React整理一些学习笔记，方便后期进行参考。</p>
+<p><strong>参考资料主要有</strong>：</p>
+<p>React官方文档，Github优质React项目。</p>
+<a id="more"></a>
+<p>​    首先先总结一些个人在学习过程中觉得十分重要的一些基础知识（不会结合项目，后续结合项目再进行相应的展开）。</p>
+<h4 id="1-jsx简介："><a href="#1-jsx简介：" class="headerlink" title="1.jsx简介："></a>1.jsx简介：</h4><p>​    文档中对于它有了相应的介绍，他是Js的一个语法扩展，刚接触时我觉得它有点像Jsp,就是在Js里面写Html标签，只不过他的使用方式与Html还是有很大的不同的，具体使用还是想结合一些自己写的例子举例子比较好，不然就会觉得在照搬文档。</p>
+<p><code>const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;</code></p>
+<p>有一点需要注意的就是他的每一个Dom元素都会使用（小驼峰）的命名法来自定义Dom属性，</p>
+<p>例如：JSX 里的 <code>class</code> 变成了className,而tabindex则变成了tabIndex。（这在后期使用中是十分必要的）</p>
+<h4 id="2-组件简介："><a href="#2-组件简介：" class="headerlink" title="2.组件简介："></a>2.组件简介：</h4><p>​      由于都是在js中编写相应的组件，所以可以通过定义函数来进行组件定义，但最近由于一直接触class使用方式，所以接下来还是先以es6中的class语法来进行展示举例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Welcome extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;&#x2F;h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码中就是运用的class的方式定义的一个组件</p>
+<p><strong>3.State简介：</strong>个人理解就是初始化定义的一些变量，类似于Vue中的data()函数定义的一些变量</p>
+<p>首先它是一个对象，定义的变量都会以key,value的方式进行保存</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Clock extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;date: new Date()&#125;;  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Hello, world!&lt;&#x2F;h1&gt;</span><br><span class="line">        &lt;h2&gt;It is &#123;this.state.date.toLocaleTimeString()&#125;.&lt;&#x2F;h2&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​      上述代码中在Constructor（生命周期函数）定义的state中有一个data变量，这时我们给他赋值当前的时间，在render函数中通过this.state.data进行获取，注意外面要加{}，这就是上面说的jsx写法，这个括号里面就可以调用相应的state里面定义的变量了。后续使用基本都是这样用。</p>
+<p><strong>4.事件处理简介：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;button onClick&#x3D;&#123;activateLasers&#125;&gt;  Activate Lasers&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码中就是在React中定义事件的一个例子，首先要知道事件定义命名采用上文中提到的小驼峰命名法，即onClick，onChange等都是这种方法，这是规定，就这样使用就好。</p>
+<p>​        同时要记住在React使用事件函数时不能通过返回 <code>false</code> 的方式阻止默认行为。你必须显式的使用 <code>preventDefault</code>（这是个人觉得很重要的一点，所以提炼出来）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function ActionLink() &#123;</span><br><span class="line">  function handleClick(e)</span><br><span class="line">  &#123;   </span><br><span class="line">      e.preventDefault();</span><br><span class="line">      console.log(&#39;The link was clicked.&#39;);  </span><br><span class="line">  &#125;</span><br><span class="line">  return </span><br><span class="line">  (</span><br><span class="line">    &lt;a href&#x3D;&quot;#&quot; onClick&#x3D;&#123;handleClick&#125;&gt;Click me&lt;&#x2F;a&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​     例如上面这段代码中你在a标签中定义了一个onClick事件函数handleClick,然后在return上方进行方法定义，关键看 <code> e.preventDefault();</code>这行代码，这里的e是一个合成事件，它里面有一个  <code>preventDefault()</code>方法，通过这个方法来进行停止执行函数操作的功能。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Toggle extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;isToggleOn: true&#125;;</span><br><span class="line">    &#x2F;&#x2F; 为了在回调中使用 &#96;this&#96;，这个绑定是必不可少的    </span><br><span class="line">    this.handleClick &#x3D; 	 this.handleClick.bind(this);  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  handleClick() &#123; </span><br><span class="line">      this.setState(state &#x3D;&gt; (</span><br><span class="line">             &#123; isToggleOn: !state.isToggleOn    &#125;));  </span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;&#123;this.state.isToggleOn ? &#39;ON&#39; : &#39;OFF&#39;&#125;&lt;&#x2F;button&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       上面这段代码中涉及到了上文中提到的state,事件函数等一系列知识点，但这些不是重点，重点是要看这里的this绑定，代表是将在Toggle这个类中定义的handleClick与这个Toggle类进行绑定，这是必不可少的，他是为了防止在handleClick这个方法中通过使用this时发生this指向不明确的问题，如果没有绑定this，运行时会报错，提示state不存在，因为这时候的this指向指向了window,但如果写了绑定this的那句话，就可以直接使用this.setState进行变量赋值了。虽然将整体原理已经按照自己的思路讲解了一下，但是现在我要说明自己在使用中是怎么使用的。见下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Toggle extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;isToggleOn: true&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  handleClick&#x3D;()&#x3D;&gt;&#123;this.setState(state &#x3D;&gt; (&#123; isToggleOn: !state.isToggleOn&#125;));  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;&#123;this.state.isToggleOn ? &#39;ON&#39; : &#39;OFF&#39;&#125;&lt;&#x2F;button&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​     上面我在函数定义时采用了es6中箭头函数的方式来进行调用，熟悉es6语法的人都知道，使用箭头函数以后可以将内外this指向当前定义的类，并不会出现this指向不明确的情况，运用箭头函数以后，也不用在在constroctor中绑定this了。总结就是一句话，定义方法就用箭头函数绝对没错！</p>
+<p><strong>5.列表,Key简介：</strong></p>
+<p>​     一般在react中，经常会出现数组这个数据结构，循环遍历这个数组并将这个数组渲染出来是经常在开发过程中进行的操作，但是这里循环遍历采用map的方式，他会生成一个新的数组在进行遍历渲染</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Class NumberList() &#123;</span><br><span class="line">  const numbers &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">  const listItems &#x3D; numbers.map((number) &#x3D;&gt;</span><br><span class="line">    &lt;li&#125;&gt;&#123;number&#125;&lt;&#x2F;li&gt;</span><br><span class="line">  );</span><br><span class="line">  return (</span><br><span class="line">    &lt;ul&gt;&#123;listItems&#125;&lt;&#x2F;ul&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    上面代码就是将numbers进行遍历并最终渲染到ul这个标签里面，基本使用方法就是这个，但是当你开心的运行去看结果的时候他会提醒你这里产生报错问题,a key should be provided for list items 这里是什么意思呢？为什么会产生这个情况，我会介绍一下：由于react在渲染之前都是通过diff算法进行的虚拟Dom树，这个时候需要一个标识来确定每一个节点，当遍历数组时会产生多个节点，设置每一个节点一个唯一标识符是很重要的，他会让react具体识别到相应的节点并进行一系列的操作。好的，理论知识结束，我们的目标是要在每一个遍历节点中进行标识。只需这样即可：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;li key&#x3D;&#123;number.toString()&#125;&gt;&#123;number&#125; &lt;&#x2F;li&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​       一个元素的 key 最好是这个元素在列表中拥有的一个独一无二的字符串,通常情况下我们可以使用id来进行唯一标识判断，在没有id的情况下我们可以使用每一个数组的索引值进行key的设置，但是这样会出现当节点位置发生改变时会产生指向不明确的问题，综上所述，最好还是用id来进行标记。</p>
+<p><strong>6.受控组件简介：</strong></p>
+<p>​    文档中介绍的话个人觉得有些绕，用我的理解来说就是你经常会使用一些比如input,textarea,select等标签，当你在表单中输入值的时候这时候其实他是有更改数据的情况，这时候你需要一个函数来进行监听这些标签中数据的更改，并对这些监听到的数据来进行整体的渲染操作等等（这是后话）</p>
+<p>在受控组件中，个人觉得最重要的一个监听函数就是onChange事件，只要表单数据有了相应的修改了，这个组件就会相应的触发并进行后续的操作，但是总结起来还有最重要的一点，表单数据是与你先前在state中的变量是一致的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class NameForm extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;value: &#39;&#39;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  handleChange&#x3D;(event)&#x3D;&gt;&#123; this.setState(&#123;value: event.target.value&#125;);  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">          名字:</span><br><span class="line">          &lt;input type&#x3D;&quot;text&quot; value&#x3D;&#123;this.state.value&#125; onChange&#x3D;&#123;this.handleChange&#125; &#x2F;&gt; </span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​     例如上面示例代码你定义了一个input标签，并把它的value与你定义的state绑定到了一起，这个时候你需要设置一个onChange函数来进行相应的动态监听，每当表单输入数据进行更改时你就需要在onChange这个函数里面进行相应的监听并把它实时的在state中进行更改，整体受控组件监听流程就是这样，后续操作可以直接这样进行相应的操作。</p>
+<p><strong>7.props简介：</strong></p>
+<p>​     在 React.js 中，数据是从上自下流动（传递）的，也就是一个父组件可以把它的 state / props 通过 props 传递给它的子组件，但是子组件不能修改 props - React.js 是单向数据流，如果子组件需要修改父组件状态（数据），是通过回调函数方式来完成的。</p>
+<p>​    讲解这个问题个人觉得可以理解为父子组件传参进行相应的讨论，这个问题如果深入展开来说就是比较复杂,因为子父组件传参这个事情贯穿到开发项目的始终，当开发人员自定义组件的时候一直在使用props这个属性，自定义组件这里我决定后续结合一些项目例子来进行讲解讨论比较好，先介绍props的基础知识。</p>
+<p><code>const element = &lt;Welcome name=&quot;Sara&quot; /&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class NEW(props) &#123;  return &lt;Welcome&gt;Hello,&#123;this.props.name&#125;&lt;&#x2F;Welcome&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的例子就是当你设置了一个新的组件Welcome时，你需要在你定义的新的组件中使用Welcome组件时，你可以获取到相应的你在Welcome设置的相应的参数这个时候用this.props.name即可获取到你定义的相应的属性，这些属性都存放在props这个对象里面，用的时候直接使用this.props.属性即可获得，这个操作事非常重要的，后续会继续结合项目例子进行总结提炼。</p>
+<p><strong>8.refS简介：</strong></p>
+<p>对于这个知识点我的理解是就是通过它来定位到一些组件来进行相应的操作，上一个实例代码来进行演示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class CustomTextInput extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    &#x2F;&#x2F; 创建一个 ref 来存储 textInput 的 DOM 元素</span><br><span class="line">    this.textInput &#x3D; React.createRef();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  focusTextInput() &#123;</span><br><span class="line">        &#x2F;&#x2F; 直接使用原生 API 使 text 输入框获得焦点</span><br><span class="line">        &#x2F;&#x2F; 注意：我们通过 &quot;current&quot; 来访问 DOM 节点</span><br><span class="line">        this.textInput.current.focus();  </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    &#x2F;&#x2F; 告诉 React 我们想把 &lt;input&gt; ref 关联到</span><br><span class="line">    &#x2F;&#x2F; 构造器里创建的 &#96;textInput&#96; 上</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type&#x3D;&quot;text&quot;</span><br><span class="line">          ref&#x3D;&#123;this.textInput&#125; &#x2F;&gt;</span><br><span class="line">          &lt;input</span><br><span class="line">              type&#x3D;&quot;button&quot;</span><br><span class="line">              value&#x3D;&quot;Focus the text input&quot;</span><br><span class="line">              onClick&#x3D;&#123;this.focusTextInput&#125;</span><br><span class="line">          &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​       通过React.createRef()来定义一个this.textInput这个属性，然后为了建立关联，我们可以在input标签中设置ref这个属性来与textInput进行关联，在调用这个this.focusTextInput方法时可以直接将关联的input框进行相应的聚焦操作。整体理解就是这些，自己前期在初学阶段运用这些知识点去写一个todolist的时候，曾经使用过ref来获取input框这个dom节点进而进行聚焦操作。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结：</strong></h3><p>​       虽然react有很多的东西需要学习，但是个人目前觉得最常使用的一些基础就是这些，下一篇我会重点介绍react组件生命周期这个知识点，因为我觉得它值得我详细的对它进行总结。</p>
+]]></content>
+      <categories>
+        <category>React学习</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>React</tag>
+        <tag>基础</tag>
       </tags>
   </entry>
   <entry>
@@ -557,67 +335,87 @@
       </tags>
   </entry>
   <entry>
-    <title>React基础学习笔记1</title>
-    <url>/archives/3D1S50T.html</url>
-    <content><![CDATA[<p> 学习接触React已经有一段时间，从刚开始的懵懂到现在稍微明白整体的架构，这里想结合最近的学习React整理一些学习笔记，方便后期进行参考。</p>
-<p><strong>参考资料主要有</strong>：</p>
-<p>React官方文档，Github优质React项目。</p>
+    <title>一些知识点总结1</title>
+    <url>/archives/ZN6DJ6.html</url>
+    <content><![CDATA[<p>总结一下近期学习到的一些基础知识补充。</p>
+<h3 id="一、a-标签小技巧"><a href="#一、a-标签小技巧" class="headerlink" title="一、a 标签小技巧"></a>一、a 标签小技巧</h3><p>网页a标签默认在当前窗口打开，如果想另开一个窗口需要在a标签里面设置target=”_blank”属性。</p>
 <a id="more"></a>
-<p>​    首先先总结一些个人在学习过程中觉得十分重要的一些基础知识（不会结合项目，后续结合项目再进行相应的展开）。</p>
-<h4 id="1-jsx简介："><a href="#1-jsx简介：" class="headerlink" title="1.jsx简介："></a>1.jsx简介：</h4><p>​    文档中对于它有了相应的介绍，他是Js的一个语法扩展，刚接触时我觉得它有点像Jsp,就是在Js里面写Html标签，只不过他的使用方式与Html还是有很大的不同的，具体使用还是想结合一些自己写的例子举例子比较好，不然就会觉得在照搬文档。</p>
-<p><code>const element = &lt;h1&gt;Hello, world!&lt;/h1&gt;;</code></p>
-<p>有一点需要注意的就是他的每一个Dom元素都会使用（小驼峰）的命名法来自定义Dom属性，</p>
-<p>例如：JSX 里的 <code>class</code> 变成了className,而tabindex则变成了tabIndex。（这在后期使用中是十分必要的）</p>
-<h4 id="2-组件简介："><a href="#2-组件简介：" class="headerlink" title="2.组件简介："></a>2.组件简介：</h4><p>​      由于都是在js中编写相应的组件，所以可以通过定义函数来进行组件定义，但最近由于一直接触class使用方式，所以接下来还是先以es6中的class语法来进行展示举例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Welcome extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;&#x2F;h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设置这个属性的同时最好再设置一个属性，如下图所示：</p>
+<img data-src="https://img13.360buyimg.com/imagetools/jfs/t1/144822/5/17388/601306/5fced840E24f1aca8/075f0a62172a5fee.jpg" style="zoom:30%;" />
 
-<p>上面这段代码中就是运用的class的方式定义的一个组件</p>
-<p><strong>3.State简介：</strong>个人理解就是初始化定义的一些变量，类似于Vue中的data()函数定义的一些变量</p>
-<p>首先它是一个对象，定义的变量都会以key,value的方式进行保存</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Clock extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;date: new Date()&#125;;  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;Hello, world!&lt;&#x2F;h1&gt;</span><br><span class="line">        &lt;h2&gt;It is &#123;this.state.date.toLocaleTimeString()&#125;.&lt;&#x2F;h2&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、边界处理"><a href="#二、边界处理" class="headerlink" title="二、边界处理"></a>二、边界处理</h3><p>在写代码的过程中，为了防止一些突发问题出现，要设置一些边界处理，因为我们不清楚后端有的时候返回的数据是否是空还是 不存在等一些其他情况。</p>
+<img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/154106/29/9075/134745/5fced841E87b2d10d/f13de6a5aeff43a7.jpg" style="zoom:50%;" />
 
-<p>​      上述代码中在Constructor（生命周期函数）定义的state中有一个data变量，这时我们给他赋值当前的时间，在render函数中通过this.state.data进行获取，注意外面要加{}，这就是上面说的jsx写法，这个括号里面就可以调用相应的state里面定义的变量了。后续使用基本都是这样用。</p>
-<p><strong>4.事件处理简介：</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;button onClick&#x3D;&#123;activateLasers&#125;&gt;  Activate Lasers&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="三、各种-Web-存储方案简介"><a href="#三、各种-Web-存储方案简介" class="headerlink" title="三、各种 Web 存储方案简介"></a>三、各种 Web 存储方案简介</h3><h4 id="3-1-Cookie"><a href="#3-1-Cookie" class="headerlink" title="3.1 Cookie"></a>3.1 Cookie</h4><p>HTTP Cookie（也叫 Web Cookie 或浏览器 Cookie）是服务器发送到用户浏览器并保存在本地的一小块数据，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上。通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。</p>
+<p>Cookie 主要用于以下三个方面：</p>
+<ul>
+<li>会话状态管理（如用户登录状态、购物车、游戏分数或其它需要记录的信息）；</li>
+<li>个性化设置（如用户自定义设置、主题等）；</li>
+<li>浏览器行为跟踪（如跟踪分析用户行为等）。</li>
+</ul>
+<p>Cookie 的特点：</p>
+<ul>
+<li>Cookie 的大小受限，一般为 4 KB；</li>
+<li>同一个域名下存放 Cookie 的个数是有限制的，不同浏览器的个数不一样，一般为 20 个；</li>
+<li>Cookie 支持设置过期时间，当过期时自动销毁；</li>
+<li>每次发起同域下的 HTTP 请求时，都会携带当前域名下的 Cookie；</li>
+<li>支持设置为 <code>HttpOnly</code>，防止 Cookie 被客户端的 JavaScript 访问。</li>
+</ul>
+<p><strong>「示例1：简单用法」</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.cookie &#x3D; &quot;name&#x3D;semlinker&quot;;</span><br><span class="line">document.cookie &#x3D; &quot;favorite_food&#x3D;tripe&quot;;</span><br><span class="line"></span><br><span class="line">alert(document.cookie);</span><br><span class="line">&#x2F;&#x2F; 显示: name&#x3D;semlinker;favorite_food&#x3D;tripe</span><br></pre></td></tr></table></figure>
 
-<p>上面这段代码中就是在React中定义事件的一个例子，首先要知道事件定义命名采用上文中提到的小驼峰命名法，即onClick，onChange等都是这种方法，这是规定，就这样使用就好。</p>
-<p>​        同时要记住在React使用事件函数时不能通过返回 <code>false</code> 的方式阻止默认行为。你必须显式的使用 <code>preventDefault</code>（这是个人觉得很重要的一点，所以提炼出来）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function ActionLink() &#123;</span><br><span class="line">  function handleClick(e)</span><br><span class="line">  &#123;   </span><br><span class="line">      e.preventDefault();</span><br><span class="line">      console.log(&#39;The link was clicked.&#39;);  </span><br><span class="line">  &#125;</span><br><span class="line">  return </span><br><span class="line">  (</span><br><span class="line">    &lt;a href&#x3D;&quot;#&quot; onClick&#x3D;&#123;handleClick&#125;&gt;Click me&lt;&#x2F;a&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>「示例2：得到名为 test2 的 cookie」</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.cookie &#x3D; &quot;test1&#x3D;Hello&quot;;</span><br><span class="line">document.cookie &#x3D; &quot;test2&#x3D;World&quot;;</span><br><span class="line"></span><br><span class="line">var myCookie &#x3D; document.cookie</span><br><span class="line">    .replace(&#x2F;(?:(?:^|.*;\s*)test2\s*\&#x3D;\s*([^;]*).*$)|^.*$&#x2F;, &quot;$1&quot;);</span><br><span class="line">alert(myCookie);</span><br></pre></td></tr></table></figure>
 
-<p>​     例如上面这段代码中你在a标签中定义了一个onClick事件函数handleClick,然后在return上方进行方法定义，关键看 <code> e.preventDefault();</code>这行代码，这里的e是一个合成事件，它里面有一个  <code>preventDefault()</code>方法，通过这个方法来进行停止执行函数操作的功能。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Toggle extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;isToggleOn: true&#125;;</span><br><span class="line">    &#x2F;&#x2F; 为了在回调中使用 &#96;this&#96;，这个绑定是必不可少的    </span><br><span class="line">    this.handleClick &#x3D; 	 this.handleClick.bind(this);  </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  handleClick() &#123; </span><br><span class="line">      this.setState(state &#x3D;&gt; (</span><br><span class="line">             &#123; isToggleOn: !state.isToggleOn    &#125;));  </span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;&#123;this.state.isToggleOn ? &#39;ON&#39; : &#39;OFF&#39;&#125;&lt;&#x2F;button&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-localStorage"><a href="#3-2-localStorage" class="headerlink" title="3.2 localStorage"></a>3.2 localStorage</h4><p>一种持久化的存储方式，也就是说如果不手动清除，数据就永远不会过期。它是采用键值对的方式存储数据，按域名将数据分别保存到对应数据库文件里。相比 Cookie 来说，它能保存更大的数据。</p>
+<p>localStorage 的特点：</p>
+<ul>
+<li>大小限制为 5MB ~10MB；</li>
+<li>在同源的所有标签页和窗口之间共享数据；</li>
+<li>数据仅保存在客户端，不与服务器进行通信；</li>
+<li>数据持久存在且不会过期，重启浏览器后仍然存在；</li>
+<li>对数据的操作是同步的。</li>
+</ul>
+<p><strong>「示例」</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 通过setItem()增加一个数据项</span><br><span class="line">localStorage.setItem(&#39;myName&#39;, &#39;Semlinker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过getItem()获取某个数据项</span><br><span class="line">let me &#x3D; localStorage.getItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过removeItem()移除某个数据项</span><br><span class="line">localStorage.removeItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 移除所有数据项</span><br><span class="line">localStorage.clear();</span><br></pre></td></tr></table></figure>
 
-<p>​       上面这段代码中涉及到了上文中提到的state,事件函数等一系列知识点，但这些不是重点，重点是要看这里的this绑定，代表是将在Toggle这个类中定义的handleClick与这个Toggle类进行绑定，这是必不可少的，他是为了防止在handleClick这个方法中通过使用this时发生this指向不明确的问题，如果没有绑定this，运行时会报错，提示state不存在，因为这时候的this指向指向了window,但如果写了绑定this的那句话，就可以直接使用this.setState进行变量赋值了。虽然将整体原理已经按照自己的思路讲解了一下，但是现在我要说明自己在使用中是怎么使用的。见下面的代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Toggle extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;isToggleOn: true&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  handleClick&#x3D;()&#x3D;&gt;&#123;this.setState(state &#x3D;&gt; (&#123; isToggleOn: !state.isToggleOn&#125;));  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;&#123;this.state.isToggleOn ? &#39;ON&#39; : &#39;OFF&#39;&#125;&lt;&#x2F;button&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-sessionStorage"><a href="#3-3-sessionStorage" class="headerlink" title="3.3 sessionStorage"></a>3.3 sessionStorage</h4><p>与服务端的 session 类似，sessionStorage 是一种会话级别的缓存，关闭浏览器时数据会被清除。需要注意的是 sessionStorage 的作用域是窗口级别的，也就是说不同窗口之间保存的 sessionStorage 数据是不能共享的。</p>
+<p>sessionStorage 的特点：</p>
+<ul>
+<li>sessionStorage 的数据只存在于当前浏览器的标签页；</li>
+<li>数据在页面刷新后依然存在，但在关闭浏览器标签页之后数据就会被清除；</li>
+<li>与 localStorage 拥有统一的 API 接口；</li>
+<li>对数据的操作是同步的。</li>
+</ul>
+<p><strong>「示例」</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 通过setItem()增加一个数据项</span><br><span class="line">sessionStorage.setItem(&#39;myName&#39;, &#39;Semlinker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过getItem()获取某个数据项</span><br><span class="line">let me &#x3D; sessionStorage.getItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 通过removeItem()移除某个数据项</span><br><span class="line">sessionStorage.removeItem(&#39;myName&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 移除所有数据项</span><br><span class="line">sessionStorage.clear();</span><br></pre></td></tr></table></figure>
 
-<p>​     上面我在函数定义时采用了es6中箭头函数的方式来进行调用，熟悉es6语法的人都知道，使用箭头函数以后可以将内外this指向当前定义的类，并不会出现this指向不明确的情况，运用箭头函数以后，也不用在在constroctor中绑定this了。总结就是一句话，定义方法就用箭头函数绝对没错！</p>
-<p><strong>5.列表,Key简介：</strong></p>
-<p>​     一般在react中，经常会出现数组这个数据结构，循环遍历这个数组并将这个数组渲染出来是经常在开发过程中进行的操作，但是这里循环遍历采用map的方式，他会生成一个新的数组在进行遍历渲染</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Class NumberList() &#123;</span><br><span class="line">  const numbers &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">  const listItems &#x3D; numbers.map((number) &#x3D;&gt;</span><br><span class="line">    &lt;li&#125;&gt;&#123;number&#125;&lt;&#x2F;li&gt;</span><br><span class="line">  );</span><br><span class="line">  return (</span><br><span class="line">    &lt;ul&gt;&#123;listItems&#125;&lt;&#x2F;ul&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="四、跨域浏览器脚本命令"><a href="#四、跨域浏览器脚本命令" class="headerlink" title="四、跨域浏览器脚本命令"></a>四、跨域浏览器脚本命令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">open -na Google\ Chrome --args --user-data-dir&#x3D;&#x2F;tmp&#x2F;temporary-chrome-profile-dir --disable-web-security --disable-site-isolation-trials</span><br></pre></td></tr></table></figure>
 
-<p>​    上面代码就是将numbers进行遍历并最终渲染到ul这个标签里面，基本使用方法就是这个，但是当你开心的运行去看结果的时候他会提醒你这里产生报错问题,a key should be provided for list items 这里是什么意思呢？为什么会产生这个情况，我会介绍一下：由于react在渲染之前都是通过diff算法进行的虚拟Dom树，这个时候需要一个标识来确定每一个节点，当遍历数组时会产生多个节点，设置每一个节点一个唯一标识符是很重要的，他会让react具体识别到相应的节点并进行一系列的操作。好的，理论知识结束，我们的目标是要在每一个遍历节点中进行标识。只需这样即可：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;li key&#x3D;&#123;number.toString()&#125;&gt;&#123;number&#125; &lt;&#x2F;li&gt;</span><br></pre></td></tr></table></figure>
+<p>会自动打开一个跨域的Chrome浏览器,用来解决相关的跨域问题。</p>
+<h3 id="五、一些ts-react类型定义"><a href="#五、一些ts-react类型定义" class="headerlink" title="五、一些ts+react类型定义"></a>五、一些ts+react类型定义</h3><p><strong>5.1 平常在react项目中定义一个类型时，会出现定义一个组件或者一个定义一段dom节点的情况</strong></p>
+<p>目前记住：</p>
+<p>1.ReactElement主要是定义一个组件类型</p>
+<p>2.ReactNode可以定义一个组件，一段html代码，他是包括reactElement,等一系列类型的 ！！！！！</p>
+<p>3.JSX.Element 与ReactElement类似，可以代替reactElement</p>
+<p><strong>这里添加两个介绍</strong></p>
+<p>1.<a href="https://www.jianshu.com/p/95ce2266450a">https://www.jianshu.com/p/95ce2266450a</a></p>
+<p>2.<a href="https://wiki.jikexueyuan.com/project/react/react-dom.html">https://wiki.jikexueyuan.com/project/react/react-dom.html</a></p>
+<p><strong>综上所述：不是基础类型如果是一个组件或者代码块的话还是直接用ReactNode吧。</strong></p>
+<p><strong>5.2   ts中 变量后使用 ！：表示类型推断排除null、undefined</strong></p>
+<h3 id="六、在小火箭中使用yep-react遇到的问题"><a href="#六、在小火箭中使用yep-react遇到的问题" class="headerlink" title="六、在小火箭中使用yep-react遇到的问题"></a>六、在小火箭中使用yep-react遇到的问题</h3><p>问题：整体尺寸变大，不符合整体的宽和高</p>
+<p>解决方案：</p>
+<p>Posts.config.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const pxtorem &#x3D; require(&#39;postcss-pxtorem&#39;);</span><br><span class="line">pxtorem(&#123;</span><br><span class="line">      rootValue: 200,</span><br><span class="line">      propWhiteList: [],</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
 
-<p>​       一个元素的 key 最好是这个元素在列表中拥有的一个独一无二的字符串,通常情况下我们可以使用id来进行唯一标识判断，在没有id的情况下我们可以使用每一个数组的索引值进行key的设置，但是这样会出现当节点位置发生改变时会产生指向不明确的问题，综上所述，最好还是用id来进行标记。</p>
-<p><strong>6.受控组件简介：</strong></p>
-<p>​    文档中介绍的话个人觉得有些绕，用我的理解来说就是你经常会使用一些比如input,textarea,select等标签，当你在表单中输入值的时候这时候其实他是有更改数据的情况，这时候你需要一个函数来进行监听这些标签中数据的更改，并对这些监听到的数据来进行整体的渲染操作等等（这是后话）</p>
-<p>在受控组件中，个人觉得最重要的一个监听函数就是onChange事件，只要表单数据有了相应的修改了，这个组件就会相应的触发并进行后续的操作，但是总结起来还有最重要的一点，表单数据是与你先前在state中的变量是一致的。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class NameForm extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.state &#x3D; &#123;value: &#39;&#39;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  handleChange&#x3D;(event)&#x3D;&gt;&#123; this.setState(&#123;value: event.target.value&#125;);  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">          名字:</span><br><span class="line">          &lt;input type&#x3D;&quot;text&quot; value&#x3D;&#123;this.state.value&#125; onChange&#x3D;&#123;this.handleChange&#125; &#x2F;&gt; </span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>.babelrc</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&quot;import&quot;, &#123; &quot;libraryName&quot;: &quot;@jdcfe&#x2F;yep-react&quot;, &quot;style&quot;: true &#125;] ]</span><br></pre></td></tr></table></figure>
 
-<p>​     例如上面示例代码你定义了一个input标签，并把它的value与你定义的state绑定到了一起，这个时候你需要设置一个onChange函数来进行相应的动态监听，每当表单输入数据进行更改时你就需要在onChange这个函数里面进行相应的监听并把它实时的在state中进行更改，整体受控组件监听流程就是这样，后续操作可以直接这样进行相应的操作。</p>
-<p><strong>7.props简介：</strong></p>
-<p>​     在 React.js 中，数据是从上自下流动（传递）的，也就是一个父组件可以把它的 state / props 通过 props 传递给它的子组件，但是子组件不能修改 props - React.js 是单向数据流，如果子组件需要修改父组件状态（数据），是通过回调函数方式来完成的。</p>
-<p>​    讲解这个问题个人觉得可以理解为父子组件传参进行相应的讨论，这个问题如果深入展开来说就是比较复杂,因为子父组件传参这个事情贯穿到开发项目的始终，当开发人员自定义组件的时候一直在使用props这个属性，自定义组件这里我决定后续结合一些项目例子来进行讲解讨论比较好，先介绍props的基础知识。</p>
-<p><code>const element = &lt;Welcome name=&quot;Sara&quot; /&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class NEW(props) &#123;  return &lt;Welcome&gt;Hello,&#123;this.props.name&#125;&lt;&#x2F;Welcome&gt;&#125;</span><br></pre></td></tr></table></figure>
+<p>格式参考官方文档，这里参考的不是rocket使用方式。</p>
+<img data-src="https://img11.360buyimg.com/imagetools/jfs/t1/148750/17/17678/527049/5fcee37cE94660977/0f0535d0efdd26b7.jpg" style="zoom:30%;" />
 
-<p>这里的例子就是当你设置了一个新的组件Welcome时，你需要在你定义的新的组件中使用Welcome组件时，你可以获取到相应的你在Welcome设置的相应的参数这个时候用this.props.name即可获取到你定义的相应的属性，这些属性都存放在props这个对象里面，用的时候直接使用this.props.属性即可获得，这个操作事非常重要的，后续会继续结合项目例子进行总结提炼。</p>
-<p><strong>8.refS简介：</strong></p>
-<p>对于这个知识点我的理解是就是通过它来定位到一些组件来进行相应的操作，上一个实例代码来进行演示：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class CustomTextInput extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    &#x2F;&#x2F; 创建一个 ref 来存储 textInput 的 DOM 元素</span><br><span class="line">    this.textInput &#x3D; React.createRef();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  focusTextInput() &#123;</span><br><span class="line">        &#x2F;&#x2F; 直接使用原生 API 使 text 输入框获得焦点</span><br><span class="line">        &#x2F;&#x2F; 注意：我们通过 &quot;current&quot; 来访问 DOM 节点</span><br><span class="line">        this.textInput.current.focus();  </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    &#x2F;&#x2F; 告诉 React 我们想把 &lt;input&gt; ref 关联到</span><br><span class="line">    &#x2F;&#x2F; 构造器里创建的 &#96;textInput&#96; 上</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type&#x3D;&quot;text&quot;</span><br><span class="line">          ref&#x3D;&#123;this.textInput&#125; &#x2F;&gt;</span><br><span class="line">          &lt;input</span><br><span class="line">              type&#x3D;&quot;button&quot;</span><br><span class="line">              value&#x3D;&quot;Focus the text input&quot;</span><br><span class="line">              onClick&#x3D;&#123;this.focusTextInput&#125;</span><br><span class="line">          &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​       通过React.createRef()来定义一个this.textInput这个属性，然后为了建立关联，我们可以在input标签中设置ref这个属性来与textInput进行关联，在调用这个this.focusTextInput方法时可以直接将关联的input框进行相应的聚焦操作。整体理解就是这些，自己前期在初学阶段运用这些知识点去写一个todolist的时候，曾经使用过ref来获取input框这个dom节点进而进行聚焦操作。</p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a><strong>总结：</strong></h3><p>​       虽然react有很多的东西需要学习，但是个人目前觉得最常使用的一些基础就是这些，下一篇我会重点介绍react组件生命周期这个知识点，因为我觉得它值得我详细的对它进行总结。</p>
+<p>整体页面尺寸参考项目中根结点使用的屏幕适配方案。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这篇先总结这么多，最近经常在通勤时间看一些关注的公众号发的技术文章，后续会结合一些我觉得对我有帮助的点进行一个总结。</p>
 ]]></content>
       <categories>
         <category>React学习</category>
@@ -626,6 +424,38 @@
         <tag>前端</tag>
         <tag>React</tag>
         <tag>基础</tag>
+        <tag>js</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数组对象解构赋值</title>
+    <url>/archives/SHB3RK.html</url>
+    <content><![CDATA[<h2 id="数组对象解构赋值"><a href="#数组对象解构赋值" class="headerlink" title="数组对象解构赋值"></a>数组对象解构赋值</h2><h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a><strong>对象</strong></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let node &#x3D; &#123;</span><br><span class="line">  type: &#39;Identifier&#39;,</span><br><span class="line">  name: &#39;foo&#39;</span><br><span class="line">&#125;;</span><br><span class="line">let &#123; type, name &#125; &#x3D; node;</span><br><span class="line">console.log(type, name); &#x2F;&#x2F; Identifier foo</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let node &#x3D; &#123;</span><br><span class="line">  type: &#39;Identifier&#39;</span><br><span class="line">&#125;;</span><br><span class="line">let &#123; type, name &#x3D; &#39;wozien&#39; &#125; &#x3D; node;</span><br><span class="line">console.log(type, name); &#x2F;&#x2F; Identifier wozien</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let node &#x3D; &#123;</span><br><span class="line">  type: &#39;Identifier&#39;,</span><br><span class="line">  name: &#39;foo&#39;</span><br><span class="line">&#125;;</span><br><span class="line">let &#123; type: myType, name: myName &#x3D; &#39;wozien&#39; &#125; &#x3D; node;</span><br><span class="line">console.log(myType, myName); &#x2F;&#x2F; Identifier foo</span><br></pre></td></tr></table></figure>
+
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a><strong>数组</strong></h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let colors &#x3D; [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;];</span><br><span class="line">let [firstColor, secondColor] &#x3D; colors;</span><br><span class="line">console.log(firstColor, secondColor); &#x2F;&#x2F; red green</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let colors &#x3D; [&#39;red&#39;];</span><br><span class="line">let [firstColor, secondColor &#x3D; &#39;green&#39;] &#x3D; colors;</span><br><span class="line">console.log(firstColor, secondColor); &#x2F;&#x2F;red green</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let colors &#x3D; [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;];</span><br><span class="line">let [firstColor, ...secondColor] &#x3D; colors;</span><br><span class="line">console.log(firstColor); &#x2F;&#x2F;red </span><br><span class="line">console.log(secondColor); &#x2F;&#x2F; [ &#39;green&#39;, &#39;blue&#39; ]</span><br></pre></td></tr></table></figure>
+
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a><strong>应用场景</strong></h4><p><strong>函数解构</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function setCookie(name, value, &#123; path, domain, expire &#125;) &#123;</span><br><span class="line">  &#x2F;&#x2F; 设置cookie</span><br><span class="line">  console.log(path, domain);   &#x2F;&#x2F; &#x2F;，localhost</span><br><span class="line">&#125;</span><br><span class="line">setCookie(&#39;a&#39;, &#39;b&#39;, &#123; path: &#39;&#x2F;&#39;, domain: &#39;localhost&#39; &#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function setCookie(name, value, &#123; path, domain, expire &#125; &#x3D; &#123;&#125;) &#123;</span><br><span class="line">  &#x2F;&#x2F; 设置cookie</span><br><span class="line">  console.log(path, domain);   &#x2F;&#x2F; undefinded,undefinded</span><br><span class="line">&#125;</span><br><span class="line">setCookie(&#39;a&#39;, &#39;b&#39;);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数组</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>js</tag>
+        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -732,6 +562,176 @@
         <tag>前端</tag>
         <tag>动画</tag>
         <tag>三角函数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Js数组方法汇总</title>
+    <url>/archives/253P6DE.html</url>
+    <content><![CDATA[<p>1.join</p>
+<p>用于把数组转换为一个字符串，原数组不会发生改变。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,2,3];</span><br><span class="line">console.log(arr.join());   &#x2F;&#x2F; 1,2,3</span><br><span class="line">console.log(arr.join(&quot;-&quot;));   &#x2F;&#x2F; 1-2-3</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [1, 2, 3]（原数组不变）</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>2.concat</p>
+<p>数组后面新增数组，不会改变原数组，会生成一个副本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7];</span><br><span class="line">var arrCopy &#x3D; arr.concat(9,[11,13]);</span><br><span class="line">console.log(arrCopy);   &#x2F;&#x2F;[1, 3, 5, 7, 9, 11, 13]</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [1, 3, 5, 7](原数组未被修改)</span><br></pre></td></tr></table></figure>
+
+<p>3.slice</p>
+<p>不会改变原数组，分为一个参数和两个参数。参数都代表数组下标。</p>
+<p>1.一个参数时：从当前下标位置直接到数组末尾。</p>
+<p>2.两个参数时：从起始下标到结束下标，但不包括结束下标。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7,9,11];</span><br><span class="line">var arrCopy &#x3D; arr.slice(1);</span><br><span class="line">var arrCopy2 &#x3D; arr.slice(1,4);</span><br><span class="line">var arrCopy3 &#x3D; arr.slice(1,-2);&#x2F;&#x2F;相当于arr.slice(1,4)</span><br><span class="line">var arrCopy4 &#x3D; arr.slice(-4,-1);&#x2F;&#x2F;相当于arr.slice(2,5)</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[1, 3, 5, 7, 9, 11](原数组没变)</span><br><span class="line">console.log(arrCopy);   &#x2F;&#x2F;[3, 5, 7, 9, 11]</span><br><span class="line">console.log(arrCopy2);   &#x2F;&#x2F;[3, 5, 7]</span><br><span class="line">console.log(arrCopy3);   &#x2F;&#x2F;[3, 5, 7]</span><br><span class="line">console.log(arrCopy4);   &#x2F;&#x2F;[5, 7, 9]</span><br></pre></td></tr></table></figure>
+
+<p><strong>这里记住一个点：</strong><br>使用Array.slice方法可以直接进行浅拷贝一个新的数组。原数组不会进行改变，只会创建一个新数组。但是如果数组元素是对象等使用这个方式进行数组拷贝是不正确的。因为对象元素更改，原数组相对应的对象也会进行更改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const number &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">const newNumber &#x3D; number.slice();</span><br><span class="line">newNumber.push(6);&#x2F;&#x2F;添加新项证明不会改变原数组</span><br><span class="line">console.log(number);&#x2F;&#x2F;[1,2,3,4,5]</span><br><span class="line">console.log(newNumber);&#x2F;&#x2F;[1,2,3,4,5,6]</span><br></pre></td></tr></table></figure>
+
+<p>4.push</p>
+<p>原数组末尾新增元素。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [&quot;Lily&quot;,&quot;lucy&quot;,&quot;Tom&quot;];</span><br><span class="line">var count &#x3D; arr.push(&quot;Jack&quot;,&quot;Sean&quot;);</span><br><span class="line">console.log(count);  &#x2F;&#x2F; 5</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [&quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;, &quot;Jack&quot;, &quot;Sean&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>5.pop </p>
+<p>删除原数组末尾最后一个元素。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var item &#x3D; arr.pop();</span><br><span class="line">console.log(item);   &#x2F;&#x2F; Sean</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [&quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;, &quot;Jack&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>6.shift</p>
+<p>原数组头部删除第一个元素,如果数组没有长度以后，原数组最终是一个空数组。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var item &#x3D; arr.shift();</span><br><span class="line">console.log(item);   &#x2F;&#x2F; Jack</span><br><span class="line">console.log(arr);   &#x2F;&#x2F; [&quot;Sean&quot;, &quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>7.unshift</p>
+<p>原数组头部新增元素。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [&quot;Lily&quot;,&quot;lucy&quot;,&quot;Tom&quot;];</span><br><span class="line">var count &#x3D; arr.unshift(&quot;Jack&quot;,&quot;Sean&quot;);</span><br><span class="line">console.log(count);   &#x2F;&#x2F; 5</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[&quot;Jack&quot;, &quot;Sean&quot;, &quot;Lily&quot;, &quot;lucy&quot;, &quot;Tom&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>8.reverse</p>
+<p>改变原数组，将原数组整体顺序颠倒。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [13, 24, 51, 3];</span><br><span class="line">console.log(arr.reverse());   &#x2F;&#x2F;[3, 51, 24, 13]</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[3, 51, 24, 13](原数组改变)</span><br></pre></td></tr></table></figure>
+
+<p>9.splice</p>
+<p>三种功能：插入、删除、替换 原数组进行更改。</p>
+<p>1.删除数组项数（两个参数）【索引值开始值，项数】：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7,9,11];</span><br><span class="line">var arrRemoved &#x3D; arr.splice(0,2);</span><br><span class="line">console.log(arr);   &#x2F;&#x2F;[5, 7, 9, 11]</span><br><span class="line">console.log(arrRemoved);   &#x2F;&#x2F;[1, 3]</span><br></pre></td></tr></table></figure>
+
+<p>2.插入项数  【索引值开始值，0，要插入的数】</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var array1 &#x3D; [22, 3, 31, 12];</span><br><span class="line">array1.splice(1, 0, 12, 35);  &#x2F;&#x2F;[]</span><br><span class="line">console.log(array1); &#x2F;&#x2F; [22, 12, 35, 3, 31, 12]</span><br></pre></td></tr></table></figure>
+
+<p>3.替换项数  【索引开始值，项数，要替换的数】</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const array1 &#x3D; [22, 3, 31, 12];</span><br><span class="line">array1.splice(1, 1, 8);   &#x2F;&#x2F;[3]</span><br><span class="line">console.log(array1);  &#x2F;&#x2F; [22, 8, 31, 12]</span><br></pre></td></tr></table></figure>
+
+<p>10.indexOf</p>
+<p>要查找的元素，返回在数组中的下标位置，没有返回-1。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1,3,5,7,7,5,3,1];</span><br><span class="line">console.log(arr.indexOf(5));   &#x2F;&#x2F;2</span><br><span class="line">console.log(arr.indexOf(&quot;5&quot;));   &#x2F;&#x2F;-1</span><br></pre></td></tr></table></figure>
+
+<p>11.forEach</p>
+<p>参数（value,index） 该方法没有返回值，遍历数组使用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [11, 22, 33, 44, 55];</span><br><span class="line">arr.forEach(function(x, index, a)&#123;</span><br><span class="line">	console.log(x + &#39;|&#39; + index + &#39;|&#39; + (a &#x3D;&#x3D;&#x3D; arr));</span><br><span class="line">&#125;);</span><br><span class="line">输出为：</span><br><span class="line"> 11|0|true</span><br><span class="line"> 22|1|true</span><br><span class="line"> 33|2|true</span><br><span class="line"> 44|3|true</span><br><span class="line"> 55|4|true</span><br></pre></td></tr></table></figure>
+
+<p>12.map</p>
+<p>map的方法会返回一个新数组，新数组是return之后形成的数组。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">var arr2 &#x3D; arr.map((item)&#x3D;&gt;&#123;</span><br><span class="line">	return item*item;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr2);  &#x2F;&#x2F;[1, 4, 9, 16, 25]</span><br></pre></td></tr></table></figure>
+
+<p>13.filter</p>
+<p>返回满足过滤条件的数组。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];</span><br><span class="line">var arr2 &#x3D; arr.filter(function(x, index) &#123;</span><br><span class="line">	return index % 3 &#x3D;&#x3D;&#x3D; 0 || x &gt;&#x3D; 8;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr2);  &#x2F;&#x2F;[1, 4, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
+
+<p>14.reduce</p>
+<p>逐步处理相关参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var values &#x3D; [1,2,3,4,5];</span><br><span class="line">var sum &#x3D; values.reduce(function(prev, cur, index, array)&#123;</span><br><span class="line">return prev + cur;</span><br><span class="line">&#125;,10);   &#x2F;&#x2F;数组一开始加了一个初始值10,可以不设默认0</span><br><span class="line">console.log(sum);  &#x2F;&#x2F;25</span><br></pre></td></tr></table></figure>
+
+<p>15.some/every</p>
+<p>some</p>
+<p>判断数组中是否包含满足条件的项，只有一项满足，就会返回true,没有满足返回false。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var arr &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line">var arr2 &#x3D; arr.some(function(x) &#123;</span><br><span class="line">	return x &lt; 3;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr2);  &#x2F;&#x2F;true</span><br><span class="line">var arr3 &#x3D; arr.some(function(x) &#123;</span><br><span class="line">	return x &lt; 1;</span><br><span class="line">&#125;);</span><br><span class="line">console.log(arr3);  &#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
+<p>every</p>
+<p>运行给定函数，如果所有项都符合则会返回true，有一项不是true就会返回false。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let arr &#x3D; [3, 4, 5, 6]</span><br><span class="line">let result &#x3D; arr.every((item) &#x3D;&gt; item &gt; 2)</span><br><span class="line">console.log(result) &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+
+
+<p>16.includes</p>
+<p>判断一个数组是否包括该值，返回true/false   另外：【NaN】被认为与原值相等。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const array1 &#x3D; [22, 3, 31, 12, &#39;arr&#39;];</span><br><span class="line">const includes &#x3D; array1.includes(31);</span><br><span class="line">console.log(includes); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let values &#x3D; [1, NaN, 2];</span><br><span class="line">console.log(values.indexOf(NaN));&#x2F;&#x2F;-1</span><br><span class="line">console.log(values.includes(NaN));&#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+
+<p>17.toString</p>
+<p>将数组转换为字符串</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const array1 &#x3D; [22, 3, 31, 12];</span><br><span class="line">const str &#x3D; array1.toLocaleString();</span><br><span class="line">const str1 &#x3D; array1.toString();</span><br><span class="line"></span><br><span class="line">console.log(str); &#x2F;&#x2F; 22,3,31,12</span><br><span class="line">console.log(str1); &#x2F;&#x2F; 22,3,31,12</span><br></pre></td></tr></table></figure>
+
+<p>18.find和findIndex</p>
+<p>find返回匹配的数值，findIndex返回匹配值的索引。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let arr &#x3D; [1, 2, 3, &#39;arr&#39;, 5, 1, 9];</span><br><span class="line"></span><br><span class="line">console.log(arr.find((value, keys, arr) &#x3D;&gt; &#123;</span><br><span class="line">    return value &gt; 2;</span><br><span class="line">&#125;)); &#x2F;&#x2F; 3 返回匹配的值</span><br><span class="line"></span><br><span class="line">console.log(arr.findIndex((value, keys, arr) &#x3D;&gt; &#123;</span><br><span class="line">    return value &gt; 2;</span><br><span class="line">&#125;)); &#x2F;&#x2F; 2 返回匹配位置的索引</span><br></pre></td></tr></table></figure>
+
+<p>19.flat</p>
+<p>会创建一个新数组，对原数组没有影响。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const arr1 &#x3D; [0, 1, 2, [3, 4]];</span><br><span class="line"></span><br><span class="line">console.log(arr1.flat());</span><br><span class="line">&#x2F;&#x2F; expected output: [0, 1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">const arr2 &#x3D; [0, 1, 2, [[[3, 4]]]];</span><br><span class="line"></span><br><span class="line">console.log(arr2.flat(2));</span><br><span class="line">&#x2F;&#x2F; expected output: [0, 1, 2, [3, 4]]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;使用 Infinity，可展开任意深度的嵌套数组</span><br><span class="line">var arr4 &#x3D; [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];</span><br><span class="line">arr4.flat(Infinity);</span><br><span class="line">&#x2F;&#x2F; [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 扁平化数组空项,如果原数组有空位，flat()方法会跳过空位</span><br><span class="line">var arr4 &#x3D; [1, 2, , 4, 5];</span><br><span class="line">arr4.flat();</span><br><span class="line">&#x2F;&#x2F; [1, 2, 4, 5]</span><br></pre></td></tr></table></figure>
+
+<p>20.扩展运算符</p>
+<p>1.赋值数组</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const a1 &#x3D; [1, 2];</span><br><span class="line">const a2 &#x3D; [...a1];</span><br></pre></td></tr></table></figure>
+
+<p>2.合并数组</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const arr1 &#x3D; [&#39;a&#39;, &#39;b&#39;];</span><br><span class="line">const arr2 &#x3D; [&#39;c&#39;];</span><br><span class="line">const arr3 &#x3D; [&#39;d&#39;, &#39;e&#39;];</span><br><span class="line">const newArr &#x3D; [...arr1, ...arr2,...arr3];</span><br><span class="line">console.log(newArr) &#x2F;&#x2F;[&#39;a&#39;, &#39;b&#39;,&#39;c&#39;,&#39;d&#39;, &#39;e&#39;]</span><br></pre></td></tr></table></figure>
+
+<p>3.与解构赋值结合</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const [a, ...b] &#x3D; [&#39;a&#39;, &#39;b&#39;,&#39;c&#39;,&#39;d&#39;, &#39;e&#39;];</span><br><span class="line">console.log(a) &#x2F;&#x2F;a</span><br><span class="line">console.log(b) &#x2F;&#x2F;[&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>这里记住一个点：</strong><br>使用扩展运算符方法可以直接进行浅拷贝一个新的数组。原数组不会进行改变，只会创建一个新数组。但是如果数组元素是对象等使用这个方式进行数组拷贝是不正确的。因为对象元素更改，原数组相对应的对象也会进行更改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const arr &#x3D; [1, 2, 3, 4, 5];     </span><br><span class="line">const [...newArr] &#x3D; arr      </span><br><span class="line">newArr.push(6);     </span><br><span class="line">console.log(arr);&#x2F;&#x2F;[1,2,3,4,5]     </span><br><span class="line">console.log(newArr);&#x2F;&#x2F;[1,2,3,4,5,6]</span><br></pre></td></tr></table></figure>
+<p>总结：整体就是这些，后续继续补充。</p>
+]]></content>
+      <categories>
+        <category>数组</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>js</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>跨域相关问题总结</title>
+    <url>/archives/07HKRY.html</url>
+    <content><![CDATA[<h2 id="跨域相关问题总结"><a href="#跨域相关问题总结" class="headerlink" title="跨域相关问题总结"></a>跨域相关问题总结</h2><h4 id="前端经常会产生跨域相关问题"><a href="#前端经常会产生跨域相关问题" class="headerlink" title="前端经常会产生跨域相关问题"></a>前端经常会产生跨域相关问题</h4><p>目前主要使用cors相关知识进行解决，在介绍cors过程中主要结合相关知识。</p>
+<p>两种请求方式：</p>
+<p><strong>1.简单请求：</strong></p>
+<p>1.主要是下列三种方法之一： Get、Head、Post</p>
+<p>2.http的头信息不超出一下字段：</p>
+<p>Accept, Accept-Language, Content-Language, Content-Type（仅限于下列三个值: text/plain, multipart/form-data, application/x-www-form-urlencoded）</p>
+<p>浏览器直接发出CORS请求，在头信息中新增一个Origin 字段。</p>
+<a id="more"></a>
+<p><strong>2.非简单请求：</strong> </p>
+<p>请求方法主要是put/delete，或者content-type:application/json类型字段都不是简单请求。</p>
+<p>非简单请求会在正式请求前，增加一个“预检请求”。查看当前网页所在的域名是否在服务器的许可名单中，只有得到肯定的答复，浏览器才会发出正式的XMLHttpRequest请求，否则就会报错。</p>
+<p>Access-Control-Allow-Origin/Access-Control-Allow-Credentials 这两个是可选的，他的值是一个boolean值。表示是否在跨域情况下允许发送cookie。默认情况下，cookie不包括在CORS请求之中。设为true,表示服务器明确许可。要想浏览器发送cookie，一方面要服务器指定Access-Control-Allow-Credentials字段，同时在前端请求中一定要设置withCredentials 属性。方可传递cookie。</p>
+<p><strong>http headers之host,referer,orign</strong></p>
+<p>referer:</p>
+<p>就是网页的链接，即表示当前页面是通过此来源页面的链接进入的。</p>
+<p><strong>注意</strong></p>
+<p>只要浏览器能获取到请求源都会携带。如果浏览器如果不能获取请求源，那么请求头中不会携带referer。</p>
+<p> Origin:</p>
+<p>该首部用于CORS请求或者POST请求。</p>
+<p>当我们浏览器发出跨域请求的时候，服务器会检验当前服务器是不是被允许的站点，服务器就是通过origin这个字段来进行判断的。</p>
+<p><strong>注意</strong></p>
+<p>只有跨域请求（可以看到 response 有对应的 header：Access-Control-Allow-Origin），或者同域时发送post请求，才会携带origin请求头。 如果浏览器不能获取请求源，那么 origin 满足上面情况也会携带，不过其值为null。</p>
+<p>Host介绍：host的值为客户端请求的服务器的域名（或者ip）和端口。</p>
+<p>host用的最多的场景是：单台服务器设置多个虚拟主机时。</p>
+<p>举个简单的例子： 我在IP地址为127.0.0.1的服务器上，通过apache配置了两个虚拟主机：a.com,b.com，这两个域名通过DNS解析都会指向127.0.0.1，我在浏览器中访问a.com的网站时，DNS将域名转化为IP地址，此时可以通过客户端请求头的host信息判断访问的是服务器上对应的虚拟主机。</p>
+<p><img data-src="https://img14.360buyimg.com/imagetools/jfs/t1/164380/15/2040/10502/5ffbebbdEa4f5743f/c085a375fb4773a3.png"></p>
+<p>如果没有host请求头，客户端的请求就不能标记出该访问哪个虚拟主机了。</p>
+<h3 id="中间插一个问题"><a href="#中间插一个问题" class="headerlink" title="中间插一个问题"></a>中间插一个问题</h3><p>在生产环境或者预发环境中<br>通过cors进行配置以后服务端返回的Response Header的报文头，常见的配置有以下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Access-Control-Allow-Headers: *</span><br><span class="line">Access-Control-Allow-Methods: GET, POST, OPTIONS</span><br><span class="line">Access-Control-Allow-Origin: *</span><br></pre></td></tr></table></figure>
+<p>这个在Chrome浏览器中是正常的，但是在模拟器里面由于是Safari内核，就会提示跨域！！！<br>如图所示：<br><img data-src="https://img10.360buyimg.com/imagetools/jfs/t1/166338/30/3222/950904/6006a5a0E0b353afd/5ddfcf3fcca46b97.png"></p>
+<p><img data-src="https://img11.360buyimg.com/imagetools/jfs/t1/151408/14/15962/247421/6006a5a0E7c94798a/dfa4932207f1c692.png"><br>仔细对比以后 *<em>Access-Control-Allow-Headers：**</em> 这个星号的问题导致。<br>解决办法就是服务端 设置 ：Access-Control-Allow-Headers: Content-Type 单独写好不要用星号。</p>
+<p><strong>view parsed</strong></p>
+<p>转换为JSON字符串。</p>
+<p>View source</p>
+<p>转换为JSON对象。</p>
+<p>项目中直接如果使用对象进行传参，最终传递的是JSON对象。</p>
+]]></content>
+      <categories>
+        <category>浏览器跨域</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>浏览器</tag>
+        <tag>跨域</tag>
       </tags>
   </entry>
 </search>

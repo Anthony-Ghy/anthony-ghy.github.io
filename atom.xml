@@ -6,7 +6,7 @@
   <link href="https://anthony-ghy.github.io/atom.xml" rel="self"/>
   
   <link href="https://anthony-ghy.github.io/"/>
-  <updated>2021-01-19T09:26:41.446Z</updated>
+  <updated>2021-01-19T09:33:23.801Z</updated>
   <id>https://anthony-ghy.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://anthony-ghy.github.io/archives/07HKRY.html"/>
     <id>https://anthony-ghy.github.io/archives/07HKRY.html</id>
     <published>2021-01-18T06:45:36.190Z</published>
-    <updated>2021-01-19T09:26:41.446Z</updated>
+    <updated>2021-01-19T09:33:23.801Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;跨域相关问题总结&quot;&gt;&lt;a href=&quot;#跨域相关问题总结&quot; class=&quot;headerlink&quot; title=&quot;跨域相关问题总结&quot;&gt;&lt;/a&gt;跨域相关问题总结&lt;/h2&gt;&lt;h4 id=&quot;前端经常会产生跨域相关问题&quot;&gt;&lt;a href=&quot;#前端经常会产生跨域相关问题&quot; class=&quot;headerlink&quot; title=&quot;前端经常会产生跨域相关问题&quot;&gt;&lt;/a&gt;前端经常会产生跨域相关问题&lt;/h4&gt;&lt;p&gt;目前主要使用cors相关知识进行解决，在介绍cors过程中主要结合相关知识。&lt;/p&gt;
@@ -137,9 +137,9 @@
     
     
     
-    <category term="博客搭建" scheme="https://anthony-ghy.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    
     <category term="前端小白" scheme="https://anthony-ghy.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%99%BD/"/>
+    
+    <category term="博客搭建" scheme="https://anthony-ghy.github.io/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
@@ -164,9 +164,9 @@
     <category term="我来了！" scheme="https://anthony-ghy.github.io/categories/%E6%88%91%E6%9D%A5%E4%BA%86%EF%BC%81/"/>
     
     
-    <category term="前端小白" scheme="https://anthony-ghy.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%99%BD/"/>
-    
     <category term="Hello World" scheme="https://anthony-ghy.github.io/tags/Hello-World/"/>
+    
+    <category term="前端小白" scheme="https://anthony-ghy.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B0%8F%E7%99%BD/"/>
     
     <category term="日常" scheme="https://anthony-ghy.github.io/tags/%E6%97%A5%E5%B8%B8/"/>
     
