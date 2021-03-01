@@ -6,7 +6,7 @@
   <link href="https://anthony-ghy.github.io/atom.xml" rel="self"/>
   
   <link href="https://anthony-ghy.github.io/"/>
-  <updated>2021-03-01T06:07:53.117Z</updated>
+  <updated>2021-03-01T06:42:46.959Z</updated>
   <id>https://anthony-ghy.github.io/</id>
   
   <author>
@@ -21,16 +21,10 @@
     <link href="https://anthony-ghy.github.io/archives/1EAWQ80.html"/>
     <id>https://anthony-ghy.github.io/archives/1EAWQ80.html</id>
     <published>2021-03-01T02:32:01.393Z</published>
-    <updated>2021-03-01T06:07:53.117Z</updated>
+    <updated>2021-03-01T06:42:46.959Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;一些代码简洁方法&quot;&gt;&lt;a href=&quot;#一些代码简洁方法&quot; class=&quot;headerlink&quot; title=&quot;一些代码简洁方法&quot;&gt;&lt;/a&gt;一些代码简洁方法&lt;/h2&gt;&lt;h4 id=&quot;1-通过条件判断给变量赋值布尔值&quot;&gt;&lt;a</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;一些代码简洁方法&quot;&gt;&lt;a href=&quot;#一些代码简洁方法&quot; class=&quot;headerlink&quot; title=&quot;一些代码简洁方法&quot;&gt;&lt;/a&gt;一些代码简洁方法&lt;/h2&gt;&lt;h4 id=&quot;1-通过条件判断给变量赋值布尔值&quot;&gt;&lt;a href=&quot;#1-通过条件判断给变量赋值布尔值&quot; class=&quot;headerlink&quot; title=&quot;1.通过条件判断给变量赋值布尔值&quot;&gt;&lt;/a&gt;1.通过条件判断给变量赋值布尔值&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#x2F;&amp;#x2F; bad&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if (a &amp;#x3D;&amp;#x3D;&amp;#x3D; &amp;#39;a&amp;#39;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b &amp;#x3D; true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125; else &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    b &amp;#x3D; false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#x2F;&amp;#x2F; good&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;b &amp;#x3D; a &amp;#x3D;&amp;#x3D;&amp;#x3D; &amp;#39;a&amp;#39;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
