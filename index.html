@@ -139,17 +139,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">15</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">16</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">10</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -283,6 +283,109 @@
 <p>​        以后会在这里分享我学习到的专业前端知识，同时也会分享一些我喜欢的音乐和摄影作品。</p>
 <p><strong>最后：</strong></p>
 <p>​       对了忘了告诉大家，我酷爱说唱音乐，最喜欢的说唱歌手是马思唯。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <div>
+      
+    </div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://anthony-ghy.github.io/archives/1EAWQ80.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Anthony高鸿宇">
+      <meta itemprop="description" content="敬畏墨菲定律。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Anthony的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/archives/1EAWQ80.html" class="post-title-link" itemprop="url">一些代码简洁方法</a>
+        </h2>
+
+        <div class="post-meta">
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-01 10:32:01 / 修改时间：14:07:53" itemprop="dateCreated datePublished" datetime="2021-03-01T10:32:01+08:00">2021-03-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" itemprop="url" rel="index"><span itemprop="name">代码规范</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一些代码简洁方法"><a href="#一些代码简洁方法" class="headerlink" title="一些代码简洁方法"></a>一些代码简洁方法</h2><h4 id="1-通过条件判断给变量赋值布尔值"><a href="#1-通过条件判断给变量赋值布尔值" class="headerlink" title="1.通过条件判断给变量赋值布尔值"></a>1.通过条件判断给变量赋值布尔值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (a &#x3D;&#x3D;&#x3D; &#39;a&#39;) &#123;</span><br><span class="line">    b &#x3D; true</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    b &#x3D; false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">b &#x3D; a &#x3D;&#x3D;&#x3D; &#39;a&#39;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-在if中判断数组长度不为零-和判断长度为零"><a href="#2-在if中判断数组长度不为零-和判断长度为零" class="headerlink" title="2.在if中判断数组长度不为零 和判断长度为零"></a>2.在if中判断数组长度不为零 和判断长度为零</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (arr.length !&#x3D;&#x3D; 0) &#123;</span><br><span class="line">    &#x2F;&#x2F; todo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (arr.length) &#123;</span><br><span class="line">    &#x2F;&#x2F; todo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (arr.length &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">    &#x2F;&#x2F; todo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">if (!arr.length) &#123;</span><br><span class="line">    &#x2F;&#x2F; todo</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-一般的if判断使用三元表达式"><a href="#3-一般的if判断使用三元表达式" class="headerlink" title="3.一般的if判断使用三元表达式"></a>3.一般的if判断使用三元表达式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (a &#x3D;&#x3D;&#x3D; &#39;a&#39;) &#123;</span><br><span class="line">    b &#x3D; a</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    b &#x3D; c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">b &#x3D; a &#x3D;&#x3D;&#x3D; &#39;a&#39; ? a : c</span><br></pre></td></tr></table></figure>
+
+<p>4.使用includes简化if判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">if (a &#x3D;&#x3D;&#x3D; 1 || a &#x3D;&#x3D;&#x3D; 2 || a &#x3D;&#x3D;&#x3D; 3 || a &#x3D;&#x3D;&#x3D; 4) &#123;</span><br><span class="line">    &#x2F;&#x2F; todo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">let arr &#x3D; [1, 2, 3, 4]</span><br><span class="line">if (arr.includes(a)) &#123;</span><br><span class="line">    &#x2F;&#x2F; todo</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-一些数组使用方法可以参考我的数组文章-https-anthony-ghy-github-io-archives-253P6DE-html"><a href="#5-一些数组使用方法可以参考我的数组文章-https-anthony-ghy-github-io-archives-253P6DE-html" class="headerlink" title="5.一些数组使用方法可以参考我的数组文章 https://anthony-ghy.github.io/archives/253P6DE.html"></a>5.一些数组使用方法可以参考我的数组文章 <a href="https://anthony-ghy.github.io/archives/253P6DE.html">https://anthony-ghy.github.io/archives/253P6DE.html</a></h4><h4 id="6-快速获取对象的键值对"><a href="#6-快速获取对象的键值对" class="headerlink" title="6.快速获取对象的键值对"></a>6.快速获取对象的键值对</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">let obj &#x3D; &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 2</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">let values &#x3D; []</span><br><span class="line">for (key in obj) &#123;</span><br><span class="line">    values.push(obj[key])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">let values &#x3D; Object.values(obj) &#x2F;&#x2F; [1, 2]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let obj &#x3D; &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 2</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">let keys &#x3D; []</span><br><span class="line">for (value in obj) &#123;</span><br><span class="line">    keys.push(value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">let keys &#x3D; Object.keys(obj) &#x2F;&#x2F; [&#39;a&#39;, &#39;b&#39;]</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-关于解构赋值的方法可以参考https-anthony-ghy-github-io-archives-SHB3RK-html"><a href="#7-关于解构赋值的方法可以参考https-anthony-ghy-github-io-archives-SHB3RK-html" class="headerlink" title="7.关于解构赋值的方法可以参考https://anthony-ghy.github.io/archives/SHB3RK.html"></a>7.关于解构赋值的方法可以参考<a href="https://anthony-ghy.github.io/archives/SHB3RK.html">https://anthony-ghy.github.io/archives/SHB3RK.html</a></h4><h4 id="8-短路符设置默认值"><a href="#8-短路符设置默认值" class="headerlink" title="8.||短路符设置默认值"></a>8.||短路符设置默认值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let person &#x3D; &#123;</span><br><span class="line">    name: &#39;张三&#39;,</span><br><span class="line">    age: 38</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let name &#x3D; person.name || &#39;佚名&#39;</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-amp-amp-短路符判断依赖的键是否存在防止报错’xxx-of-undfined’"><a href="#9-amp-amp-短路符判断依赖的键是否存在防止报错’xxx-of-undfined’" class="headerlink" title="9.&amp;&amp;短路符判断依赖的键是否存在防止报错’xxx of undfined’"></a>9.&amp;&amp;短路符判断依赖的键是否存在防止报错’xxx of undfined’</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let person &#x3D; &#123;</span><br><span class="line">    name: &#39;张三&#39;,</span><br><span class="line">    age: 38,</span><br><span class="line">    children: &#123;</span><br><span class="line">        name: &#39;张小三&#39;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let childrenName &#x3D; person.children &amp;&amp; person.childre.name</span><br></pre></td></tr></table></figure>
+
+<h4 id="10-函数参数校验"><a href="#10-函数参数校验" class="headerlink" title="10.函数参数校验"></a>10.函数参数校验</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; bad</span><br><span class="line">let findStudentByAge &#x3D; (arr, age) &#x3D;&gt; &#123;</span><br><span class="line">    if (!age) throw new Error(&#39;参数不能为空&#39;)</span><br><span class="line">    return arr.filter(num &#x3D;&gt; num &#x3D;&#x3D;&#x3D; age)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; good</span><br><span class="line">let checkoutType &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    throw new Error(&#39;参数不能为空&#39;)</span><br><span class="line">&#125;</span><br><span class="line">let findStudentByAge &#x3D; (arr, age &#x3D; checkoutType()) &#x3D;&gt;</span><br><span class="line">    arr.filter(num &#x3D;&gt; num &#x3D;&#x3D;&#x3D; age)</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -1078,111 +1181,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://anthony-ghy.github.io/archives/X1EXZ1.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Anthony高鸿宇">
-      <meta itemprop="description" content="敬畏墨菲定律。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anthony的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/archives/X1EXZ1.html" class="post-title-link" itemprop="url">数学在前端动画中的应用</a>
-        </h2>
-
-        <div class="post-meta">
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-18 19:30:19" itemprop="dateCreated datePublished" datetime="2020-11-18T19:30:19+08:00">2020-11-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-19 09:33:07" itemprop="dateModified" datetime="2020-11-19T09:33:07+08:00">2020-11-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB/" itemprop="url" rel="index"><span itemprop="name">前端动画</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>7.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>有时候你希望能回到过去，告诉年轻的自己，数学确实很重要! 但我怀疑自己当时会不会听进去…</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​     三角函数、两点间的距离，还有各种图形、角度计算公式，每每听到这些词语，就放佛回到了高中时代，想起了数学课本上那一道道让人头疼的数学题。在前端开发领域中，数学同样占据着举足轻重的地位，每次当视觉交互设计师提出，能不能按照这样那样的交互方式进行开发的时候，我时常会感觉力不从心。对于动画效果，实现的方式主要有css和js两种，为了做出更高质量的动画效果，通常需要借助一些数学知识来解决，本文主要结合三角函数在前端动画中的应用进行介绍。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/archives/X1EXZ1.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <div>
-      
-    </div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1249,20 +1252,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1313,12 +1316,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">43k</span>
+    <span title="站点总字数">45k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">39 分钟</span>
+    <span title="站点阅读时长">41 分钟</span>
 </div>
 
         
