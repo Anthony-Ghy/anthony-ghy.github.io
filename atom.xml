@@ -6,7 +6,7 @@
   <link href="https://anthony-ghy.github.io/atom.xml" rel="self"/>
   
   <link href="https://anthony-ghy.github.io/"/>
-  <updated>2021-03-01T06:42:46.959Z</updated>
+  <updated>2021-03-02T01:54:50.385Z</updated>
   <id>https://anthony-ghy.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端浏览器缓存概述</title>
+    <link href="https://anthony-ghy.github.io/archives/3ZHX4HG.html"/>
+    <id>https://anthony-ghy.github.io/archives/3ZHX4HG.html</id>
+    <published>2021-03-02T01:47:58.816Z</published>
+    <updated>2021-03-02T01:54:50.385Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;这里记住一下概念&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&quot;https://first-1304891308.cos.ap-beijing.myqcloud.com/blog-picture/103607.jpg&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="浏览器" scheme="https://anthony-ghy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="缓存" scheme="https://anthony-ghy.github.io/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>一些代码简洁方法</title>
